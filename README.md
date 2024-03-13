@@ -37,6 +37,7 @@ The Development of the FAS firmware relies on the following development tools:
 > It is recommended that contriubtors use [Visual Studio Code]() with the following extensions to aide development process:
 >- [Serial Monitor](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-serial-monitor)
 >- [stm32-for-vscode](https://marketplace.visualstudio.com/items?itemName=bmd.stm32-for-vscode)
+>    - Be sure to install the dependancies specified by the extension
 >- [RTOS Views](https://marketplace.visualstudio.com/items?itemName=mcu-debug.rtos-views)
 >- [Embedded Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-embedded-tools)
 >- [Cortex-Debug](https://marketplace.visualstudio.com/items?itemName=marus25.cortex-debug)
@@ -67,5 +68,35 @@ The Development of the FAS firmware relies on the following development tools:
 │   └── ...
 └── README.md
 ```
-
-
+### Building the Project
+#### AVI_FAS_FMC
+In order to build the project begin by opening a terminal at the following directory:
+```
+cd C:/.../AVI_FAS_FMC/Makfile
+```
+Run the makefile using the following command:
+```
+> make
+```
+Build files (.elf, binaries, etc.) should now be avilable for each core under
+```
+> cd C:/.../AVI_FAS_FMC/Makefile/CM4/build
+```
+For the Cortex-M4 and
+```
+> cd C:/.../AVI_FAS_FMC/Makefile/CM7/build
+```
+For the Cortex-M7
+#### AVI_FAS_SPB, AVI_FAS_APB, AVI_FAS_PMS
+In order to build the project begin by opening a terminal at the following directory:
+```
+cd C:/.../AVI_FAS_SPB
+```
+Run the makefile using the following command:
+```
+> make
+```
+Build files (.elf, binaries, etc.) should now be avilable under
+```
+> cd C:/.../AVI_FAS_FMC/build
+```
