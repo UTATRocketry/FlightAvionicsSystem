@@ -70,7 +70,7 @@ The Development of the FAS firmware relies on the following development tools:
 ```
 ### Building the Project
 #### AVI_FAS_FMC
-In order to build the project begin by opening a terminal at the following directory:
+As of March 2024, STM32-for-VSCode does not support dual core MCUs, thus, the project must be built manually. In order to build the project begin by opening a terminal at the following directory:
 ```
 cd C:/.../AVI_FAS_FMC/Makfile
 ```
@@ -88,6 +88,9 @@ For the Cortex-M4 and
 ```
 For the Cortex-M7
 #### AVI_FAS_SPB, AVI_FAS_APB, AVI_FAS_PMS
+The project can be built using the STM32-for-VSCode Extension by clicking build.
+
+Alternatively, the project can be built manually using `make`.
 In order to build the project begin by opening a terminal at the following directory:
 ```
 cd C:/.../AVI_FAS_SPB
@@ -100,4 +103,4 @@ Build files (.elf, binaries, etc.) should now be avilable under
 ```
 > cd C:/.../AVI_FAS_FMC/build
 ```
-Alternatively, the project can be built using the STM32-for-VSCode Extension by clicking build.
+Alternatively, 
