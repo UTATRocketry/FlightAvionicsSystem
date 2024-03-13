@@ -33,12 +33,13 @@ Bellow are the general steps to Contributing to the FAS project
 The Development of the FAS firmware relies on the following development tools:
 - [STM32CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html)
     -  Graphical tool that allows a very easy configuration of STM32 microcontrollers and microprocessors, as well as the generation of the corresponding initialization C code.
-It is recommended that contriubtors use [Visual Studio Code]() with the following extensions to aide development process:
-- [Serial Monitor](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-serial-monitor)
-- [stm32-for-vscode](https://marketplace.visualstudio.com/items?itemName=bmd.stm32-for-vscode)
-- [RTOS Views](https://marketplace.visualstudio.com/items?itemName=mcu-debug.rtos-views)
-- [Embedded Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-embedded-tools)
-- [Cortex-Debug](https://marketplace.visualstudio.com/items?itemName=marus25.cortex-debug)
+>[!Tip]
+> It is recommended that contriubtors use [Visual Studio Code]() with the following extensions to aide development process:
+>- [Serial Monitor](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-serial-monitor)
+>- [stm32-for-vscode](https://marketplace.visualstudio.com/items?itemName=bmd.stm32-for-vscode)
+>- [RTOS Views](https://marketplace.visualstudio.com/items?itemName=mcu-debug.rtos-views)
+>- [Embedded Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-embedded-tools)
+>- [Cortex-Debug](https://marketplace.visualstudio.com/items?itemName=marus25.cortex-debug)
 
 ### File Structure
 
