@@ -100,3 +100,4 @@ Build files (.elf, binaries, etc.) should now be avilable under
 ```
 > cd C:/.../AVI_FAS_FMC/build
 ```
+Alternatively, the project can be built using the STM32-for-VSCode Extension by clicking build.
