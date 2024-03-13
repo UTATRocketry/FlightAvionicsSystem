@@ -69,6 +69,8 @@ The Development of the FAS firmware relies on the following development tools:
 └── README.md
 ```
 ### Building the Project
+>[!Note]
+> It is recommended to always open the indidual board directory in VSCode rather than the root `FlightAvionicsSystem` to ensure extensions function correctly and prevent issues during build.
 #### AVI_FAS_FMC
 As of March 2024, STM32-for-VSCode does not support dual core MCUs, thus, the project must be built manually. In order to build the project begin by opening a terminal at the following directory:
 ```
@@ -103,4 +105,8 @@ Build files (.elf, binaries, etc.) should now be avilable under
 ```
 > cd C:/.../AVI_FAS_FMC/build
 ```
-Alternatively, 
+### Flashing the Project
+#### AVI_FAS_FMC
+To be populated
+#### AVI_FAS_SPB, AVI_FAS_APB, AVI_FAS_PMS
+Simply selected the flash STM32 option with the board plugged in
