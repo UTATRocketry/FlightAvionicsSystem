@@ -29,7 +29,7 @@ Bellow are the general steps to Contributing to the FAS project
 8. **Code Review**: Your pull request will undergo a code review process. Be responsive to feedback and make any necessary changes.
 9. **Merge**: Once your pull request has been approved and all discussions are resolved, it will be merged into the main project.
 
-### Develompent Enviroment
+## Develompent Enviroment
 The Development of the FAS firmware relies on the following development tools:
 - [STM32CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html)
     -  Graphical tool that allows a very easy configuration of STM32 microcontrollers and microprocessors, as well as the generation of the corresponding initialization C code.
@@ -110,3 +110,21 @@ Build files (.elf, binaries, etc.) should now be avilable under
 To be populated
 #### AVI_FAS_SPB, AVI_FAS_APB, AVI_FAS_PMS
 Simply selected the flash STM32 option with the board plugged in
+
+## Useful Resources
+- [STM32 MCU developer resources](https://www.st.com/content/st_com/en/stm32-mcu-developer-zone/developer-resources.html)
+- [CMSIS-RTOS V2](https://www.keil.com/pack/doc/CMSIS/RTOS2/html/group__CMSIS__RTOS.html)
+- [FreeRTOS Developer Docs](https://www.freertos.org/features.html) and [API Reference](https://www.freertos.org/a00106.html)
+    - Included for refrence. Not particularly useful as all FreeRTOS interfaceing is done via CMSIS API (See above)
+- [FAS Documentation Repository (WIP)](https://drive.google.com/drive/folders/1tMO5mx5yF__yE8U-y_fBRsXYf4qRplqN)
+### FMC Resources
+- [STM32H745/755 and STM32H747/757 advanced Arm®-based 32-bit MCUs Reference Manual](https://www.st.com/resource/en/reference_manual/rm0399-stm32h745755-and-stm32h747757-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)
+    - Relevant for the FMC MCU
+- [Description of STM32H7 HAL and low-layer drivers](https://www.st.com/content/ccc/resource/technical/document/user_manual/group0/40/ee/88/53/f6/1e/4c/87/DM00392525/files/DM00392525.pdf/jcr:content/translations/en.DM00392525.pdf)
+- [STM32F7 Series and STM32H7 Series Cortex®-M7 processor programming manual](https://www.st.com/resource/en/programming_manual/pm0253-stm32f7-series-and-stm32h7-series-cortexm7-processor-programming-manual-stmicroelectronics.pdf)
+    - Relevant for the FMC MCU's Cortex®-M7 Core
+### SPB/APB Resources
+- [STM32L4+ Series advanced Arm®-based 32-bit MCUs Refrence Manual](https://www.st.com/resource/en/reference_manual/rm0432-stm32l4-series-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)
+    - Relevant for the SPB/APB MCU
+- [Description of STM32L4/L4+ HAL and low-layer drivers](https://www.st.com/content/ccc/resource/technical/document/user_manual/63/a8/8f/e3/ca/a1/4c/84/DM00173145.pdf/files/DM00173145.pdf/jcr:content/translations/en.DM00173145.pdf)
+
