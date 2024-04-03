@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s 			page 1
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccPw2Pfm.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s 			page 1
   28:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** /* Private typedef -----------------------------------------------------------*/
   29:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** /* USER CODE BEGIN TD */
   30:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** 
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s 			page 2
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccPw2Pfm.s 			page 2
 
 
   31:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** /* USER CODE END TD */
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s 			page 1
   43              		.loc 1 70 3 view .LVU3
   44 0004 0A4B     		ldr	r3, .L3
   45 0006 D3F8F420 		ldr	r2, [r3, #244]
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s 			page 3
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccPw2Pfm.s 			page 3
 
 
   46 000a 42F00202 		orr	r2, r2, #2
@@ -158,448 +158,247 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s 			page 1
   71 0030 00440258 		.word	1476543488
   72              		.cfi_endproc
   73              	.LFE132:
-  75              		.section	.text.HAL_ETH_MspInit,"ax",%progbits
+  75              		.section	.text.HAL_UART_MspInit,"ax",%progbits
   76              		.align	1
-  77              		.global	HAL_ETH_MspInit
+  77              		.global	HAL_UART_MspInit
   78              		.syntax unified
   79              		.thumb
   80              		.thumb_func
-  82              	HAL_ETH_MspInit:
+  82              	HAL_UART_MspInit:
   83              	.LVL1:
   84              	.LFB133:
   80:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** 
   81:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** /**
-  82:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** * @brief ETH MSP Initialization
+  82:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** * @brief UART MSP Initialization
   83:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** * This function configures the hardware resources used in this example
-  84:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** * @param heth: ETH handle pointer
+  84:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** * @param huart: UART handle pointer
   85:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** * @retval None
   86:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** */
-  87:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** void HAL_ETH_MspInit(ETH_HandleTypeDef* heth)
+  87:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** void HAL_UART_MspInit(UART_HandleTypeDef* huart)
   88:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** {
   85              		.loc 1 88 1 is_stmt 1 view -0
   86              		.cfi_startproc
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s 			page 4
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccPw2Pfm.s 			page 4
 
 
-  87              		@ args = 0, pretend = 0, frame = 16
+  87              		@ args = 0, pretend = 0, frame = 200
   88              		@ frame_needed = 0, uses_anonymous_args = 0
-  89              		@ link register save eliminated.
-  89:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   if(heth->Instance==ETH)
-  90              		.loc 1 89 3 view .LVU10
-  91              		.loc 1 89 10 is_stmt 0 view .LVU11
-  92 0000 0268     		ldr	r2, [r0]
-  93              		.loc 1 89 5 view .LVU12
-  94 0002 164B     		ldr	r3, .L12
-  95 0004 9A42     		cmp	r2, r3
-  96 0006 00D0     		beq	.L11
-  97 0008 7047     		bx	lr
-  98              	.L11:
-  88:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   if(heth->Instance==ETH)
-  99              		.loc 1 88 1 view .LVU13
- 100 000a 84B0     		sub	sp, sp, #16
- 101              	.LCFI3:
- 102              		.cfi_def_cfa_offset 16
-  90:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   {
-  91:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN ETH_MspInit 0 */
-  92:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** 
-  93:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE END ETH_MspInit 0 */
-  94:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     /* Peripheral clock enable */
-  95:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     __HAL_RCC_ETH1MAC_CLK_ENABLE();
- 103              		.loc 1 95 5 is_stmt 1 view .LVU14
- 104              	.LBB3:
- 105              		.loc 1 95 5 view .LVU15
- 106              		.loc 1 95 5 view .LVU16
- 107 000c 144B     		ldr	r3, .L12+4
- 108 000e D3F8D820 		ldr	r2, [r3, #216]
- 109 0012 42F40042 		orr	r2, r2, #32768
- 110 0016 C3F8D820 		str	r2, [r3, #216]
- 111              		.loc 1 95 5 view .LVU17
- 112 001a D3F8D820 		ldr	r2, [r3, #216]
- 113 001e 02F40042 		and	r2, r2, #32768
- 114 0022 0192     		str	r2, [sp, #4]
- 115              		.loc 1 95 5 view .LVU18
- 116 0024 019A     		ldr	r2, [sp, #4]
- 117              	.LBE3:
- 118              		.loc 1 95 5 view .LVU19
-  96:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     __HAL_RCC_ETH1TX_CLK_ENABLE();
- 119              		.loc 1 96 5 view .LVU20
- 120              	.LBB4:
- 121              		.loc 1 96 5 view .LVU21
- 122              		.loc 1 96 5 view .LVU22
- 123 0026 D3F8D820 		ldr	r2, [r3, #216]
- 124 002a 42F48032 		orr	r2, r2, #65536
- 125 002e C3F8D820 		str	r2, [r3, #216]
- 126              		.loc 1 96 5 view .LVU23
- 127 0032 D3F8D820 		ldr	r2, [r3, #216]
- 128 0036 02F48032 		and	r2, r2, #65536
- 129 003a 0292     		str	r2, [sp, #8]
- 130              		.loc 1 96 5 view .LVU24
- 131 003c 029A     		ldr	r2, [sp, #8]
- 132              	.LBE4:
- 133              		.loc 1 96 5 view .LVU25
-  97:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     __HAL_RCC_ETH1RX_CLK_ENABLE();
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s 			page 5
-
-
- 134              		.loc 1 97 5 view .LVU26
- 135              	.LBB5:
- 136              		.loc 1 97 5 view .LVU27
- 137              		.loc 1 97 5 view .LVU28
- 138 003e D3F8D820 		ldr	r2, [r3, #216]
- 139 0042 42F40032 		orr	r2, r2, #131072
- 140 0046 C3F8D820 		str	r2, [r3, #216]
- 141              		.loc 1 97 5 view .LVU29
- 142 004a D3F8D830 		ldr	r3, [r3, #216]
- 143 004e 03F40033 		and	r3, r3, #131072
- 144 0052 0393     		str	r3, [sp, #12]
- 145              		.loc 1 97 5 view .LVU30
- 146 0054 039B     		ldr	r3, [sp, #12]
- 147              	.LBE5:
- 148              		.loc 1 97 5 view .LVU31
-  98:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN ETH_MspInit 1 */
-  99:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** 
- 100:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE END ETH_MspInit 1 */
- 101:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   }
- 102:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** 
- 103:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** }
- 149              		.loc 1 103 1 is_stmt 0 view .LVU32
- 150 0056 04B0     		add	sp, sp, #16
- 151              	.LCFI4:
- 152              		.cfi_def_cfa_offset 0
- 153              		@ sp needed
- 154 0058 7047     		bx	lr
- 155              	.L13:
- 156 005a 00BF     		.align	2
- 157              	.L12:
- 158 005c 00800240 		.word	1073905664
- 159 0060 00440258 		.word	1476543488
- 160              		.cfi_endproc
- 161              	.LFE133:
- 163              		.section	.text.HAL_ETH_MspDeInit,"ax",%progbits
- 164              		.align	1
- 165              		.global	HAL_ETH_MspDeInit
- 166              		.syntax unified
- 167              		.thumb
- 168              		.thumb_func
- 170              	HAL_ETH_MspDeInit:
- 171              	.LVL2:
- 172              	.LFB134:
+  89              		.loc 1 88 1 is_stmt 0 view .LVU10
+  90 0000 10B5     		push	{r4, lr}
+  91              	.LCFI3:
+  92              		.cfi_def_cfa_offset 8
+  93              		.cfi_offset 4, -8
+  94              		.cfi_offset 14, -4
+  95 0002 B2B0     		sub	sp, sp, #200
+  96              	.LCFI4:
+  97              		.cfi_def_cfa_offset 208
+  98 0004 0446     		mov	r4, r0
+  89:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
+  99              		.loc 1 89 3 is_stmt 1 view .LVU11
+ 100              		.loc 1 89 28 is_stmt 0 view .LVU12
+ 101 0006 C022     		movs	r2, #192
+ 102 0008 0021     		movs	r1, #0
+ 103 000a 02A8     		add	r0, sp, #8
+ 104              	.LVL2:
+ 105              		.loc 1 89 28 view .LVU13
+ 106 000c FFF7FEFF 		bl	memset
+ 107              	.LVL3:
+  90:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   if(huart->Instance==USART3)
+ 108              		.loc 1 90 3 is_stmt 1 view .LVU14
+ 109              		.loc 1 90 11 is_stmt 0 view .LVU15
+ 110 0010 2268     		ldr	r2, [r4]
+ 111              		.loc 1 90 5 view .LVU16
+ 112 0012 0F4B     		ldr	r3, .L11
+ 113 0014 9A42     		cmp	r2, r3
+ 114 0016 01D0     		beq	.L9
+ 115              	.L5:
+  91:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   {
+  92:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN USART3_MspInit 0 */
+  93:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** 
+  94:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE END USART3_MspInit 0 */
+  95:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** 
+  96:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /** Initializes the peripherals clock
+  97:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   */
+  98:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_USART3;
+  99:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     PeriphClkInitStruct.Usart234578ClockSelection = RCC_USART234578CLKSOURCE_D2PCLK1;
+ 100:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
+ 101:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     {
+ 102:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****       Error_Handler();
+ 103:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     }
  104:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** 
- 105:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** /**
- 106:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** * @brief ETH MSP De-Initialization
- 107:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** * This function freeze the hardware resources used in this example
- 108:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** * @param heth: ETH handle pointer
- 109:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** * @retval None
- 110:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** */
- 111:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** void HAL_ETH_MspDeInit(ETH_HandleTypeDef* heth)
- 112:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** {
- 173              		.loc 1 112 1 is_stmt 1 view -0
- 174              		.cfi_startproc
- 175              		@ args = 0, pretend = 0, frame = 0
- 176              		@ frame_needed = 0, uses_anonymous_args = 0
- 177              		@ link register save eliminated.
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s 			page 6
+ 105:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     /* Peripheral clock enable */
+ 106:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     __HAL_RCC_USART3_CLK_ENABLE();
+ 107:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN USART3_MspInit 1 */
+ 108:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** 
+ 109:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE END USART3_MspInit 1 */
+ 110:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   }
+ 111:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** 
+ 112:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** }
+ 116              		.loc 1 112 1 view .LVU17
+ 117 0018 32B0     		add	sp, sp, #200
+ 118              	.LCFI5:
+ 119              		.cfi_remember_state
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccPw2Pfm.s 			page 5
 
 
- 113:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   if(heth->Instance==ETH)
- 178              		.loc 1 113 3 view .LVU34
- 179              		.loc 1 113 10 is_stmt 0 view .LVU35
- 180 0000 0268     		ldr	r2, [r0]
- 181              		.loc 1 113 5 view .LVU36
- 182 0002 0C4B     		ldr	r3, .L17
- 183 0004 9A42     		cmp	r2, r3
- 184 0006 00D0     		beq	.L16
- 185              	.L14:
- 114:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   {
- 115:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN ETH_MspDeInit 0 */
- 116:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** 
- 117:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE END ETH_MspDeInit 0 */
- 118:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     /* Peripheral clock disable */
- 119:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     __HAL_RCC_ETH1MAC_CLK_DISABLE();
- 120:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     __HAL_RCC_ETH1TX_CLK_DISABLE();
- 121:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     __HAL_RCC_ETH1RX_CLK_DISABLE();
- 122:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN ETH_MspDeInit 1 */
- 123:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** 
- 124:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE END ETH_MspDeInit 1 */
- 125:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   }
- 126:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** 
- 127:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** }
- 186              		.loc 1 127 1 view .LVU37
- 187 0008 7047     		bx	lr
- 188              	.L16:
- 119:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     __HAL_RCC_ETH1TX_CLK_DISABLE();
- 189              		.loc 1 119 5 is_stmt 1 view .LVU38
- 190 000a 0B4B     		ldr	r3, .L17+4
- 191 000c D3F8D820 		ldr	r2, [r3, #216]
- 192 0010 22F40042 		bic	r2, r2, #32768
- 193 0014 C3F8D820 		str	r2, [r3, #216]
- 120:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     __HAL_RCC_ETH1RX_CLK_DISABLE();
- 194              		.loc 1 120 5 view .LVU39
- 195 0018 D3F8D820 		ldr	r2, [r3, #216]
- 196 001c 22F48032 		bic	r2, r2, #65536
- 197 0020 C3F8D820 		str	r2, [r3, #216]
- 121:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN ETH_MspDeInit 1 */
- 198              		.loc 1 121 5 view .LVU40
- 199 0024 D3F8D820 		ldr	r2, [r3, #216]
- 200 0028 22F40032 		bic	r2, r2, #131072
- 201 002c C3F8D820 		str	r2, [r3, #216]
- 202              		.loc 1 127 1 is_stmt 0 view .LVU41
- 203 0030 EAE7     		b	.L14
- 204              	.L18:
- 205 0032 00BF     		.align	2
- 206              	.L17:
- 207 0034 00800240 		.word	1073905664
- 208 0038 00440258 		.word	1476543488
- 209              		.cfi_endproc
- 210              	.LFE134:
- 212              		.section	.text.HAL_UART_MspInit,"ax",%progbits
- 213              		.align	1
- 214              		.global	HAL_UART_MspInit
- 215              		.syntax unified
- 216              		.thumb
- 217              		.thumb_func
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s 			page 7
+ 120              		.cfi_def_cfa_offset 8
+ 121              		@ sp needed
+ 122 001a 10BD     		pop	{r4, pc}
+ 123              	.LVL4:
+ 124              	.L9:
+ 125              	.LCFI6:
+ 126              		.cfi_restore_state
+  98:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     PeriphClkInitStruct.Usart234578ClockSelection = RCC_USART234578CLKSOURCE_D2PCLK1;
+ 127              		.loc 1 98 5 is_stmt 1 view .LVU18
+  98:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     PeriphClkInitStruct.Usart234578ClockSelection = RCC_USART234578CLKSOURCE_D2PCLK1;
+ 128              		.loc 1 98 46 is_stmt 0 view .LVU19
+ 129 001c 0222     		movs	r2, #2
+ 130 001e 0023     		movs	r3, #0
+ 131 0020 CDE90223 		strd	r2, [sp, #8]
+  99:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
+ 132              		.loc 1 99 5 is_stmt 1 view .LVU20
+ 100:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     {
+ 133              		.loc 1 100 5 view .LVU21
+ 100:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     {
+ 134              		.loc 1 100 9 is_stmt 0 view .LVU22
+ 135 0024 02A8     		add	r0, sp, #8
+ 136 0026 FFF7FEFF 		bl	HAL_RCCEx_PeriphCLKConfig
+ 137              	.LVL5:
+ 100:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     {
+ 138              		.loc 1 100 8 view .LVU23
+ 139 002a 68B9     		cbnz	r0, .L10
+ 140              	.L7:
+ 106:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN USART3_MspInit 1 */
+ 141              		.loc 1 106 5 is_stmt 1 view .LVU24
+ 142              	.LBB3:
+ 106:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN USART3_MspInit 1 */
+ 143              		.loc 1 106 5 view .LVU25
+ 106:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN USART3_MspInit 1 */
+ 144              		.loc 1 106 5 view .LVU26
+ 145 002c 094B     		ldr	r3, .L11+4
+ 146 002e D3F8E820 		ldr	r2, [r3, #232]
+ 147 0032 42F48022 		orr	r2, r2, #262144
+ 148 0036 C3F8E820 		str	r2, [r3, #232]
+ 106:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN USART3_MspInit 1 */
+ 149              		.loc 1 106 5 view .LVU27
+ 150 003a D3F8E830 		ldr	r3, [r3, #232]
+ 151 003e 03F48023 		and	r3, r3, #262144
+ 152 0042 0193     		str	r3, [sp, #4]
+ 106:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN USART3_MspInit 1 */
+ 153              		.loc 1 106 5 view .LVU28
+ 154 0044 019B     		ldr	r3, [sp, #4]
+ 155              	.LBE3:
+ 106:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN USART3_MspInit 1 */
+ 156              		.loc 1 106 5 view .LVU29
+ 157              		.loc 1 112 1 is_stmt 0 view .LVU30
+ 158 0046 E7E7     		b	.L5
+ 159              	.L10:
+ 102:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     }
+ 160              		.loc 1 102 7 is_stmt 1 view .LVU31
+ 161 0048 FFF7FEFF 		bl	Error_Handler
+ 162              	.LVL6:
+ 163 004c EEE7     		b	.L7
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccPw2Pfm.s 			page 6
 
 
- 219              	HAL_UART_MspInit:
- 220              	.LVL3:
- 221              	.LFB135:
- 128:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** 
- 129:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** /**
- 130:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** * @brief UART MSP Initialization
- 131:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** * This function configures the hardware resources used in this example
- 132:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** * @param huart: UART handle pointer
- 133:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** * @retval None
- 134:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** */
- 135:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** void HAL_UART_MspInit(UART_HandleTypeDef* huart)
- 136:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** {
- 222              		.loc 1 136 1 is_stmt 1 view -0
- 223              		.cfi_startproc
- 224              		@ args = 0, pretend = 0, frame = 200
- 225              		@ frame_needed = 0, uses_anonymous_args = 0
- 226              		.loc 1 136 1 is_stmt 0 view .LVU43
- 227 0000 10B5     		push	{r4, lr}
- 228              	.LCFI5:
- 229              		.cfi_def_cfa_offset 8
- 230              		.cfi_offset 4, -8
- 231              		.cfi_offset 14, -4
- 232 0002 B2B0     		sub	sp, sp, #200
- 233              	.LCFI6:
- 234              		.cfi_def_cfa_offset 208
- 235 0004 0446     		mov	r4, r0
- 137:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
- 236              		.loc 1 137 3 is_stmt 1 view .LVU44
- 237              		.loc 1 137 28 is_stmt 0 view .LVU45
- 238 0006 C022     		movs	r2, #192
- 239 0008 0021     		movs	r1, #0
- 240 000a 02A8     		add	r0, sp, #8
- 241              	.LVL4:
- 242              		.loc 1 137 28 view .LVU46
- 243 000c FFF7FEFF 		bl	memset
- 244              	.LVL5:
- 138:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   if(huart->Instance==USART3)
- 245              		.loc 1 138 3 is_stmt 1 view .LVU47
- 246              		.loc 1 138 11 is_stmt 0 view .LVU48
- 247 0010 2268     		ldr	r2, [r4]
- 248              		.loc 1 138 5 view .LVU49
- 249 0012 0F4B     		ldr	r3, .L25
- 250 0014 9A42     		cmp	r2, r3
- 251 0016 01D0     		beq	.L23
- 252              	.L19:
- 139:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   {
- 140:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN USART3_MspInit 0 */
- 141:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** 
- 142:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE END USART3_MspInit 0 */
- 143:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** 
- 144:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /** Initializes the peripherals clock
- 145:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   */
- 146:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_USART3;
- 147:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     PeriphClkInitStruct.Usart234578ClockSelection = RCC_USART234578CLKSOURCE_D2PCLK1;
- 148:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
- 149:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     {
- 150:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****       Error_Handler();
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s 			page 8
+ 164              	.L12:
+ 165 004e 00BF     		.align	2
+ 166              	.L11:
+ 167 0050 00480040 		.word	1073760256
+ 168 0054 00440258 		.word	1476543488
+ 169              		.cfi_endproc
+ 170              	.LFE133:
+ 172              		.section	.text.HAL_UART_MspDeInit,"ax",%progbits
+ 173              		.align	1
+ 174              		.global	HAL_UART_MspDeInit
+ 175              		.syntax unified
+ 176              		.thumb
+ 177              		.thumb_func
+ 179              	HAL_UART_MspDeInit:
+ 180              	.LVL7:
+ 181              	.LFB134:
+ 113:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** 
+ 114:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** /**
+ 115:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** * @brief UART MSP De-Initialization
+ 116:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** * This function freeze the hardware resources used in this example
+ 117:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** * @param huart: UART handle pointer
+ 118:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** * @retval None
+ 119:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** */
+ 120:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** void HAL_UART_MspDeInit(UART_HandleTypeDef* huart)
+ 121:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** {
+ 182              		.loc 1 121 1 view -0
+ 183              		.cfi_startproc
+ 184              		@ args = 0, pretend = 0, frame = 0
+ 185              		@ frame_needed = 0, uses_anonymous_args = 0
+ 186              		@ link register save eliminated.
+ 122:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   if(huart->Instance==USART3)
+ 187              		.loc 1 122 3 view .LVU33
+ 188              		.loc 1 122 11 is_stmt 0 view .LVU34
+ 189 0000 0268     		ldr	r2, [r0]
+ 190              		.loc 1 122 5 view .LVU35
+ 191 0002 064B     		ldr	r3, .L16
+ 192 0004 9A42     		cmp	r2, r3
+ 193 0006 00D0     		beq	.L15
+ 194              	.L13:
+ 123:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   {
+ 124:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN USART3_MspDeInit 0 */
+ 125:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** 
+ 126:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE END USART3_MspDeInit 0 */
+ 127:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     /* Peripheral clock disable */
+ 128:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     __HAL_RCC_USART3_CLK_DISABLE();
+ 129:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN USART3_MspDeInit 1 */
+ 130:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** 
+ 131:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE END USART3_MspDeInit 1 */
+ 132:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   }
+ 133:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** 
+ 134:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** }
+ 195              		.loc 1 134 1 view .LVU36
+ 196 0008 7047     		bx	lr
+ 197              	.L15:
+ 128:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN USART3_MspDeInit 1 */
+ 198              		.loc 1 128 5 is_stmt 1 view .LVU37
+ 199 000a 054A     		ldr	r2, .L16+4
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccPw2Pfm.s 			page 7
 
 
- 151:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     }
- 152:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** 
- 153:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     /* Peripheral clock enable */
- 154:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     __HAL_RCC_USART3_CLK_ENABLE();
- 155:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN USART3_MspInit 1 */
- 156:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** 
- 157:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE END USART3_MspInit 1 */
- 158:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   }
- 159:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** 
- 160:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** }
- 253              		.loc 1 160 1 view .LVU50
- 254 0018 32B0     		add	sp, sp, #200
- 255              	.LCFI7:
- 256              		.cfi_remember_state
- 257              		.cfi_def_cfa_offset 8
- 258              		@ sp needed
- 259 001a 10BD     		pop	{r4, pc}
- 260              	.LVL6:
- 261              	.L23:
- 262              	.LCFI8:
- 263              		.cfi_restore_state
- 146:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     PeriphClkInitStruct.Usart234578ClockSelection = RCC_USART234578CLKSOURCE_D2PCLK1;
- 264              		.loc 1 146 5 is_stmt 1 view .LVU51
- 146:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     PeriphClkInitStruct.Usart234578ClockSelection = RCC_USART234578CLKSOURCE_D2PCLK1;
- 265              		.loc 1 146 46 is_stmt 0 view .LVU52
- 266 001c 0222     		movs	r2, #2
- 267 001e 0023     		movs	r3, #0
- 268 0020 CDE90223 		strd	r2, [sp, #8]
- 147:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
- 269              		.loc 1 147 5 is_stmt 1 view .LVU53
- 148:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     {
- 270              		.loc 1 148 5 view .LVU54
- 148:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     {
- 271              		.loc 1 148 9 is_stmt 0 view .LVU55
- 272 0024 02A8     		add	r0, sp, #8
- 273 0026 FFF7FEFF 		bl	HAL_RCCEx_PeriphCLKConfig
- 274              	.LVL7:
- 148:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     {
- 275              		.loc 1 148 8 view .LVU56
- 276 002a 68B9     		cbnz	r0, .L24
- 277              	.L21:
- 154:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN USART3_MspInit 1 */
- 278              		.loc 1 154 5 is_stmt 1 view .LVU57
- 279              	.LBB6:
- 154:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN USART3_MspInit 1 */
- 280              		.loc 1 154 5 view .LVU58
- 154:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN USART3_MspInit 1 */
- 281              		.loc 1 154 5 view .LVU59
- 282 002c 094B     		ldr	r3, .L25+4
- 283 002e D3F8E820 		ldr	r2, [r3, #232]
- 284 0032 42F48022 		orr	r2, r2, #262144
- 285 0036 C3F8E820 		str	r2, [r3, #232]
- 154:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN USART3_MspInit 1 */
- 286              		.loc 1 154 5 view .LVU60
- 287 003a D3F8E830 		ldr	r3, [r3, #232]
- 288 003e 03F48023 		and	r3, r3, #262144
- 289 0042 0193     		str	r3, [sp, #4]
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s 			page 9
-
-
- 154:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN USART3_MspInit 1 */
- 290              		.loc 1 154 5 view .LVU61
- 291 0044 019B     		ldr	r3, [sp, #4]
- 292              	.LBE6:
- 154:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN USART3_MspInit 1 */
- 293              		.loc 1 154 5 view .LVU62
- 294              		.loc 1 160 1 is_stmt 0 view .LVU63
- 295 0046 E7E7     		b	.L19
- 296              	.L24:
- 150:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     }
- 297              		.loc 1 150 7 is_stmt 1 view .LVU64
- 298 0048 FFF7FEFF 		bl	Error_Handler
- 299              	.LVL8:
- 300 004c EEE7     		b	.L21
- 301              	.L26:
- 302 004e 00BF     		.align	2
- 303              	.L25:
- 304 0050 00480040 		.word	1073760256
- 305 0054 00440258 		.word	1476543488
- 306              		.cfi_endproc
- 307              	.LFE135:
- 309              		.section	.text.HAL_UART_MspDeInit,"ax",%progbits
- 310              		.align	1
- 311              		.global	HAL_UART_MspDeInit
- 312              		.syntax unified
- 313              		.thumb
- 314              		.thumb_func
- 316              	HAL_UART_MspDeInit:
- 317              	.LVL9:
- 318              	.LFB136:
- 161:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** 
- 162:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** /**
- 163:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** * @brief UART MSP De-Initialization
- 164:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** * This function freeze the hardware resources used in this example
- 165:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** * @param huart: UART handle pointer
- 166:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** * @retval None
- 167:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** */
- 168:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** void HAL_UART_MspDeInit(UART_HandleTypeDef* huart)
- 169:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** {
- 319              		.loc 1 169 1 view -0
- 320              		.cfi_startproc
- 321              		@ args = 0, pretend = 0, frame = 0
- 322              		@ frame_needed = 0, uses_anonymous_args = 0
- 323              		@ link register save eliminated.
- 170:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   if(huart->Instance==USART3)
- 324              		.loc 1 170 3 view .LVU66
- 325              		.loc 1 170 11 is_stmt 0 view .LVU67
- 326 0000 0268     		ldr	r2, [r0]
- 327              		.loc 1 170 5 view .LVU68
- 328 0002 064B     		ldr	r3, .L30
- 329 0004 9A42     		cmp	r2, r3
- 330 0006 00D0     		beq	.L29
- 331              	.L27:
- 171:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   {
- 172:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN USART3_MspDeInit 0 */
- 173:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** 
- 174:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE END USART3_MspDeInit 0 */
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s 			page 10
-
-
- 175:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     /* Peripheral clock disable */
- 176:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****     __HAL_RCC_USART3_CLK_DISABLE();
- 177:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN USART3_MspDeInit 1 */
- 178:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** 
- 179:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE END USART3_MspDeInit 1 */
- 180:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   }
- 181:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** 
- 182:../../CM4/Core/Src/stm32h7xx_hal_msp.c **** }
- 332              		.loc 1 182 1 view .LVU69
- 333 0008 7047     		bx	lr
- 334              	.L29:
- 176:../../CM4/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN USART3_MspDeInit 1 */
- 335              		.loc 1 176 5 is_stmt 1 view .LVU70
- 336 000a 054A     		ldr	r2, .L30+4
- 337 000c D2F8E830 		ldr	r3, [r2, #232]
- 338 0010 23F48023 		bic	r3, r3, #262144
- 339 0014 C2F8E830 		str	r3, [r2, #232]
- 340              		.loc 1 182 1 is_stmt 0 view .LVU71
- 341 0018 F6E7     		b	.L27
- 342              	.L31:
- 343 001a 00BF     		.align	2
- 344              	.L30:
- 345 001c 00480040 		.word	1073760256
- 346 0020 00440258 		.word	1476543488
- 347              		.cfi_endproc
- 348              	.LFE136:
- 350              		.text
- 351              	.Letext0:
- 352              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
- 353              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
- 354              		.file 4 "../../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h755xx.h"
- 355              		.file 5 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
- 356              		.file 6 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc_ex.h"
- 357              		.file 7 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h"
- 358              		.file 8 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_eth.h"
- 359              		.file 9 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h"
- 360              		.file 10 "../../CM4/Core/Inc/main.h"
- 361              		.file 11 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cortex.h"
- 362              		.file 12 "<built-in>"
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s 			page 11
+ 200 000c D2F8E830 		ldr	r3, [r2, #232]
+ 201 0010 23F48023 		bic	r3, r3, #262144
+ 202 0014 C2F8E830 		str	r3, [r2, #232]
+ 203              		.loc 1 134 1 is_stmt 0 view .LVU38
+ 204 0018 F6E7     		b	.L13
+ 205              	.L17:
+ 206 001a 00BF     		.align	2
+ 207              	.L16:
+ 208 001c 00480040 		.word	1073760256
+ 209 0020 00440258 		.word	1476543488
+ 210              		.cfi_endproc
+ 211              	.LFE134:
+ 213              		.text
+ 214              	.Letext0:
+ 215              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 216              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 217              		.file 4 "../../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h755xx.h"
+ 218              		.file 5 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
+ 219              		.file 6 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc_ex.h"
+ 220              		.file 7 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h"
+ 221              		.file 8 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h"
+ 222              		.file 9 "../../CM4/Core/Inc/main.h"
+ 223              		.file 10 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cortex.h"
+ 224              		.file 11 "<built-in>"
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccPw2Pfm.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32h7xx_hal_msp.c
-C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s:20     .text.HAL_MspInit:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s:26     .text.HAL_MspInit:00000000 HAL_MspInit
-C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s:71     .text.HAL_MspInit:00000030 $d
-C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s:76     .text.HAL_ETH_MspInit:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s:82     .text.HAL_ETH_MspInit:00000000 HAL_ETH_MspInit
-C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s:158    .text.HAL_ETH_MspInit:0000005c $d
-C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s:164    .text.HAL_ETH_MspDeInit:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s:170    .text.HAL_ETH_MspDeInit:00000000 HAL_ETH_MspDeInit
-C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s:207    .text.HAL_ETH_MspDeInit:00000034 $d
-C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s:213    .text.HAL_UART_MspInit:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s:219    .text.HAL_UART_MspInit:00000000 HAL_UART_MspInit
-C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s:304    .text.HAL_UART_MspInit:00000050 $d
-C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s:310    .text.HAL_UART_MspDeInit:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s:316    .text.HAL_UART_MspDeInit:00000000 HAL_UART_MspDeInit
-C:\Users\gigig\AppData\Local\Temp\ccHkhMHJ.s:345    .text.HAL_UART_MspDeInit:0000001c $d
+C:\Users\gigig\AppData\Local\Temp\ccPw2Pfm.s:20     .text.HAL_MspInit:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccPw2Pfm.s:26     .text.HAL_MspInit:00000000 HAL_MspInit
+C:\Users\gigig\AppData\Local\Temp\ccPw2Pfm.s:71     .text.HAL_MspInit:00000030 $d
+C:\Users\gigig\AppData\Local\Temp\ccPw2Pfm.s:76     .text.HAL_UART_MspInit:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccPw2Pfm.s:82     .text.HAL_UART_MspInit:00000000 HAL_UART_MspInit
+C:\Users\gigig\AppData\Local\Temp\ccPw2Pfm.s:167    .text.HAL_UART_MspInit:00000050 $d
+C:\Users\gigig\AppData\Local\Temp\ccPw2Pfm.s:173    .text.HAL_UART_MspDeInit:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccPw2Pfm.s:179    .text.HAL_UART_MspDeInit:00000000 HAL_UART_MspDeInit
+C:\Users\gigig\AppData\Local\Temp\ccPw2Pfm.s:208    .text.HAL_UART_MspDeInit:0000001c $d
 
 UNDEFINED SYMBOLS
 HAL_NVIC_SetPriority

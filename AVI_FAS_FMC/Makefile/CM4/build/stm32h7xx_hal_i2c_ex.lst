@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 1
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 1
   27:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c **** 
   28:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c ****   [..] Comparing to other previous devices, the I2C interface for STM32H7xx
   29:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c ****        devices contains the following additional features
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 2
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s 			page 2
 
 
   30:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 1
   84:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c **** 
   85:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c **** @endverbatim
   86:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c ****   * @{
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 3
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s 			page 3
 
 
   87:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c ****   */
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 1
   60 0022 23F00103 		bic	r3, r3, #1
   61 0026 1360     		str	r3, [r2]
  111:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c **** 
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 4
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s 			page 4
 
 
  112:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c ****     /* Reset I2Cx ANOFF bit */
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 1
  128:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c ****   {
  129:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c ****     return HAL_BUSY;
  100              		.loc 1 129 12 view .LVU29
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 5
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s 			page 5
 
 
  101 0054 0220     		movs	r0, #2
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 1
  137              		.loc 1 148 6 view .LVU39
  138 0006 202B     		cmp	r3, #32
  139 0008 22D1     		bne	.L7
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 6
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s 			page 6
 
 
  149:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c ****   {
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 1
  174 0034 1160     		str	r1, [r2]
  169:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c **** 
  170:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c ****     __HAL_I2C_ENABLE(hi2c);
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 7
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s 			page 7
 
 
  175              		.loc 1 170 5 is_stmt 1 discriminator 2 view .LVU56
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 1
  216              		.thumb
  217              		.thumb_func
  219              	HAL_I2CEx_EnableWakeUp:
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 8
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s 			page 8
 
 
  220              	.LVL16:
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 1
  241 0012 0123     		movs	r3, #1
  242 0014 80F84030 		strb	r3, [r0, #64]
  243              		.loc 1 216 5 discriminator 2 view .LVU77
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 9
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s 			page 9
 
 
  217:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c **** 
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 1
  281              	.L11:
  234:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c ****   }
  235:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c ****   else
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 10
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s 			page 10
 
 
  236:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c ****   {
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 1
  253:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c ****   {
  254:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c ****     /* Process Locked */
  255:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c ****     __HAL_LOCK(hi2c);
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 11
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s 			page 11
 
 
  320              		.loc 1 255 5 is_stmt 1 view .LVU102
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 1
  271:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c **** 
  272:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c ****     return HAL_OK;
  359              		.loc 1 272 5 discriminator 2 view .LVU118
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 12
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s 			page 12
 
 
  360              		.loc 1 272 12 is_stmt 0 discriminator 2 view .LVU119
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 1
  296:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c **** 
  297:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c **** /**
  298:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c ****   * @brief Enable the I2C fast mode plus driving capability.
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 13
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s 			page 13
 
 
  299:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c ****   * @param ConfigFastModePlus Selects the pin.
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 1
  419 001c 034A     		ldr	r2, .L19+4
  420 001e 5368     		ldr	r3, [r2, #4]
  421 0020 0343     		orrs	r3, r3, r0
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 14
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s 			page 14
 
 
  422 0022 5360     		str	r3, [r2, #4]
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 1
  455              		.cfi_def_cfa_offset 8
  349:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c ****   /* Check the parameter */
  350:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c ****   assert_param(IS_I2C_FASTMODEPLUS(ConfigFastModePlus));
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 15
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s 			page 15
 
 
  456              		.loc 1 350 3 is_stmt 1 view .LVU138
@@ -891,24 +891,24 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 1
  497              		.file 5 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
  498              		.file 6 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h"
  499              		.file 7 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h"
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s 			page 16
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s 			page 16
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32h7xx_hal_i2c_ex.c
-C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s:20     .text.HAL_I2CEx_ConfigAnalogFilter:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s:26     .text.HAL_I2CEx_ConfigAnalogFilter:00000000 HAL_I2CEx_ConfigAnalogFilter
-C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s:116    .text.HAL_I2CEx_ConfigDigitalFilter:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s:122    .text.HAL_I2CEx_ConfigDigitalFilter:00000000 HAL_I2CEx_ConfigDigitalFilter
-C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s:213    .text.HAL_I2CEx_EnableWakeUp:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s:219    .text.HAL_I2CEx_EnableWakeUp:00000000 HAL_I2CEx_EnableWakeUp
-C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s:298    .text.HAL_I2CEx_DisableWakeUp:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s:304    .text.HAL_I2CEx_DisableWakeUp:00000000 HAL_I2CEx_DisableWakeUp
-C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s:383    .text.HAL_I2CEx_EnableFastModePlus:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s:389    .text.HAL_I2CEx_EnableFastModePlus:00000000 HAL_I2CEx_EnableFastModePlus
-C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s:432    .text.HAL_I2CEx_EnableFastModePlus:00000028 $d
-C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s:438    .text.HAL_I2CEx_DisableFastModePlus:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s:444    .text.HAL_I2CEx_DisableFastModePlus:00000000 HAL_I2CEx_DisableFastModePlus
-C:\Users\gigig\AppData\Local\Temp\cckSQu8F.s:487    .text.HAL_I2CEx_DisableFastModePlus:0000002c $d
+C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s:20     .text.HAL_I2CEx_ConfigAnalogFilter:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s:26     .text.HAL_I2CEx_ConfigAnalogFilter:00000000 HAL_I2CEx_ConfigAnalogFilter
+C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s:116    .text.HAL_I2CEx_ConfigDigitalFilter:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s:122    .text.HAL_I2CEx_ConfigDigitalFilter:00000000 HAL_I2CEx_ConfigDigitalFilter
+C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s:213    .text.HAL_I2CEx_EnableWakeUp:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s:219    .text.HAL_I2CEx_EnableWakeUp:00000000 HAL_I2CEx_EnableWakeUp
+C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s:298    .text.HAL_I2CEx_DisableWakeUp:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s:304    .text.HAL_I2CEx_DisableWakeUp:00000000 HAL_I2CEx_DisableWakeUp
+C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s:383    .text.HAL_I2CEx_EnableFastModePlus:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s:389    .text.HAL_I2CEx_EnableFastModePlus:00000000 HAL_I2CEx_EnableFastModePlus
+C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s:432    .text.HAL_I2CEx_EnableFastModePlus:00000028 $d
+C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s:438    .text.HAL_I2CEx_DisableFastModePlus:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s:444    .text.HAL_I2CEx_DisableFastModePlus:00000000 HAL_I2CEx_DisableFastModePlus
+C:\Users\gigig\AppData\Local\Temp\ccLVeHV6.s:487    .text.HAL_I2CEx_DisableFastModePlus:0000002c $d
 
 NO UNDEFINED SYMBOLS

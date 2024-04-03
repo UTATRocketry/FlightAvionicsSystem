@@ -38,18 +38,8 @@ Discarded input sections
  .bss           0x00000000        0x0 build/main.o
  .text.Error_Handler
                 0x00000000        0x4 build/main.o
- .text.MX_ETH_Init
-                0x00000000       0x6c build/main.o
  .text.MX_USART3_UART_Init
                 0x00000000       0x60 build/main.o
- .RxDecripSection
-                0x00000000       0x60 build/main.o
- .TxDecripSection
-                0x00000000       0x60 build/main.o
- .bss.MACAddr.0
-                0x00000000        0x6 build/main.o
- .bss.TxConfig  0x00000000       0x38 build/main.o
- .bss.heth      0x00000000       0xb0 build/main.o
  .bss.huart3    0x00000000       0x94 build/main.o
  .text          0x00000000        0x0 build/stm32h7xx_it.o
  .data          0x00000000        0x0 build/stm32h7xx_it.o
@@ -57,10 +47,6 @@ Discarded input sections
  .text          0x00000000        0x0 build/stm32h7xx_hal_msp.o
  .data          0x00000000        0x0 build/stm32h7xx_hal_msp.o
  .bss           0x00000000        0x0 build/stm32h7xx_hal_msp.o
- .text.HAL_ETH_MspInit
-                0x00000000       0x64 build/stm32h7xx_hal_msp.o
- .text.HAL_ETH_MspDeInit
-                0x00000000       0x3c build/stm32h7xx_hal_msp.o
  .text.HAL_UART_MspInit
                 0x00000000       0x58 build/stm32h7xx_hal_msp.o
  .text.HAL_UART_MspDeInit
@@ -101,183 +87,25 @@ Discarded input sections
  .text          0x00000000        0x0 build/stm32h7xx_hal_eth.o
  .data          0x00000000        0x0 build/stm32h7xx_hal_eth.o
  .bss           0x00000000        0x0 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_RxAllocateCallback
-                0x00000000        0x2 build/stm32h7xx_hal_eth.o
- .text.ETH_UpdateDescriptor
-                0x00000000       0x98 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_RxLinkCallback
-                0x00000000        0x2 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_TxFreeCallback
-                0x00000000        0x2 build/stm32h7xx_hal_eth.o
- .text.ETH_SetMACConfig
-                0x00000000      0x1b0 build/stm32h7xx_hal_eth.o
- .text.ETH_SetDMAConfig
-                0x00000000       0xb0 build/stm32h7xx_hal_eth.o
- .text.ETH_MACDMAConfig
-                0x00000000       0xdc build/stm32h7xx_hal_eth.o
- .text.ETH_DMATxDescListInit
-                0x00000000       0x5a build/stm32h7xx_hal_eth.o
- .text.ETH_DMARxDescListInit
-                0x00000000       0x6c build/stm32h7xx_hal_eth.o
- .text.ETH_Prepare_Tx_Descriptors
-                0x00000000      0x364 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_MspInit
-                0x00000000        0x2 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_MspDeInit
-                0x00000000        0x2 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_DeInit
-                0x00000000       0x16 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_Start
-                0x00000000       0x7e build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_Start_IT
-                0x00000000       0xbc build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_Stop
-                0x00000000       0x60 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_Stop_IT
-                0x00000000       0x94 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_Transmit
-                0x00000000       0xd0 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_Transmit_IT
-                0x00000000       0x68 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_ReadData
-                0x00000000       0xfe build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_RegisterRxAllocateCallback
-                0x00000000        0xe build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_UnRegisterRxAllocateCallback
-                0x00000000       0x10 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_RegisterRxLinkCallback
-                0x00000000        0xe build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_UnRegisterRxLinkCallback
-                0x00000000       0x10 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_GetRxDataErrorCode
-                0x00000000        0xc build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_RegisterTxFreeCallback
-                0x00000000        0xe build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_UnRegisterTxFreeCallback
-                0x00000000       0x10 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_ReleaseTxPacket
-                0x00000000       0x5e build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_TxCpltCallback
-                0x00000000        0x2 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_RxCpltCallback
-                0x00000000        0x2 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_ErrorCallback
-                0x00000000        0x2 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_PMTCallback
-                0x00000000        0x2 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_EEECallback
-                0x00000000        0x2 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_WakeUpCallback
-                0x00000000        0x2 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_IRQHandler
-                0x00000000      0x1b6 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_ReadPHYRegister
-                0x00000000       0x60 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_WritePHYRegister
-                0x00000000       0x68 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_GetMACConfig
-                0x00000000      0x1e6 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_GetDMAConfig
-                0x00000000       0xc2 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_SetMACConfig
-                0x00000000       0x1c build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_SetDMAConfig
-                0x00000000       0x1c build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_SetMDIOClockRange
-                0x00000000       0x78 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_Init
-                0x00000000      0x14c build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_SetMACFilterConfig
-                0x00000000       0x60 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_GetMACFilterConfig
-                0x00000000       0x7e build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_SetSourceMACAddrMatch
-                0x00000000       0x50 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_SetHashTable
-                0x00000000       0x18 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_SetRxVLANIdentifier
-                0x00000000       0x40 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_EnterPowerDownMode
-                0x00000000       0x40 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_ExitPowerDownMode
-                0x00000000       0x3c build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_SetWakeUpFilter
-                0x00000000       0x3a build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_GetState
-                0x00000000        0x6 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_GetError
-                0x00000000        0x6 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_GetDMAError
-                0x00000000        0x6 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_GetMACError
-                0x00000000        0x6 build/stm32h7xx_hal_eth.o
- .text.HAL_ETH_GetMACWakeUpSource
-                0x00000000        0x6 build/stm32h7xx_hal_eth.o
- .debug_info    0x00000000     0x3457 build/stm32h7xx_hal_eth.o
- .debug_abbrev  0x00000000      0x2cb build/stm32h7xx_hal_eth.o
- .debug_loc     0x00000000     0x1c28 build/stm32h7xx_hal_eth.o
+ .debug_info    0x00000000       0x80 build/stm32h7xx_hal_eth.o
+ .debug_abbrev  0x00000000       0x26 build/stm32h7xx_hal_eth.o
  .debug_aranges
-                0x00000000      0x1d8 build/stm32h7xx_hal_eth.o
- .debug_ranges  0x00000000      0x1c8 build/stm32h7xx_hal_eth.o
- .debug_line    0x00000000     0x1e06 build/stm32h7xx_hal_eth.o
- .debug_str     0x00000000     0x1b2f build/stm32h7xx_hal_eth.o
+                0x00000000       0x18 build/stm32h7xx_hal_eth.o
+ .debug_line    0x00000000       0x1d build/stm32h7xx_hal_eth.o
+ .debug_str     0x00000000      0x1c9 build/stm32h7xx_hal_eth.o
  .comment       0x00000000       0x4a build/stm32h7xx_hal_eth.o
- .debug_frame   0x00000000      0x4e4 build/stm32h7xx_hal_eth.o
  .ARM.attributes
                 0x00000000       0x34 build/stm32h7xx_hal_eth.o
  .text          0x00000000        0x0 build/stm32h7xx_hal_eth_ex.o
  .data          0x00000000        0x0 build/stm32h7xx_hal_eth_ex.o
  .bss           0x00000000        0x0 build/stm32h7xx_hal_eth_ex.o
- .text.HAL_ETHEx_EnableARPOffload
-                0x00000000        0xc build/stm32h7xx_hal_eth_ex.o
- .text.HAL_ETHEx_DisableARPOffload
-                0x00000000        0xc build/stm32h7xx_hal_eth_ex.o
- .text.HAL_ETHEx_SetARPAddressMatch
-                0x00000000        0x8 build/stm32h7xx_hal_eth_ex.o
- .text.HAL_ETHEx_SetL4FilterConfig
-                0x00000000       0x52 build/stm32h7xx_hal_eth_ex.o
- .text.HAL_ETHEx_GetL4FilterConfig
-                0x00000000       0x58 build/stm32h7xx_hal_eth_ex.o
- .text.HAL_ETHEx_SetL3FilterConfig
-                0x00000000       0x90 build/stm32h7xx_hal_eth_ex.o
- .text.HAL_ETHEx_GetL3FilterConfig
-                0x00000000       0xb2 build/stm32h7xx_hal_eth_ex.o
- .text.HAL_ETHEx_EnableL3L4Filtering
-                0x00000000        0xc build/stm32h7xx_hal_eth_ex.o
- .text.HAL_ETHEx_DisableL3L4Filtering
-                0x00000000        0xc build/stm32h7xx_hal_eth_ex.o
- .text.HAL_ETHEx_GetRxVLANConfig
-                0x00000000       0x64 build/stm32h7xx_hal_eth_ex.o
- .text.HAL_ETHEx_SetRxVLANConfig
-                0x00000000       0x5c build/stm32h7xx_hal_eth_ex.o
- .text.HAL_ETHEx_SetVLANHashTable
-                0x00000000       0x14 build/stm32h7xx_hal_eth_ex.o
- .text.HAL_ETHEx_GetTxVLANConfig
-                0x00000000       0x4e build/stm32h7xx_hal_eth_ex.o
- .text.HAL_ETHEx_SetTxVLANConfig
-                0x00000000       0x54 build/stm32h7xx_hal_eth_ex.o
- .text.HAL_ETHEx_SetTxVLANIdentifier
-                0x00000000       0x24 build/stm32h7xx_hal_eth_ex.o
- .text.HAL_ETHEx_EnableVLANProcessing
-                0x00000000        0xc build/stm32h7xx_hal_eth_ex.o
- .text.HAL_ETHEx_DisableVLANProcessing
-                0x00000000        0xc build/stm32h7xx_hal_eth_ex.o
- .text.HAL_ETHEx_EnterLPIMode
-                0x00000000       0x2e build/stm32h7xx_hal_eth_ex.o
- .text.HAL_ETHEx_ExitLPIMode
-                0x00000000       0x1e build/stm32h7xx_hal_eth_ex.o
- .text.HAL_ETHEx_GetMACLPIEvent
-                0x00000000        0x6 build/stm32h7xx_hal_eth_ex.o
- .debug_info    0x00000000     0x190e build/stm32h7xx_hal_eth_ex.o
- .debug_abbrev  0x00000000      0x245 build/stm32h7xx_hal_eth_ex.o
- .debug_loc     0x00000000      0x75d build/stm32h7xx_hal_eth_ex.o
+ .debug_info    0x00000000       0x80 build/stm32h7xx_hal_eth_ex.o
+ .debug_abbrev  0x00000000       0x26 build/stm32h7xx_hal_eth_ex.o
  .debug_aranges
-                0x00000000       0xb8 build/stm32h7xx_hal_eth_ex.o
- .debug_ranges  0x00000000       0xa8 build/stm32h7xx_hal_eth_ex.o
- .debug_line    0x00000000      0x72c build/stm32h7xx_hal_eth_ex.o
- .debug_str     0x00000000     0x103c build/stm32h7xx_hal_eth_ex.o
+                0x00000000       0x18 build/stm32h7xx_hal_eth_ex.o
+ .debug_line    0x00000000       0x1d build/stm32h7xx_hal_eth_ex.o
+ .debug_str     0x00000000      0x1cc build/stm32h7xx_hal_eth_ex.o
  .comment       0x00000000       0x4a build/stm32h7xx_hal_eth_ex.o
- .debug_frame   0x00000000      0x1ac build/stm32h7xx_hal_eth_ex.o
  .ARM.attributes
                 0x00000000       0x34 build/stm32h7xx_hal_eth_ex.o
  .text          0x00000000        0x0 build/stm32h7xx_hal_rcc.o
@@ -3188,197 +3016,197 @@ LOAD c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc
 LOAD c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a
 LOAD c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a
 
-.debug_info     0x00000000    0x20d0d
- .debug_info    0x00000000     0x2ba5 build/main.o
- .debug_info    0x00002ba5      0x8ea build/stm32h7xx_it.o
- .debug_info    0x0000348f     0x2656 build/stm32h7xx_hal_msp.o
- .debug_info    0x00005ae5     0x130f build/stm32h7xx_hal_cortex.o
- .debug_info    0x00006df4     0x13e0 build/stm32h7xx_hal_rcc.o
- .debug_info    0x000081d4      0x46d build/stm32h7xx_hal_hsem.o
- .debug_info    0x00008641     0x14d0 build/stm32h7xx_hal_pwr_ex.o
- .debug_info    0x00009b11     0x1bf1 build/stm32h7xx_hal.o
- .debug_info    0x0000b702     0x432c build/stm32h7xx_hal_tim.o
- .debug_info    0x0000fa2e     0x2042 build/stm32h7xx_hal_tim_ex.o
- .debug_info    0x00011a70      0x87a build/system_stm32h7xx_dualcore_boot_cm4_cm7.o
- .debug_info    0x000122ea     0x12d3 build/stm32h7xx_hal_timebase_tim.o
- .debug_info    0x000135bd      0x30f build/list.o
- .debug_info    0x000138cc     0x2965 build/queue.o
- .debug_info    0x00016231     0x333f build/tasks.o
- .debug_info    0x00019570     0x1bd3 build/timers.o
- .debug_info    0x0001b143     0x4fc6 build/cmsis_os2.o
- .debug_info    0x00020109      0x61a build/heap_4.o
- .debug_info    0x00020723      0x5c8 build/port.o
- .debug_info    0x00020ceb       0x22 build/startup_stm32h755xx_CM4.o
+.debug_info     0x00000000    0x1e95b
+ .debug_info    0x00000000     0x1918 build/main.o
+ .debug_info    0x00001918      0x8ea build/stm32h7xx_it.o
+ .debug_info    0x00002202     0x1531 build/stm32h7xx_hal_msp.o
+ .debug_info    0x00003733     0x130f build/stm32h7xx_hal_cortex.o
+ .debug_info    0x00004a42     0x13e0 build/stm32h7xx_hal_rcc.o
+ .debug_info    0x00005e22      0x46d build/stm32h7xx_hal_hsem.o
+ .debug_info    0x0000628f     0x14d0 build/stm32h7xx_hal_pwr_ex.o
+ .debug_info    0x0000775f     0x1bf1 build/stm32h7xx_hal.o
+ .debug_info    0x00009350     0x432c build/stm32h7xx_hal_tim.o
+ .debug_info    0x0000d67c     0x2042 build/stm32h7xx_hal_tim_ex.o
+ .debug_info    0x0000f6be      0x87a build/system_stm32h7xx_dualcore_boot_cm4_cm7.o
+ .debug_info    0x0000ff38     0x12d3 build/stm32h7xx_hal_timebase_tim.o
+ .debug_info    0x0001120b      0x30f build/list.o
+ .debug_info    0x0001151a     0x2965 build/queue.o
+ .debug_info    0x00013e7f     0x333f build/tasks.o
+ .debug_info    0x000171be     0x1bd3 build/timers.o
+ .debug_info    0x00018d91     0x4fc6 build/cmsis_os2.o
+ .debug_info    0x0001dd57      0x61a build/heap_4.o
+ .debug_info    0x0001e371      0x5c8 build/port.o
+ .debug_info    0x0001e939       0x22 build/startup_stm32h755xx_CM4.o
 
-.debug_abbrev   0x00000000     0x320f
- .debug_abbrev  0x00000000      0x292 build/main.o
- .debug_abbrev  0x00000292      0x17c build/stm32h7xx_it.o
- .debug_abbrev  0x0000040e      0x21e build/stm32h7xx_hal_msp.o
- .debug_abbrev  0x0000062c      0x395 build/stm32h7xx_hal_cortex.o
- .debug_abbrev  0x000009c1      0x27d build/stm32h7xx_hal_rcc.o
- .debug_abbrev  0x00000c3e      0x1e3 build/stm32h7xx_hal_hsem.o
- .debug_abbrev  0x00000e21      0x2db build/stm32h7xx_hal_pwr_ex.o
- .debug_abbrev  0x000010fc      0x27d build/stm32h7xx_hal.o
- .debug_abbrev  0x00001379      0x289 build/stm32h7xx_hal_tim.o
- .debug_abbrev  0x00001602      0x29f build/stm32h7xx_hal_tim_ex.o
- .debug_abbrev  0x000018a1      0x12a build/system_stm32h7xx_dualcore_boot_cm4_cm7.o
- .debug_abbrev  0x000019cb      0x211 build/stm32h7xx_hal_timebase_tim.o
- .debug_abbrev  0x00001bdc      0x124 build/list.o
- .debug_abbrev  0x00001d00      0x3c4 build/queue.o
- .debug_abbrev  0x000020c4      0x387 build/tasks.o
- .debug_abbrev  0x0000244b      0x366 build/timers.o
- .debug_abbrev  0x000027b1      0x559 build/cmsis_os2.o
- .debug_abbrev  0x00002d0a      0x269 build/heap_4.o
- .debug_abbrev  0x00002f73      0x28a build/port.o
- .debug_abbrev  0x000031fd       0x12 build/startup_stm32h755xx_CM4.o
+.debug_abbrev   0x00000000     0x31b4
+ .debug_abbrev  0x00000000      0x253 build/main.o
+ .debug_abbrev  0x00000253      0x17c build/stm32h7xx_it.o
+ .debug_abbrev  0x000003cf      0x202 build/stm32h7xx_hal_msp.o
+ .debug_abbrev  0x000005d1      0x395 build/stm32h7xx_hal_cortex.o
+ .debug_abbrev  0x00000966      0x27d build/stm32h7xx_hal_rcc.o
+ .debug_abbrev  0x00000be3      0x1e3 build/stm32h7xx_hal_hsem.o
+ .debug_abbrev  0x00000dc6      0x2db build/stm32h7xx_hal_pwr_ex.o
+ .debug_abbrev  0x000010a1      0x27d build/stm32h7xx_hal.o
+ .debug_abbrev  0x0000131e      0x289 build/stm32h7xx_hal_tim.o
+ .debug_abbrev  0x000015a7      0x29f build/stm32h7xx_hal_tim_ex.o
+ .debug_abbrev  0x00001846      0x12a build/system_stm32h7xx_dualcore_boot_cm4_cm7.o
+ .debug_abbrev  0x00001970      0x211 build/stm32h7xx_hal_timebase_tim.o
+ .debug_abbrev  0x00001b81      0x124 build/list.o
+ .debug_abbrev  0x00001ca5      0x3c4 build/queue.o
+ .debug_abbrev  0x00002069      0x387 build/tasks.o
+ .debug_abbrev  0x000023f0      0x366 build/timers.o
+ .debug_abbrev  0x00002756      0x559 build/cmsis_os2.o
+ .debug_abbrev  0x00002caf      0x269 build/heap_4.o
+ .debug_abbrev  0x00002f18      0x28a build/port.o
+ .debug_abbrev  0x000031a2       0x12 build/startup_stm32h755xx_CM4.o
 
-.debug_loc      0x00000000    0x179ba
- .debug_loc     0x00000000      0x113 build/main.o
- .debug_loc     0x00000113       0x20 build/stm32h7xx_it.o
- .debug_loc     0x00000133       0xcc build/stm32h7xx_hal_msp.o
- .debug_loc     0x000001ff      0x786 build/stm32h7xx_hal_cortex.o
- .debug_loc     0x00000985      0xab4 build/stm32h7xx_hal_rcc.o
- .debug_loc     0x00001439      0x137 build/stm32h7xx_hal_hsem.o
- .debug_loc     0x00001570      0x862 build/stm32h7xx_hal_pwr_ex.o
- .debug_loc     0x00001dd2      0x6ae build/stm32h7xx_hal.o
- .debug_loc     0x00002480     0x6278 build/stm32h7xx_hal_tim.o
- .debug_loc     0x000086f8     0x2a63 build/stm32h7xx_hal_tim_ex.o
- .debug_loc     0x0000b15b      0x22d build/system_stm32h7xx_dualcore_boot_cm4_cm7.o
- .debug_loc     0x0000b388       0xfa build/stm32h7xx_hal_timebase_tim.o
- .debug_loc     0x0000b482       0xe5 build/list.o
- .debug_loc     0x0000b567     0x1fa3 build/queue.o
- .debug_loc     0x0000d50a     0x2c5f build/tasks.o
- .debug_loc     0x00010169     0x156d build/timers.o
- .debug_loc     0x000116d6     0x5c40 build/cmsis_os2.o
- .debug_loc     0x00017316      0x4e4 build/heap_4.o
- .debug_loc     0x000177fa      0x1c0 build/port.o
+.debug_loc      0x00000000    0x1796e
+ .debug_loc     0x00000000       0xf3 build/main.o
+ .debug_loc     0x000000f3       0x20 build/stm32h7xx_it.o
+ .debug_loc     0x00000113       0xa0 build/stm32h7xx_hal_msp.o
+ .debug_loc     0x000001b3      0x786 build/stm32h7xx_hal_cortex.o
+ .debug_loc     0x00000939      0xab4 build/stm32h7xx_hal_rcc.o
+ .debug_loc     0x000013ed      0x137 build/stm32h7xx_hal_hsem.o
+ .debug_loc     0x00001524      0x862 build/stm32h7xx_hal_pwr_ex.o
+ .debug_loc     0x00001d86      0x6ae build/stm32h7xx_hal.o
+ .debug_loc     0x00002434     0x6278 build/stm32h7xx_hal_tim.o
+ .debug_loc     0x000086ac     0x2a63 build/stm32h7xx_hal_tim_ex.o
+ .debug_loc     0x0000b10f      0x22d build/system_stm32h7xx_dualcore_boot_cm4_cm7.o
+ .debug_loc     0x0000b33c       0xfa build/stm32h7xx_hal_timebase_tim.o
+ .debug_loc     0x0000b436       0xe5 build/list.o
+ .debug_loc     0x0000b51b     0x1fa3 build/queue.o
+ .debug_loc     0x0000d4be     0x2c5f build/tasks.o
+ .debug_loc     0x0001011d     0x156d build/timers.o
+ .debug_loc     0x0001168a     0x5c40 build/cmsis_os2.o
+ .debug_loc     0x000172ca      0x4e4 build/heap_4.o
+ .debug_loc     0x000177ae      0x1c0 build/port.o
 
-.debug_aranges  0x00000000     0x13e0
+.debug_aranges  0x00000000     0x13c8
  .debug_aranges
-                0x00000000       0x48 build/main.o
+                0x00000000       0x40 build/main.o
  .debug_aranges
-                0x00000048       0x50 build/stm32h7xx_it.o
+                0x00000040       0x50 build/stm32h7xx_it.o
  .debug_aranges
-                0x00000098       0x40 build/stm32h7xx_hal_msp.o
+                0x00000090       0x30 build/stm32h7xx_hal_msp.o
  .debug_aranges
-                0x000000d8       0xb0 build/stm32h7xx_hal_cortex.o
+                0x000000c0       0xb0 build/stm32h7xx_hal_cortex.o
  .debug_aranges
-                0x00000188       0x88 build/stm32h7xx_hal_rcc.o
+                0x00000170       0x88 build/stm32h7xx_hal_rcc.o
  .debug_aranges
-                0x00000210       0x70 build/stm32h7xx_hal_hsem.o
+                0x000001f8       0x70 build/stm32h7xx_hal_hsem.o
  .debug_aranges
-                0x00000280      0x170 build/stm32h7xx_hal_pwr_ex.o
+                0x00000268      0x170 build/stm32h7xx_hal_pwr_ex.o
  .debug_aranges
-                0x000003f0      0x200 build/stm32h7xx_hal.o
+                0x000003d8      0x200 build/stm32h7xx_hal.o
  .debug_aranges
-                0x000005f0      0x3e0 build/stm32h7xx_hal_tim.o
+                0x000005d8      0x3e0 build/stm32h7xx_hal_tim.o
  .debug_aranges
-                0x000009d0      0x188 build/stm32h7xx_hal_tim_ex.o
+                0x000009b8      0x188 build/stm32h7xx_hal_tim_ex.o
  .debug_aranges
-                0x00000b58       0x28 build/system_stm32h7xx_dualcore_boot_cm4_cm7.o
+                0x00000b40       0x28 build/system_stm32h7xx_dualcore_boot_cm4_cm7.o
  .debug_aranges
-                0x00000b80       0x30 build/stm32h7xx_hal_timebase_tim.o
+                0x00000b68       0x30 build/stm32h7xx_hal_timebase_tim.o
  .debug_aranges
-                0x00000bb0       0x40 build/list.o
+                0x00000b98       0x40 build/list.o
  .debug_aranges
-                0x00000bf0      0x158 build/queue.o
+                0x00000bd8      0x158 build/queue.o
  .debug_aranges
-                0x00000d48      0x208 build/tasks.o
+                0x00000d30      0x208 build/tasks.o
  .debug_aranges
-                0x00000f50       0xf0 build/timers.o
+                0x00000f38       0xf0 build/timers.o
  .debug_aranges
-                0x00001040      0x2a0 build/cmsis_os2.o
+                0x00001028      0x2a0 build/cmsis_os2.o
  .debug_aranges
-                0x000012e0       0x58 build/heap_4.o
+                0x000012c8       0x58 build/heap_4.o
  .debug_aranges
-                0x00001338       0x80 build/port.o
+                0x00001320       0x80 build/port.o
  .debug_aranges
-                0x000013b8       0x28 build/startup_stm32h755xx_CM4.o
+                0x000013a0       0x28 build/startup_stm32h755xx_CM4.o
 
-.debug_ranges   0x00000000     0x1600
- .debug_ranges  0x00000000       0x38 build/main.o
- .debug_ranges  0x00000038       0x40 build/stm32h7xx_it.o
- .debug_ranges  0x00000078       0x30 build/stm32h7xx_hal_msp.o
- .debug_ranges  0x000000a8      0x100 build/stm32h7xx_hal_cortex.o
- .debug_ranges  0x000001a8       0xe8 build/stm32h7xx_hal_rcc.o
- .debug_ranges  0x00000290       0x60 build/stm32h7xx_hal_hsem.o
- .debug_ranges  0x000002f0      0x1c0 build/stm32h7xx_hal_pwr_ex.o
- .debug_ranges  0x000004b0      0x1f0 build/stm32h7xx_hal.o
- .debug_ranges  0x000006a0      0x3d0 build/stm32h7xx_hal_tim.o
- .debug_ranges  0x00000a70      0x178 build/stm32h7xx_hal_tim_ex.o
- .debug_ranges  0x00000be8       0x18 build/system_stm32h7xx_dualcore_boot_cm4_cm7.o
- .debug_ranges  0x00000c00       0x20 build/stm32h7xx_hal_timebase_tim.o
- .debug_ranges  0x00000c20       0x30 build/list.o
- .debug_ranges  0x00000c50      0x200 build/queue.o
- .debug_ranges  0x00000e50      0x338 build/tasks.o
- .debug_ranges  0x00001188       0xe0 build/timers.o
- .debug_ranges  0x00001268      0x2a8 build/cmsis_os2.o
- .debug_ranges  0x00001510       0x48 build/heap_4.o
- .debug_ranges  0x00001558       0x88 build/port.o
- .debug_ranges  0x000015e0       0x20 build/startup_stm32h755xx_CM4.o
+.debug_ranges   0x00000000     0x15e8
+ .debug_ranges  0x00000000       0x30 build/main.o
+ .debug_ranges  0x00000030       0x40 build/stm32h7xx_it.o
+ .debug_ranges  0x00000070       0x20 build/stm32h7xx_hal_msp.o
+ .debug_ranges  0x00000090      0x100 build/stm32h7xx_hal_cortex.o
+ .debug_ranges  0x00000190       0xe8 build/stm32h7xx_hal_rcc.o
+ .debug_ranges  0x00000278       0x60 build/stm32h7xx_hal_hsem.o
+ .debug_ranges  0x000002d8      0x1c0 build/stm32h7xx_hal_pwr_ex.o
+ .debug_ranges  0x00000498      0x1f0 build/stm32h7xx_hal.o
+ .debug_ranges  0x00000688      0x3d0 build/stm32h7xx_hal_tim.o
+ .debug_ranges  0x00000a58      0x178 build/stm32h7xx_hal_tim_ex.o
+ .debug_ranges  0x00000bd0       0x18 build/system_stm32h7xx_dualcore_boot_cm4_cm7.o
+ .debug_ranges  0x00000be8       0x20 build/stm32h7xx_hal_timebase_tim.o
+ .debug_ranges  0x00000c08       0x30 build/list.o
+ .debug_ranges  0x00000c38      0x200 build/queue.o
+ .debug_ranges  0x00000e38      0x338 build/tasks.o
+ .debug_ranges  0x00001170       0xe0 build/timers.o
+ .debug_ranges  0x00001250      0x2a8 build/cmsis_os2.o
+ .debug_ranges  0x000014f8       0x48 build/heap_4.o
+ .debug_ranges  0x00001540       0x88 build/port.o
+ .debug_ranges  0x000015c8       0x20 build/startup_stm32h755xx_CM4.o
 
-.debug_line     0x00000000    0x14fe5
- .debug_line    0x00000000      0x4fa build/main.o
- .debug_line    0x000004fa      0x2a7 build/stm32h7xx_it.o
- .debug_line    0x000007a1      0x343 build/stm32h7xx_hal_msp.o
- .debug_line    0x00000ae4      0x7c4 build/stm32h7xx_hal_cortex.o
- .debug_line    0x000012a8     0x12dd build/stm32h7xx_hal_rcc.o
- .debug_line    0x00002585      0x334 build/stm32h7xx_hal_hsem.o
- .debug_line    0x000028b9      0xc4a build/stm32h7xx_hal_pwr_ex.o
- .debug_line    0x00003503      0xa7d build/stm32h7xx_hal.o
- .debug_line    0x00003f80     0x508b build/stm32h7xx_hal_tim.o
- .debug_line    0x0000900b     0x1f4b build/stm32h7xx_hal_tim_ex.o
- .debug_line    0x0000af56      0x3d2 build/system_stm32h7xx_dualcore_boot_cm4_cm7.o
- .debug_line    0x0000b328      0x300 build/stm32h7xx_hal_timebase_tim.o
- .debug_line    0x0000b628      0x37f build/list.o
- .debug_line    0x0000b9a7     0x2065 build/queue.o
- .debug_line    0x0000da0c     0x2dc9 build/tasks.o
- .debug_line    0x000107d5      0xf42 build/timers.o
- .debug_line    0x00011717     0x29be build/cmsis_os2.o
- .debug_line    0x000140d5      0x762 build/heap_4.o
- .debug_line    0x00014837      0x734 build/port.o
- .debug_line    0x00014f6b       0x7a build/startup_stm32h755xx_CM4.o
+.debug_line     0x00000000    0x14ea4
+ .debug_line    0x00000000      0x435 build/main.o
+ .debug_line    0x00000435      0x2a7 build/stm32h7xx_it.o
+ .debug_line    0x000006dc      0x2c7 build/stm32h7xx_hal_msp.o
+ .debug_line    0x000009a3      0x7c4 build/stm32h7xx_hal_cortex.o
+ .debug_line    0x00001167     0x12dd build/stm32h7xx_hal_rcc.o
+ .debug_line    0x00002444      0x334 build/stm32h7xx_hal_hsem.o
+ .debug_line    0x00002778      0xc4a build/stm32h7xx_hal_pwr_ex.o
+ .debug_line    0x000033c2      0xa7d build/stm32h7xx_hal.o
+ .debug_line    0x00003e3f     0x508b build/stm32h7xx_hal_tim.o
+ .debug_line    0x00008eca     0x1f4b build/stm32h7xx_hal_tim_ex.o
+ .debug_line    0x0000ae15      0x3d2 build/system_stm32h7xx_dualcore_boot_cm4_cm7.o
+ .debug_line    0x0000b1e7      0x300 build/stm32h7xx_hal_timebase_tim.o
+ .debug_line    0x0000b4e7      0x37f build/list.o
+ .debug_line    0x0000b866     0x2065 build/queue.o
+ .debug_line    0x0000d8cb     0x2dc9 build/tasks.o
+ .debug_line    0x00010694      0xf42 build/timers.o
+ .debug_line    0x000115d6     0x29be build/cmsis_os2.o
+ .debug_line    0x00013f94      0x762 build/heap_4.o
+ .debug_line    0x000146f6      0x734 build/port.o
+ .debug_line    0x00014e2a       0x7a build/startup_stm32h755xx_CM4.o
 
-.debug_str      0x00000000     0x889a
- .debug_str     0x00000000     0x1bfb build/main.o
-                               0x1d7e (size before relaxing)
- .debug_str     0x00001bfb       0xb0 build/stm32h7xx_it.o
+.debug_str      0x00000000     0x7f26
+ .debug_str     0x00000000     0x1271 build/main.o
+                               0x1386 (size before relaxing)
+ .debug_str     0x00001271       0xb0 build/stm32h7xx_it.o
                                 0x890 (size before relaxing)
- .debug_str     0x00001cab      0xc44 build/stm32h7xx_hal_msp.o
-                               0x1ef4 (size before relaxing)
- .debug_str     0x000028ef      0x4a9 build/stm32h7xx_hal_cortex.o
+ .debug_str     0x00001321      0xc33 build/stm32h7xx_hal_msp.o
+                               0x160b (size before relaxing)
+ .debug_str     0x00001f54      0x4a9 build/stm32h7xx_hal_cortex.o
                                 0xfd4 (size before relaxing)
- .debug_str     0x00002d98      0x601 build/stm32h7xx_hal_rcc.o
+ .debug_str     0x000023fd      0x601 build/stm32h7xx_hal_rcc.o
                                 0xa36 (size before relaxing)
- .debug_str     0x00003399      0x146 build/stm32h7xx_hal_hsem.o
+ .debug_str     0x000029fe      0x146 build/stm32h7xx_hal_hsem.o
                                 0x390 (size before relaxing)
- .debug_str     0x000034df      0x6b5 build/stm32h7xx_hal_pwr_ex.o
+ .debug_str     0x00002b44      0x6bf build/stm32h7xx_hal_pwr_ex.o
                                 0xa5d (size before relaxing)
- .debug_str     0x00003b94      0x7c3 build/stm32h7xx_hal.o
+ .debug_str     0x00003203      0x7c3 build/stm32h7xx_hal.o
                                0x16f1 (size before relaxing)
- .debug_str     0x00004357      0xf2b build/stm32h7xx_hal_tim.o
+ .debug_str     0x000039c6      0xf3c build/stm32h7xx_hal_tim.o
                                0x182c (size before relaxing)
- .debug_str     0x00005282      0x6a9 build/stm32h7xx_hal_tim_ex.o
+ .debug_str     0x00004902      0x6a9 build/stm32h7xx_hal_tim_ex.o
                                0x1149 (size before relaxing)
- .debug_str     0x0000592b       0x5b build/system_stm32h7xx_dualcore_boot_cm4_cm7.o
+ .debug_str     0x00004fab       0x5b build/system_stm32h7xx_dualcore_boot_cm4_cm7.o
                                 0x510 (size before relaxing)
- .debug_str     0x00005986       0x66 build/stm32h7xx_hal_timebase_tim.o
+ .debug_str     0x00005006       0x66 build/stm32h7xx_hal_timebase_tim.o
                                0x145e (size before relaxing)
- .debug_str     0x000059ec      0x153 build/list.o
+ .debug_str     0x0000506c      0x153 build/list.o
                                 0x309 (size before relaxing)
- .debug_str     0x00005b3f      0xa30 build/queue.o
+ .debug_str     0x000051bf      0xa30 build/queue.o
                                 0xd1f (size before relaxing)
- .debug_str     0x0000656f      0xc9b build/tasks.o
+ .debug_str     0x00005bef      0xc9b build/tasks.o
                                0x12ee (size before relaxing)
- .debug_str     0x0000720a      0x5de build/timers.o
+ .debug_str     0x0000688a      0x5de build/timers.o
                                 0xc4f (size before relaxing)
- .debug_str     0x000077e8      0xc49 build/cmsis_os2.o
+ .debug_str     0x00006e68      0xc4e build/cmsis_os2.o
                                0x24e7 (size before relaxing)
- .debug_str     0x00008431      0x2be build/heap_4.o
+ .debug_str     0x00007ab6      0x2c5 build/heap_4.o
                                 0x517 (size before relaxing)
- .debug_str     0x000086ef      0x183 build/port.o
+ .debug_str     0x00007d7b      0x183 build/port.o
                                 0x487 (size before relaxing)
- .debug_str     0x00008872       0x28 build/startup_stm32h755xx_CM4.o
+ .debug_str     0x00007efe       0x28 build/startup_stm32h755xx_CM4.o
                                  0x6f (size before relaxing)
 
 .comment        0x00000000       0x49
@@ -3403,29 +3231,29 @@ LOAD c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc
  .comment       0x00000049       0x4a build/heap_4.o
  .comment       0x00000049       0x4a build/port.o
 
-.debug_frame    0x00000000     0x36e0
- .debug_frame   0x00000000       0x98 build/main.o
- .debug_frame   0x00000098       0x88 build/stm32h7xx_it.o
- .debug_frame   0x00000120       0x88 build/stm32h7xx_hal_msp.o
- .debug_frame   0x000001a8      0x158 build/stm32h7xx_hal_cortex.o
- .debug_frame   0x00000300      0x18c build/stm32h7xx_hal_rcc.o
- .debug_frame   0x0000048c       0xc8 build/stm32h7xx_hal_hsem.o
- .debug_frame   0x00000554      0x324 build/stm32h7xx_hal_pwr_ex.o
- .debug_frame   0x00000878      0x440 build/stm32h7xx_hal.o
- .debug_frame   0x00000cb8      0xb6c build/stm32h7xx_hal_tim.o
- .debug_frame   0x00001824      0x480 build/stm32h7xx_hal_tim_ex.o
- .debug_frame   0x00001ca4       0x3c build/system_stm32h7xx_dualcore_boot_cm4_cm7.o
- .debug_frame   0x00001ce0       0x50 build/stm32h7xx_hal_timebase_tim.o
- .debug_frame   0x00001d30       0x70 build/list.o
- .debug_frame   0x00001da0      0x458 build/queue.o
- .debug_frame   0x000021f8      0x688 build/tasks.o
- .debug_frame   0x00002880      0x30c build/timers.o
- .debug_frame   0x00002b8c      0x900 build/cmsis_os2.o
- .debug_frame   0x0000348c       0xd0 build/heap_4.o
- .debug_frame   0x0000355c      0x110 build/port.o
- .debug_frame   0x0000366c       0x2c c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-init.o)
- .debug_frame   0x00003698       0x28 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-memcpy-stub.o)
- .debug_frame   0x000036c0       0x20 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-memset.o)
+.debug_frame    0x00000000     0x36a0
+ .debug_frame   0x00000000       0x80 build/main.o
+ .debug_frame   0x00000080       0x88 build/stm32h7xx_it.o
+ .debug_frame   0x00000108       0x60 build/stm32h7xx_hal_msp.o
+ .debug_frame   0x00000168      0x158 build/stm32h7xx_hal_cortex.o
+ .debug_frame   0x000002c0      0x18c build/stm32h7xx_hal_rcc.o
+ .debug_frame   0x0000044c       0xc8 build/stm32h7xx_hal_hsem.o
+ .debug_frame   0x00000514      0x324 build/stm32h7xx_hal_pwr_ex.o
+ .debug_frame   0x00000838      0x440 build/stm32h7xx_hal.o
+ .debug_frame   0x00000c78      0xb6c build/stm32h7xx_hal_tim.o
+ .debug_frame   0x000017e4      0x480 build/stm32h7xx_hal_tim_ex.o
+ .debug_frame   0x00001c64       0x3c build/system_stm32h7xx_dualcore_boot_cm4_cm7.o
+ .debug_frame   0x00001ca0       0x50 build/stm32h7xx_hal_timebase_tim.o
+ .debug_frame   0x00001cf0       0x70 build/list.o
+ .debug_frame   0x00001d60      0x458 build/queue.o
+ .debug_frame   0x000021b8      0x688 build/tasks.o
+ .debug_frame   0x00002840      0x30c build/timers.o
+ .debug_frame   0x00002b4c      0x900 build/cmsis_os2.o
+ .debug_frame   0x0000344c       0xd0 build/heap_4.o
+ .debug_frame   0x0000351c      0x110 build/port.o
+ .debug_frame   0x0000362c       0x2c c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-init.o)
+ .debug_frame   0x00003658       0x28 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x00003680       0x20 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-memset.o)
 
 Cross Reference Table
 
@@ -3475,8 +3303,6 @@ DMA2_Stream6_IRQHandler                           build/startup_stm32h755xx_CM4.
 DMA2_Stream7_IRQHandler                           build/startup_stm32h755xx_CM4.o
 DMAMUX1_OVR_IRQHandler                            build/startup_stm32h755xx_CM4.o
 DMAMUX2_OVR_IRQHandler                            build/startup_stm32h755xx_CM4.o
-DMARxDscrTab                                      build/main.o
-DMATxDscrTab                                      build/main.o
 DebugMon_Handler                                  build/stm32h7xx_it.o
 Default_Handler                                   build/startup_stm32h755xx_CM4.o
 ECC_IRQHandler                                    build/startup_stm32h755xx_CM4.o
@@ -3551,76 +3377,6 @@ HAL_DisableCompensationCell                       build/stm32h7xx_hal.o
 HAL_DisableDomain2DBGSleepMode                    build/stm32h7xx_hal.o
 HAL_DisableDomain2DBGStandbyMode                  build/stm32h7xx_hal.o
 HAL_DisableDomain2DBGStopMode                     build/stm32h7xx_hal.o
-HAL_ETHEx_DisableARPOffload                       build/stm32h7xx_hal_eth_ex.o
-HAL_ETHEx_DisableL3L4Filtering                    build/stm32h7xx_hal_eth_ex.o
-HAL_ETHEx_DisableVLANProcessing                   build/stm32h7xx_hal_eth_ex.o
-HAL_ETHEx_EnableARPOffload                        build/stm32h7xx_hal_eth_ex.o
-HAL_ETHEx_EnableL3L4Filtering                     build/stm32h7xx_hal_eth_ex.o
-HAL_ETHEx_EnableVLANProcessing                    build/stm32h7xx_hal_eth_ex.o
-HAL_ETHEx_EnterLPIMode                            build/stm32h7xx_hal_eth_ex.o
-HAL_ETHEx_ExitLPIMode                             build/stm32h7xx_hal_eth_ex.o
-HAL_ETHEx_GetL3FilterConfig                       build/stm32h7xx_hal_eth_ex.o
-HAL_ETHEx_GetL4FilterConfig                       build/stm32h7xx_hal_eth_ex.o
-HAL_ETHEx_GetMACLPIEvent                          build/stm32h7xx_hal_eth_ex.o
-HAL_ETHEx_GetRxVLANConfig                         build/stm32h7xx_hal_eth_ex.o
-HAL_ETHEx_GetTxVLANConfig                         build/stm32h7xx_hal_eth_ex.o
-HAL_ETHEx_SetARPAddressMatch                      build/stm32h7xx_hal_eth_ex.o
-HAL_ETHEx_SetL3FilterConfig                       build/stm32h7xx_hal_eth_ex.o
-HAL_ETHEx_SetL4FilterConfig                       build/stm32h7xx_hal_eth_ex.o
-HAL_ETHEx_SetRxVLANConfig                         build/stm32h7xx_hal_eth_ex.o
-HAL_ETHEx_SetTxVLANConfig                         build/stm32h7xx_hal_eth_ex.o
-HAL_ETHEx_SetTxVLANIdentifier                     build/stm32h7xx_hal_eth_ex.o
-HAL_ETHEx_SetVLANHashTable                        build/stm32h7xx_hal_eth_ex.o
-HAL_ETH_DeInit                                    build/stm32h7xx_hal_eth.o
-HAL_ETH_EEECallback                               build/stm32h7xx_hal_eth.o
-HAL_ETH_EnterPowerDownMode                        build/stm32h7xx_hal_eth.o
-HAL_ETH_ErrorCallback                             build/stm32h7xx_hal_eth.o
-HAL_ETH_ExitPowerDownMode                         build/stm32h7xx_hal_eth.o
-HAL_ETH_GetDMAConfig                              build/stm32h7xx_hal_eth.o
-HAL_ETH_GetDMAError                               build/stm32h7xx_hal_eth.o
-HAL_ETH_GetError                                  build/stm32h7xx_hal_eth.o
-HAL_ETH_GetMACConfig                              build/stm32h7xx_hal_eth.o
-HAL_ETH_GetMACError                               build/stm32h7xx_hal_eth.o
-HAL_ETH_GetMACFilterConfig                        build/stm32h7xx_hal_eth.o
-HAL_ETH_GetMACWakeUpSource                        build/stm32h7xx_hal_eth.o
-HAL_ETH_GetRxDataErrorCode                        build/stm32h7xx_hal_eth.o
-HAL_ETH_GetState                                  build/stm32h7xx_hal_eth.o
-HAL_ETH_IRQHandler                                build/stm32h7xx_hal_eth.o
-HAL_ETH_Init                                      build/stm32h7xx_hal_eth.o
-                                                  build/main.o
-HAL_ETH_MspDeInit                                 build/stm32h7xx_hal_msp.o
-HAL_ETH_MspInit                                   build/stm32h7xx_hal_msp.o
-HAL_ETH_PMTCallback                               build/stm32h7xx_hal_eth.o
-HAL_ETH_ReadData                                  build/stm32h7xx_hal_eth.o
-HAL_ETH_ReadPHYRegister                           build/stm32h7xx_hal_eth.o
-HAL_ETH_RegisterRxAllocateCallback                build/stm32h7xx_hal_eth.o
-HAL_ETH_RegisterRxLinkCallback                    build/stm32h7xx_hal_eth.o
-HAL_ETH_RegisterTxFreeCallback                    build/stm32h7xx_hal_eth.o
-HAL_ETH_ReleaseTxPacket                           build/stm32h7xx_hal_eth.o
-HAL_ETH_RxAllocateCallback                        build/stm32h7xx_hal_eth.o
-HAL_ETH_RxCpltCallback                            build/stm32h7xx_hal_eth.o
-HAL_ETH_RxLinkCallback                            build/stm32h7xx_hal_eth.o
-HAL_ETH_SetDMAConfig                              build/stm32h7xx_hal_eth.o
-HAL_ETH_SetHashTable                              build/stm32h7xx_hal_eth.o
-HAL_ETH_SetMACConfig                              build/stm32h7xx_hal_eth.o
-HAL_ETH_SetMACFilterConfig                        build/stm32h7xx_hal_eth.o
-HAL_ETH_SetMDIOClockRange                         build/stm32h7xx_hal_eth.o
-HAL_ETH_SetRxVLANIdentifier                       build/stm32h7xx_hal_eth.o
-HAL_ETH_SetSourceMACAddrMatch                     build/stm32h7xx_hal_eth.o
-HAL_ETH_SetWakeUpFilter                           build/stm32h7xx_hal_eth.o
-HAL_ETH_Start                                     build/stm32h7xx_hal_eth.o
-HAL_ETH_Start_IT                                  build/stm32h7xx_hal_eth.o
-HAL_ETH_Stop                                      build/stm32h7xx_hal_eth.o
-HAL_ETH_Stop_IT                                   build/stm32h7xx_hal_eth.o
-HAL_ETH_Transmit                                  build/stm32h7xx_hal_eth.o
-HAL_ETH_Transmit_IT                               build/stm32h7xx_hal_eth.o
-HAL_ETH_TxCpltCallback                            build/stm32h7xx_hal_eth.o
-HAL_ETH_TxFreeCallback                            build/stm32h7xx_hal_eth.o
-HAL_ETH_UnRegisterRxAllocateCallback              build/stm32h7xx_hal_eth.o
-HAL_ETH_UnRegisterRxLinkCallback                  build/stm32h7xx_hal_eth.o
-HAL_ETH_UnRegisterTxFreeCallback                  build/stm32h7xx_hal_eth.o
-HAL_ETH_WakeUpCallback                            build/stm32h7xx_hal_eth.o
-HAL_ETH_WritePHYRegister                          build/stm32h7xx_hal_eth.o
 HAL_EXTI_ClearConfigLine                          build/stm32h7xx_hal_exti.o
 HAL_EXTI_ClearPending                             build/stm32h7xx_hal_exti.o
 HAL_EXTI_D1_ClearFlag                             build/stm32h7xx_hal.o
@@ -3674,7 +3430,6 @@ HAL_GetCurrentCPUID                               build/stm32h7xx_hal_cortex.o
                                                   build/stm32h7xx_hal_exti.o
                                                   build/stm32h7xx_hal_pwr_ex.o
                                                   build/stm32h7xx_hal_pwr.o
-                                                  build/stm32h7xx_hal_eth.o
 HAL_GetDEVID                                      build/stm32h7xx_hal.o
 HAL_GetFMCMemorySwappingConfig                    build/stm32h7xx_hal.o
 HAL_GetHalVersion                                 build/stm32h7xx_hal.o
@@ -3691,7 +3446,6 @@ HAL_GetTick                                       build/stm32h7xx_hal.o
                                                   build/stm32h7xx_hal_flash.o
                                                   build/stm32h7xx_hal_rcc_ex.o
                                                   build/stm32h7xx_hal_rcc.o
-                                                  build/stm32h7xx_hal_eth.o
 HAL_GetTickFreq                                   build/stm32h7xx_hal.o
 HAL_GetTickPrio                                   build/stm32h7xx_hal.o
 HAL_GetUIDw0                                      build/stm32h7xx_hal.o
@@ -3924,7 +3678,6 @@ HAL_RCC_GetClockConfig                            build/stm32h7xx_hal_rcc.o
                                                   build/stm32h7xx_hal_timebase_tim.o
 HAL_RCC_GetHCLKFreq                               build/stm32h7xx_hal_rcc.o
                                                   build/stm32h7xx_hal_rcc_ex.o
-                                                  build/stm32h7xx_hal_eth.o
 HAL_RCC_GetOscConfig                              build/stm32h7xx_hal_rcc.o
 HAL_RCC_GetPCLK1Freq                              build/stm32h7xx_hal_rcc.o
                                                   build/stm32h7xx_hal_timebase_tim.o
@@ -3952,7 +3705,6 @@ HAL_SYSCFG_DisableCM7BOOT                         build/stm32h7xx_hal.o
 HAL_SYSCFG_DisableIOSpeedOptimize                 build/stm32h7xx_hal.o
 HAL_SYSCFG_DisableVREFBUF                         build/stm32h7xx_hal.o
 HAL_SYSCFG_ETHInterfaceSelect                     build/stm32h7xx_hal.o
-                                                  build/stm32h7xx_hal_eth.o
 HAL_SYSCFG_EnableBOOST                            build/stm32h7xx_hal.o
 HAL_SYSCFG_EnableCM4BOOT                          build/stm32h7xx_hal.o
 HAL_SYSCFG_EnableCM7BOOT                          build/stm32h7xx_hal.o
@@ -4202,7 +3954,6 @@ LTDC_IRQHandler                                   build/startup_stm32h755xx_CM4.
 MDIOS_IRQHandler                                  build/startup_stm32h755xx_CM4.o
 MDIOS_WKUP_IRQHandler                             build/startup_stm32h755xx_CM4.o
 MDMA_IRQHandler                                   build/startup_stm32h755xx_CM4.o
-MX_ETH_Init                                       build/main.o
 MX_USART3_UART_Init                               build/main.o
 MemManage_Handler                                 build/stm32h7xx_it.o
 NMI_Handler                                       build/stm32h7xx_it.o
@@ -4292,7 +4043,6 @@ TIM_OC2_SetConfig                                 build/stm32h7xx_hal_tim.o
                                                   build/stm32h7xx_hal_tim_ex.o
 TIM_TI1_SetConfig                                 build/stm32h7xx_hal_tim.o
                                                   build/stm32h7xx_hal_tim_ex.o
-TxConfig                                          build/main.o
 UART4_IRQHandler                                  build/startup_stm32h755xx_CM4.o
 UART5_IRQHandler                                  build/startup_stm32h755xx_CM4.o
 UART7_IRQHandler                                  build/startup_stm32h755xx_CM4.o
@@ -4369,7 +4119,6 @@ exit                                              c:/program files (x86)/gnu arm
                                                   c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
 g_pfnVectors                                      build/startup_stm32h755xx_CM4.o
 hardware_init_hook                                c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
-heth                                              build/main.o
 htim2                                             build/stm32h7xx_hal_timebase_tim.o
                                                   build/stm32h7xx_it.o
 huart3                                            build/main.o
@@ -4384,7 +4133,6 @@ memset                                            c:/program files (x86)/gnu arm
                                                   build/tasks.o
                                                   build/stream_buffer.o
                                                   build/stm32h7xx_hal_msp.o
-                                                  build/main.o
                                                   c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
 osDelay                                           build/cmsis_os2.o
                                                   build/main.o

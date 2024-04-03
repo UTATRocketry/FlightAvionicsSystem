@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 1
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 1
   28:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c ****   */
   29:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c **** 
   30:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c **** /** @defgroup PCDEx PCDEx
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 2
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s 			page 2
 
 
   31:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c ****   * @brief PCD Extended HAL module driver
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 1
   40              		.loc 1 73 3 view .LVU3
   74:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c **** 
   75:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c ****   /*  TXn min size = 16 words. (n  : Transmit FIFO index)
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 3
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s 			page 3
 
 
   76:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c ****       When a TxFIFO is not used, the Configuration should be as follows:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 1
   66 0014 7047     		bx	lr
   67              	.LVL4:
   68              	.L2:
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 4
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s 			page 4
 
 
   69              	.LCFI2:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 1
  100:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c ****   }
  108              		.loc 1 100 5 is_stmt 1 view .LVU30
  100:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c ****   }
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 5
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s 			page 5
 
 
  109              		.loc 1 100 65 is_stmt 0 view .LVU31
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 1
  152              		.syntax unified
  153              		.thumb
  154              		.thumb_func
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 6
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s 			page 6
 
 
  156              	HAL_PCDEx_ActivateLPM:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 1
  134:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c **** }
  194              		.loc 1 134 1 is_stmt 0 view .LVU55
  195 0020 7047     		bx	lr
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 7
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s 			page 7
 
 
  196              	.L10:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 1
  239 0012 596D     		ldr	r1, [r3, #84]
  240 0014 014A     		ldr	r2, .L12
  241 0016 0A40     		ands	r2, r2, r1
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 8
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s 			page 8
 
 
  242 0018 5A65     		str	r2, [r3, #84]
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 1
  183:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c ****   USBx->GCCFG |= USB_OTG_GCCFG_PDEN;
  184:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c ****   HAL_Delay(50U);
  185:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c **** 
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 9
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s 			page 9
 
 
  186:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c ****   if ((USBx->GCCFG & USB_OTG_GCCFG_PDET) == 0U)
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 1
  240:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c **** #else
  241:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c ****     HAL_PCDEx_BCD_Callback(hpcd, PCD_BCD_DISCOVERY_COMPLETED);
  242:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c **** #endif /* USE_HAL_PCD_REGISTER_CALLBACKS */
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 10
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s 			page 10
 
 
  243:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c ****   }
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 1
  295              	.LVL23:
  296              		.loc 1 264 33 view .LVU83
  297 0024 C0F80435 		str	r3, [r0, #1284]
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 11
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s 			page 11
 
 
  265:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c **** 
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 1
  281:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c ****   /* Disable Battery charging */
  282:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c ****   USBx->GCCFG &= ~(USB_OTG_GCCFG_BCDEN);
  338              		.loc 1 282 3 is_stmt 1 view .LVU95
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 12
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s 			page 12
 
 
  339              		.loc 1 282 15 is_stmt 0 view .LVU96
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 1
  306:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c **** }
  372              		.loc 1 306 1 is_stmt 0 view .LVU105
  373 0000 7047     		bx	lr
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 13
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s 			page 13
 
 
  374              		.cfi_endproc
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 1
  413              		.loc 1 159 1 is_stmt 0 view .LVU111
  414 0000 70B5     		push	{r4, r5, r6, lr}
  415              	.LCFI3:
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 14
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s 			page 14
 
 
  416              		.cfi_def_cfa_offset 16
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 1
  182:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c ****   USBx->GCCFG |= USB_OTG_GCCFG_PDEN;
  456              		.loc 1 182 3 is_stmt 1 view .LVU126
  457 002c 3220     		movs	r0, #50
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 15
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s 			page 15
 
 
  458 002e FFF7FEFF 		bl	HAL_Delay
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 1
  498 0066 FFF7FEFF 		bl	HAL_PCDEx_BCD_Callback
  499              	.LVL41:
  500              	.L18:
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 16
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s 			page 16
 
 
  244:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c **** 
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 1
  219:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c **** #endif /* USE_HAL_PCD_REGISTER_CALLBACKS */
  543              		.loc 1 219 7 view .LVU153
  544 00a4 FC21     		movs	r1, #252
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 17
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s 			page 17
 
 
  545 00a6 2846     		mov	r0, r5
@@ -986,31 +986,31 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 1
  566              		.file 6 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h"
  567              		.file 7 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h"
  568              		.file 8 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s 			page 18
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s 			page 18
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32h7xx_hal_pcd_ex.c
-C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s:19     .text.HAL_PCDEx_SetTxFiFo:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s:25     .text.HAL_PCDEx_SetTxFiFo:00000000 HAL_PCDEx_SetTxFiFo
-C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s:121    .text.HAL_PCDEx_SetRxFiFo:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s:127    .text.HAL_PCDEx_SetRxFiFo:00000000 HAL_PCDEx_SetRxFiFo
-C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s:150    .text.HAL_PCDEx_ActivateLPM:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s:156    .text.HAL_PCDEx_ActivateLPM:00000000 HAL_PCDEx_ActivateLPM
-C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s:199    .text.HAL_PCDEx_ActivateLPM:00000024 $d
-C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s:204    .text.HAL_PCDEx_DeActivateLPM:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s:210    .text.HAL_PCDEx_DeActivateLPM:00000000 HAL_PCDEx_DeActivateLPM
-C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s:249    .text.HAL_PCDEx_DeActivateLPM:0000001c $d
-C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s:254    .text.HAL_PCDEx_ActivateBCD:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s:260    .text.HAL_PCDEx_ActivateBCD:00000000 HAL_PCDEx_ActivateBCD
-C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s:308    .text.HAL_PCDEx_DeActivateBCD:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s:314    .text.HAL_PCDEx_DeActivateBCD:00000000 HAL_PCDEx_DeActivateBCD
-C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s:356    .text.HAL_PCDEx_LPM_Callback:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s:362    .text.HAL_PCDEx_LPM_Callback:00000000 HAL_PCDEx_LPM_Callback
-C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s:378    .text.HAL_PCDEx_BCD_Callback:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s:384    .text.HAL_PCDEx_BCD_Callback:00000000 HAL_PCDEx_BCD_Callback
-C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s:400    .text.HAL_PCDEx_BCD_VBUSDetect:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccv0S6dx.s:406    .text.HAL_PCDEx_BCD_VBUSDetect:00000000 HAL_PCDEx_BCD_VBUSDetect
+C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s:19     .text.HAL_PCDEx_SetTxFiFo:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s:25     .text.HAL_PCDEx_SetTxFiFo:00000000 HAL_PCDEx_SetTxFiFo
+C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s:121    .text.HAL_PCDEx_SetRxFiFo:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s:127    .text.HAL_PCDEx_SetRxFiFo:00000000 HAL_PCDEx_SetRxFiFo
+C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s:150    .text.HAL_PCDEx_ActivateLPM:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s:156    .text.HAL_PCDEx_ActivateLPM:00000000 HAL_PCDEx_ActivateLPM
+C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s:199    .text.HAL_PCDEx_ActivateLPM:00000024 $d
+C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s:204    .text.HAL_PCDEx_DeActivateLPM:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s:210    .text.HAL_PCDEx_DeActivateLPM:00000000 HAL_PCDEx_DeActivateLPM
+C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s:249    .text.HAL_PCDEx_DeActivateLPM:0000001c $d
+C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s:254    .text.HAL_PCDEx_ActivateBCD:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s:260    .text.HAL_PCDEx_ActivateBCD:00000000 HAL_PCDEx_ActivateBCD
+C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s:308    .text.HAL_PCDEx_DeActivateBCD:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s:314    .text.HAL_PCDEx_DeActivateBCD:00000000 HAL_PCDEx_DeActivateBCD
+C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s:356    .text.HAL_PCDEx_LPM_Callback:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s:362    .text.HAL_PCDEx_LPM_Callback:00000000 HAL_PCDEx_LPM_Callback
+C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s:378    .text.HAL_PCDEx_BCD_Callback:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s:384    .text.HAL_PCDEx_BCD_Callback:00000000 HAL_PCDEx_BCD_Callback
+C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s:400    .text.HAL_PCDEx_BCD_VBUSDetect:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\cczdJz8a.s:406    .text.HAL_PCDEx_BCD_VBUSDetect:00000000 HAL_PCDEx_BCD_VBUSDetect
 
 UNDEFINED SYMBOLS
 HAL_GetTick
