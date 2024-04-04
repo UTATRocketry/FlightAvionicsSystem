@@ -1,4 +1,3 @@
 /.metadata/
 /.vscode/
-**/build/
-**/.build/
+/build/
