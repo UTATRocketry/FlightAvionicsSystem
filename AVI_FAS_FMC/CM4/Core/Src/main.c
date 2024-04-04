@@ -45,8 +45,11 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+<<<<<<< Updated upstream
 
 I2C_HandleTypeDef hi2c1;
+=======
+>>>>>>> Stashed changes
 
 UART_HandleTypeDef huart3;
 
@@ -163,6 +166,7 @@ int main(void)
 }
 
 /**
+<<<<<<< Updated upstream
   * @brief I2C1 Initialization Function
   * @param None
   * @retval None
@@ -211,6 +215,8 @@ void MX_I2C1_Init(void)
 }
 
 /**
+=======
+>>>>>>> Stashed changes
   * @brief USART3 Initialization Function
   * @param None
   * @retval None

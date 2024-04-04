@@ -79,6 +79,7 @@ void HAL_MspInit(void)
 }
 
 /**
+<<<<<<< Updated upstream
 * @brief I2C MSP Initialization
 * This function configures the hardware resources used in this example
 * @param hi2c: I2C handle pointer
@@ -156,6 +157,8 @@ void HAL_I2C_MspDeInit(I2C_HandleTypeDef* hi2c)
 }
 
 /**
+=======
+>>>>>>> Stashed changes
 * @brief RTC MSP Initialization
 * This function configures the hardware resources used in this example
 * @param hrtc: RTC handle pointer

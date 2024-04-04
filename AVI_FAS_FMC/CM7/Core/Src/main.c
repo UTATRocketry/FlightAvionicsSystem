@@ -45,8 +45,11 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+<<<<<<< Updated upstream
 
 I2C_HandleTypeDef hi2c1;
+=======
+>>>>>>> Stashed changes
 
 RTC_HandleTypeDef hrtc;
 
@@ -257,6 +260,7 @@ void SystemClock_Config(void)
 }
 
 /**
+<<<<<<< Updated upstream
   * @brief I2C1 Initialization Function
   * @param None
   * @retval None
@@ -305,6 +309,8 @@ static void MX_I2C1_Init(void)
 }
 
 /**
+=======
+>>>>>>> Stashed changes
   * @brief RTC Initialization Function
   * @param None
   * @retval None
