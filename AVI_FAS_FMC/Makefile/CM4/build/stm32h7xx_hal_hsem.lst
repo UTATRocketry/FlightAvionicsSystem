@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 1
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -19,16 +19,16 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 1
   16              		.text
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
-  19              		.section	.text.HAL_HSEM_Take,"ax",%progbits
-  20              		.align	1
-  21              		.global	HAL_HSEM_Take
-  22              		.syntax unified
-  23              		.thumb
-  24              		.thumb_func
-  26              	HAL_HSEM_Take:
-  27              	.LVL0:
-  28              	.LFB132:
-  29              		.file 1 "../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c"
+  19              		.file 1 "../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c"
+  20              		.section	.text.HAL_HSEM_Take,"ax",%progbits
+  21              		.align	1
+  22              		.global	HAL_HSEM_Take
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	HAL_HSEM_Take:
+  28              	.LVL0:
+  29              	.LFB132:
    1:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** /**
    2:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   ******************************************************************************
    3:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   * @file    stm32h7xx_hal_hsem.c
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 1
   27:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   ******************************************************************************
   28:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   @verbatim
   29:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   ==============================================================================
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 2
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s 			page 2
 
 
   30:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****                      ##### How to use this driver #####
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 1
   84:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   ******************************************************************************
   85:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   */
   86:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** 
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 3
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s 			page 3
 
 
   87:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** /* Includes ------------------------------------------------------------------*/
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 1
  141:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** [..] This section provides functions allowing to:
  142:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****       (+) Take a semaphore with 2 Step method
  143:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****       (+) Fast Take a semaphore with 1 Step method
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 4
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s 			page 4
 
 
  144:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****       (+) Check semaphore state Taken or not
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 1
   47              		.loc 1 180 6 view .LVU8
   48 000e 9342     		cmp	r3, r2
   49 0010 01D0     		beq	.L3
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 5
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s 			page 5
 
 
  181:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   {
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 1
  200:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** 
  201:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** #if  USE_MULTI_CORE_SHARED_CODE != 0U
  202:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   /* Read the RLR register to take the semaphore */
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 6
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s 			page 6
 
 
  203:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   if (HSEM->RLR[SemID] == (((HAL_GetCurrentCPUID() << POSITION_VAL(HSEM_R_MASTERID)) & HSEM_RLR_MAS
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 1
  124              	.LFB134:
  220:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** /**
  221:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   * @brief  Check semaphore state Taken or not.
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 7
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s 			page 7
 
 
  222:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   * @param  SemID: semaphore ID
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 1
  236:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   */
  237:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** void  HAL_HSEM_Release(uint32_t SemID, uint32_t ProcessID)
  238:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** {
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 8
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s 			page 8
 
 
  165              		.loc 1 238 1 is_stmt 1 view -0
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 1
  200              		@ args = 0, pretend = 0, frame = 0
  201              		@ frame_needed = 0, uses_anonymous_args = 0
  202              		@ link register save eliminated.
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 9
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s 			page 9
 
 
  260:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   assert_param(IS_HSEM_KEY(Key));
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 1
  286:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   * @brief  Set semaphore Key .
  287:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   * @param  Key: Semaphore Key , value from 0 to 0xFFFF
  288:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   * @retval None
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 10
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s 			page 10
 
 
  289:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   */
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 1
  272              		.loc 1 305 1 view .LVU52
  273 0006 000C     		lsrs	r0, r0, #16
  274 0008 7047     		bx	lr
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 11
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s 			page 11
 
 
  275              	.L28:
@@ -658,36 +658,37 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 1
  340:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****     /*Use interrupt line 1 for CPU2 Master*/
  341:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****     HSEM->C2IER |= SemMask;
  342:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   }
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 12
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s 			page 12
 
 
  343:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** #else
  344:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   HSEM_COMMON->IER |= SemMask;
  297              		.loc 1 344 3 view .LVU54
- 298              		.loc 1 344 20 is_stmt 0 view .LVU55
+ 298              		.loc 1 344 14 is_stmt 0 view .LVU55
  299 0000 024A     		ldr	r2, .L30
  300 0002 1369     		ldr	r3, [r2, #16]
- 301 0004 0343     		orrs	r3, r3, r0
- 302 0006 1361     		str	r3, [r2, #16]
+ 301              		.loc 1 344 20 view .LVU56
+ 302 0004 0343     		orrs	r3, r3, r0
+ 303 0006 1361     		str	r3, [r2, #16]
  345:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** #endif
  346:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** }
- 303              		.loc 1 346 1 view .LVU56
- 304 0008 7047     		bx	lr
- 305              	.L31:
- 306 000a 00BF     		.align	2
- 307              	.L30:
- 308 000c 00650258 		.word	1476551936
- 309              		.cfi_endproc
- 310              	.LFE139:
- 312              		.section	.text.HAL_HSEM_DeactivateNotification,"ax",%progbits
- 313              		.align	1
- 314              		.global	HAL_HSEM_DeactivateNotification
- 315              		.syntax unified
- 316              		.thumb
- 317              		.thumb_func
- 319              	HAL_HSEM_DeactivateNotification:
- 320              	.LVL17:
- 321              	.LFB140:
+ 304              		.loc 1 346 1 view .LVU57
+ 305 0008 7047     		bx	lr
+ 306              	.L31:
+ 307 000a 00BF     		.align	2
+ 308              	.L30:
+ 309 000c 00650258 		.word	1476551936
+ 310              		.cfi_endproc
+ 311              	.LFE139:
+ 313              		.section	.text.HAL_HSEM_DeactivateNotification,"ax",%progbits
+ 314              		.align	1
+ 315              		.global	HAL_HSEM_DeactivateNotification
+ 316              		.syntax unified
+ 317              		.thumb
+ 318              		.thumb_func
+ 320              	HAL_HSEM_DeactivateNotification:
+ 321              	.LVL17:
+ 322              	.LFB140:
  347:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** 
  348:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** /**
  349:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   * @brief  Deactivate Semaphore release Notification for a given Semaphores Mask .
@@ -696,11 +697,11 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 1
  352:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   */
  353:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** void HAL_HSEM_DeactivateNotification(uint32_t SemMask)
  354:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** {
- 322              		.loc 1 354 1 is_stmt 1 view -0
- 323              		.cfi_startproc
- 324              		@ args = 0, pretend = 0, frame = 0
- 325              		@ frame_needed = 0, uses_anonymous_args = 0
- 326              		@ link register save eliminated.
+ 323              		.loc 1 354 1 is_stmt 1 view -0
+ 324              		.cfi_startproc
+ 325              		@ args = 0, pretend = 0, frame = 0
+ 326              		@ frame_needed = 0, uses_anonymous_args = 0
+ 327              		@ link register save eliminated.
  355:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** #if  USE_MULTI_CORE_SHARED_CODE != 0U
  356:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   /*enable the semaphore mask interrupts */
  357:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   if (HAL_GetCurrentCPUID() == HSEM_CPU1_COREID)
@@ -715,34 +716,35 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 1
  366:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   }
  367:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** #else
  368:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   HSEM_COMMON->IER &= ~SemMask;
- 327              		.loc 1 368 3 view .LVU58
- 328              		.loc 1 368 20 is_stmt 0 view .LVU59
- 329 0000 024A     		ldr	r2, .L33
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 13
+ 328              		.loc 1 368 3 view .LVU59
+ 329              		.loc 1 368 14 is_stmt 0 view .LVU60
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s 			page 13
 
 
- 330 0002 1369     		ldr	r3, [r2, #16]
- 331 0004 23EA0003 		bic	r3, r3, r0
- 332 0008 1361     		str	r3, [r2, #16]
+ 330 0000 024A     		ldr	r2, .L33
+ 331 0002 1369     		ldr	r3, [r2, #16]
+ 332              		.loc 1 368 20 view .LVU61
+ 333 0004 23EA0003 		bic	r3, r3, r0
+ 334 0008 1361     		str	r3, [r2, #16]
  369:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** #endif
  370:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** }
- 333              		.loc 1 370 1 view .LVU60
- 334 000a 7047     		bx	lr
- 335              	.L34:
- 336              		.align	2
- 337              	.L33:
- 338 000c 00650258 		.word	1476551936
- 339              		.cfi_endproc
- 340              	.LFE140:
- 342              		.section	.text.HAL_HSEM_FreeCallback,"ax",%progbits
- 343              		.align	1
- 344              		.weak	HAL_HSEM_FreeCallback
- 345              		.syntax unified
- 346              		.thumb
- 347              		.thumb_func
- 349              	HAL_HSEM_FreeCallback:
- 350              	.LVL18:
- 351              	.LFB142:
+ 335              		.loc 1 370 1 view .LVU62
+ 336 000a 7047     		bx	lr
+ 337              	.L34:
+ 338              		.align	2
+ 339              	.L33:
+ 340 000c 00650258 		.word	1476551936
+ 341              		.cfi_endproc
+ 342              	.LFE140:
+ 344              		.section	.text.HAL_HSEM_FreeCallback,"ax",%progbits
+ 345              		.align	1
+ 346              		.weak	HAL_HSEM_FreeCallback
+ 347              		.syntax unified
+ 348              		.thumb
+ 349              		.thumb_func
+ 351              	HAL_HSEM_FreeCallback:
+ 352              	.LVL18:
+ 353              	.LFB142:
  371:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** 
  372:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** /**
  373:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   * @brief  This function handles HSEM interrupt request
@@ -776,11 +778,11 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 1
  401:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   }
  402:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** #else
  403:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   /* Get the list of masked freed semaphores*/
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s 			page 14
+
+
  404:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   statusreg = HSEM_COMMON->MISR;
  405:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** 
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 14
-
-
  406:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   /*Disable Interrupts*/
  407:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   HSEM_COMMON->IER &= ~((uint32_t)statusreg);
  408:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** 
@@ -799,120 +801,122 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 1
  421:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   */
  422:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** __weak void HAL_HSEM_FreeCallback(uint32_t SemMask)
  423:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** {
- 352              		.loc 1 423 1 is_stmt 1 view -0
- 353              		.cfi_startproc
- 354              		@ args = 0, pretend = 0, frame = 0
- 355              		@ frame_needed = 0, uses_anonymous_args = 0
- 356              		@ link register save eliminated.
+ 354              		.loc 1 423 1 is_stmt 1 view -0
+ 355              		.cfi_startproc
+ 356              		@ args = 0, pretend = 0, frame = 0
+ 357              		@ frame_needed = 0, uses_anonymous_args = 0
+ 358              		@ link register save eliminated.
  424:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   /* Prevent unused argument(s) compilation warning */
  425:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   UNUSED(SemMask);
- 357              		.loc 1 425 3 view .LVU62
+ 359              		.loc 1 425 3 view .LVU64
  426:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** 
  427:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   /* NOTE : This function should not be modified, when the callback is needed,
  428:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   the HAL_HSEM_FreeCallback can be implemented in the user file
  429:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****     */
  430:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** }
- 358              		.loc 1 430 1 is_stmt 0 view .LVU63
- 359 0000 7047     		bx	lr
- 360              		.cfi_endproc
- 361              	.LFE142:
- 363              		.section	.text.HAL_HSEM_IRQHandler,"ax",%progbits
- 364              		.align	1
- 365              		.global	HAL_HSEM_IRQHandler
- 366              		.syntax unified
- 367              		.thumb
- 368              		.thumb_func
- 370              	HAL_HSEM_IRQHandler:
- 371              	.LFB141:
+ 360              		.loc 1 430 1 is_stmt 0 view .LVU65
+ 361 0000 7047     		bx	lr
+ 362              		.cfi_endproc
+ 363              	.LFE142:
+ 365              		.section	.text.HAL_HSEM_IRQHandler,"ax",%progbits
+ 366              		.align	1
+ 367              		.global	HAL_HSEM_IRQHandler
+ 368              		.syntax unified
+ 369              		.thumb
+ 370              		.thumb_func
+ 372              	HAL_HSEM_IRQHandler:
+ 373              	.LFB141:
  377:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c ****   uint32_t statusreg;
- 372              		.loc 1 377 1 is_stmt 1 view -0
- 373              		.cfi_startproc
- 374              		@ args = 0, pretend = 0, frame = 0
- 375              		@ frame_needed = 0, uses_anonymous_args = 0
- 376 0000 08B5     		push	{r3, lr}
- 377              	.LCFI0:
- 378              		.cfi_def_cfa_offset 8
- 379              		.cfi_offset 3, -8
- 380              		.cfi_offset 14, -4
+ 374              		.loc 1 377 1 is_stmt 1 view -0
+ 375              		.cfi_startproc
+ 376              		@ args = 0, pretend = 0, frame = 0
+ 377              		@ frame_needed = 0, uses_anonymous_args = 0
+ 378 0000 08B5     		push	{r3, lr}
+ 379              	.LCFI0:
+ 380              		.cfi_def_cfa_offset 8
+ 381              		.cfi_offset 3, -8
+ 382              		.cfi_offset 14, -4
  378:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** #if  USE_MULTI_CORE_SHARED_CODE != 0U
- 381              		.loc 1 378 3 view .LVU65
- 404:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** 
- 382              		.loc 1 404 3 view .LVU66
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 15
+ 383              		.loc 1 378 3 view .LVU67
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s 			page 15
 
 
  404:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** 
- 383              		.loc 1 404 13 is_stmt 0 view .LVU67
- 384 0002 054B     		ldr	r3, .L38
- 385 0004 D869     		ldr	r0, [r3, #28]
- 386              	.LVL19:
+ 384              		.loc 1 404 3 view .LVU68
+ 404:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** 
+ 385              		.loc 1 404 13 is_stmt 0 view .LVU69
+ 386 0002 054B     		ldr	r3, .L38
+ 387 0004 D869     		ldr	r0, [r3, #28]
+ 388              	.LVL19:
  407:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** 
- 387              		.loc 1 407 3 is_stmt 1 view .LVU68
+ 389              		.loc 1 407 3 is_stmt 1 view .LVU70
  407:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** 
- 388              		.loc 1 407 20 is_stmt 0 view .LVU69
- 389 0006 1A69     		ldr	r2, [r3, #16]
- 390 0008 22EA0002 		bic	r2, r2, r0
- 391 000c 1A61     		str	r2, [r3, #16]
+ 390              		.loc 1 407 14 is_stmt 0 view .LVU71
+ 391 0006 1A69     		ldr	r2, [r3, #16]
+ 407:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** 
+ 392              		.loc 1 407 20 view .LVU72
+ 393 0008 22EA0002 		bic	r2, r2, r0
+ 394 000c 1A61     		str	r2, [r3, #16]
  410:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** 
- 392              		.loc 1 410 3 is_stmt 1 view .LVU70
+ 395              		.loc 1 410 3 is_stmt 1 view .LVU73
  410:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** 
- 393              		.loc 1 410 20 is_stmt 0 view .LVU71
- 394 000e 5861     		str	r0, [r3, #20]
+ 396              		.loc 1 410 20 is_stmt 0 view .LVU74
+ 397 000e 5861     		str	r0, [r3, #20]
  414:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** }
- 395              		.loc 1 414 3 is_stmt 1 view .LVU72
- 396 0010 FFF7FEFF 		bl	HAL_HSEM_FreeCallback
- 397              	.LVL20:
+ 398              		.loc 1 414 3 is_stmt 1 view .LVU75
+ 399 0010 FFF7FEFF 		bl	HAL_HSEM_FreeCallback
+ 400              	.LVL20:
  415:../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c **** 
- 398              		.loc 1 415 1 is_stmt 0 view .LVU73
- 399 0014 08BD     		pop	{r3, pc}
- 400              	.L39:
- 401 0016 00BF     		.align	2
- 402              	.L38:
- 403 0018 00650258 		.word	1476551936
- 404              		.cfi_endproc
- 405              	.LFE141:
- 407              		.text
- 408              	.Letext0:
- 409              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
- 410              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
- 411              		.file 4 "../../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h755xx.h"
- 412              		.file 5 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s 			page 16
+ 401              		.loc 1 415 1 is_stmt 0 view .LVU76
+ 402 0014 08BD     		pop	{r3, pc}
+ 403              	.L39:
+ 404 0016 00BF     		.align	2
+ 405              	.L38:
+ 406 0018 00650258 		.word	1476551936
+ 407              		.cfi_endproc
+ 408              	.LFE141:
+ 410              		.text
+ 411              	.Letext0:
+ 412              		.file 2 "c:\\program files (x86)\\arm gnu toolchain arm-none-eabi\\12.2 rel1\\arm-none-eabi\\inclu
+ 413              		.file 3 "c:\\program files (x86)\\arm gnu toolchain arm-none-eabi\\12.2 rel1\\arm-none-eabi\\inclu
+ 414              		.file 4 "../../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h755xx.h"
+ 415              		.file 5 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s 			page 16
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32h7xx_hal_hsem.c
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:20     .text.HAL_HSEM_Take:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:26     .text.HAL_HSEM_Take:00000000 HAL_HSEM_Take
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:65     .text.HAL_HSEM_Take:0000001c $d
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:71     .text.HAL_HSEM_FastTake:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:77     .text.HAL_HSEM_FastTake:00000000 HAL_HSEM_FastTake
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:110    .text.HAL_HSEM_FastTake:00000018 $d
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:116    .text.HAL_HSEM_IsSemTaken:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:122    .text.HAL_HSEM_IsSemTaken:00000000 HAL_HSEM_IsSemTaken
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:151    .text.HAL_HSEM_IsSemTaken:00000014 $d
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:156    .text.HAL_HSEM_Release:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:162    .text.HAL_HSEM_Release:00000000 HAL_HSEM_Release
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:184    .text.HAL_HSEM_Release:0000000c $d
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:189    .text.HAL_HSEM_ReleaseAll:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:195    .text.HAL_HSEM_ReleaseAll:00000000 HAL_HSEM_ReleaseAll
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:219    .text.HAL_HSEM_ReleaseAll:00000010 $d
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:224    .text.HAL_HSEM_SetClearKey:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:230    .text.HAL_HSEM_SetClearKey:00000000 HAL_HSEM_SetClearKey
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:250    .text.HAL_HSEM_SetClearKey:00000014 $d
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:255    .text.HAL_HSEM_GetClearKey:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:261    .text.HAL_HSEM_GetClearKey:00000000 HAL_HSEM_GetClearKey
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:278    .text.HAL_HSEM_GetClearKey:0000000c $d
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:283    .text.HAL_HSEM_ActivateNotification:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:289    .text.HAL_HSEM_ActivateNotification:00000000 HAL_HSEM_ActivateNotification
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:308    .text.HAL_HSEM_ActivateNotification:0000000c $d
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:313    .text.HAL_HSEM_DeactivateNotification:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:319    .text.HAL_HSEM_DeactivateNotification:00000000 HAL_HSEM_DeactivateNotification
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:338    .text.HAL_HSEM_DeactivateNotification:0000000c $d
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:343    .text.HAL_HSEM_FreeCallback:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:349    .text.HAL_HSEM_FreeCallback:00000000 HAL_HSEM_FreeCallback
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:364    .text.HAL_HSEM_IRQHandler:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:370    .text.HAL_HSEM_IRQHandler:00000000 HAL_HSEM_IRQHandler
-C:\Users\gigig\AppData\Local\Temp\ccebVXqp.s:403    .text.HAL_HSEM_IRQHandler:00000018 $d
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:21     .text.HAL_HSEM_Take:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:27     .text.HAL_HSEM_Take:00000000 HAL_HSEM_Take
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:65     .text.HAL_HSEM_Take:0000001c $d
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:71     .text.HAL_HSEM_FastTake:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:77     .text.HAL_HSEM_FastTake:00000000 HAL_HSEM_FastTake
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:110    .text.HAL_HSEM_FastTake:00000018 $d
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:116    .text.HAL_HSEM_IsSemTaken:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:122    .text.HAL_HSEM_IsSemTaken:00000000 HAL_HSEM_IsSemTaken
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:151    .text.HAL_HSEM_IsSemTaken:00000014 $d
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:156    .text.HAL_HSEM_Release:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:162    .text.HAL_HSEM_Release:00000000 HAL_HSEM_Release
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:184    .text.HAL_HSEM_Release:0000000c $d
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:189    .text.HAL_HSEM_ReleaseAll:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:195    .text.HAL_HSEM_ReleaseAll:00000000 HAL_HSEM_ReleaseAll
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:219    .text.HAL_HSEM_ReleaseAll:00000010 $d
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:224    .text.HAL_HSEM_SetClearKey:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:230    .text.HAL_HSEM_SetClearKey:00000000 HAL_HSEM_SetClearKey
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:250    .text.HAL_HSEM_SetClearKey:00000014 $d
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:255    .text.HAL_HSEM_GetClearKey:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:261    .text.HAL_HSEM_GetClearKey:00000000 HAL_HSEM_GetClearKey
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:278    .text.HAL_HSEM_GetClearKey:0000000c $d
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:283    .text.HAL_HSEM_ActivateNotification:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:289    .text.HAL_HSEM_ActivateNotification:00000000 HAL_HSEM_ActivateNotification
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:309    .text.HAL_HSEM_ActivateNotification:0000000c $d
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:314    .text.HAL_HSEM_DeactivateNotification:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:320    .text.HAL_HSEM_DeactivateNotification:00000000 HAL_HSEM_DeactivateNotification
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:340    .text.HAL_HSEM_DeactivateNotification:0000000c $d
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:345    .text.HAL_HSEM_FreeCallback:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:351    .text.HAL_HSEM_FreeCallback:00000000 HAL_HSEM_FreeCallback
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:366    .text.HAL_HSEM_IRQHandler:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:372    .text.HAL_HSEM_IRQHandler:00000000 HAL_HSEM_IRQHandler
+C:\Users\gigig\AppData\Local\Temp\ccWmiZxJ.s:406    .text.HAL_HSEM_IRQHandler:00000018 $d
 
 NO UNDEFINED SYMBOLS

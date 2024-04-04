@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s 			page 1
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\cc3Euy1e.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -18,16 +18,16 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s 			page 1
   15              		.text
   16              	.Ltext0:
   17              		.cfi_sections	.debug_frame
-  18              		.section	.text.HAL_InitTick,"ax",%progbits
-  19              		.align	1
-  20              		.global	HAL_InitTick
-  21              		.syntax unified
-  22              		.thumb
-  23              		.thumb_func
-  25              	HAL_InitTick:
-  26              	.LVL0:
-  27              	.LFB144:
-  28              		.file 1 "../../CM7/Core/Src/stm32h7xx_hal_timebase_tim.c"
+  18              		.file 1 "../../CM7/Core/Src/stm32h7xx_hal_timebase_tim.c"
+  19              		.section	.text.HAL_InitTick,"ax",%progbits
+  20              		.align	1
+  21              		.global	HAL_InitTick
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	HAL_InitTick:
+  27              	.LVL0:
+  28              	.LFB144:
    1:../../CM7/Core/Src/stm32h7xx_hal_timebase_tim.c **** /* USER CODE BEGIN Header */
    2:../../CM7/Core/Src/stm32h7xx_hal_timebase_tim.c **** /**
    3:../../CM7/Core/Src/stm32h7xx_hal_timebase_tim.c ****   ******************************************************************************
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s 			page 1
   28:../../CM7/Core/Src/stm32h7xx_hal_timebase_tim.c **** TIM_HandleTypeDef        htim1;
   29:../../CM7/Core/Src/stm32h7xx_hal_timebase_tim.c **** /* Private function prototypes -----------------------------------------------*/
   30:../../CM7/Core/Src/stm32h7xx_hal_timebase_tim.c **** /* Private functions ---------------------------------------------------------*/
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s 			page 2
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\cc3Euy1e.s 			page 2
 
 
   31:../../CM7/Core/Src/stm32h7xx_hal_timebase_tim.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s 			page 1
   70:../../CM7/Core/Src/stm32h7xx_hal_timebase_tim.c **** 
   71:../../CM7/Core/Src/stm32h7xx_hal_timebase_tim.c ****   /* Compute the prescaler value to have TIM1 counter clock equal to 1MHz */
   72:../../CM7/Core/Src/stm32h7xx_hal_timebase_tim.c ****   uwPrescalerValue = (uint32_t) ((uwTimclock / 1000000U) - 1U);
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s 			page 3
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\cc3Euy1e.s 			page 3
 
 
   73:../../CM7/Core/Src/stm32h7xx_hal_timebase_tim.c **** 
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s 			page 1
   69              	.LVL5:
   55:../../CM7/Core/Src/stm32h7xx_hal_timebase_tim.c ****     }
   70              		.loc 1 55 5 view .LVU13
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s 			page 4
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\cc3Euy1e.s 			page 4
 
 
   55:../../CM7/Core/Src/stm32h7xx_hal_timebase_tim.c ****     }
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s 			page 1
  110              	.LVL9:
   75:../../CM7/Core/Src/stm32h7xx_hal_timebase_tim.c **** 
  111              		.loc 1 75 18 view .LVU29
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s 			page 5
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\cc3Euy1e.s 			page 5
 
 
  112 0054 0D4A     		ldr	r2, .L11+16
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s 			page 1
  151              		.loc 1 92 12 is_stmt 0 view .LVU45
  152 0072 0548     		ldr	r0, .L11+12
  153 0074 FFF7FEFF 		bl	HAL_TIM_Base_Start_IT
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s 			page 6
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\cc3Euy1e.s 			page 6
 
 
  154              	.LVL13:
@@ -309,7 +309,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s 			page 1
  159 007c 00000000 		.word	uwTickPrio
  160 0080 00440258 		.word	1476543488
  161 0084 83DE1B43 		.word	1125899907
- 162 0088 00000000 		.word	.LANCHOR0
+ 162 0088 00000000 		.word	htim1
  163 008c 00000140 		.word	1073807360
  164              		.cfi_endproc
  165              	.LFE144:
@@ -349,7 +349,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s 			page 1
  189              	.L15:
  190 000e 00BF     		.align	2
  191              	.L14:
- 192 0010 00000000 		.word	.LANCHOR0
+ 192 0010 00000000 		.word	htim1
  193              		.cfi_endproc
  194              	.LFE145:
  196              		.section	.text.HAL_ResumeTick,"ax",%progbits
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s 			page 1
  199              		.syntax unified
  200              		.thumb
  201              		.thumb_func
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s 			page 7
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\cc3Euy1e.s 			page 7
 
 
  203              	HAL_ResumeTick:
@@ -391,46 +391,45 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s 			page 1
  218              	.L18:
  219 000e 00BF     		.align	2
  220              	.L17:
- 221 0010 00000000 		.word	.LANCHOR0
+ 221 0010 00000000 		.word	htim1
  222              		.cfi_endproc
  223              	.LFE146:
  225              		.global	htim1
  226              		.section	.bss.htim1,"aw",%nobits
  227              		.align	2
- 228              		.set	.LANCHOR0,. + 0
- 231              	htim1:
- 232 0000 00000000 		.space	76
- 232      00000000 
- 232      00000000 
- 232      00000000 
- 232      00000000 
- 233              		.text
- 234              	.Letext0:
- 235              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
- 236              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
- 237              		.file 4 "../../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h755xx.h"
- 238              		.file 5 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
- 239              		.file 6 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h"
- 240              		.file 7 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h"
- 241              		.file 8 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h"
- 242              		.file 9 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
- 243              		.file 10 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cortex.h"
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s 			page 8
+ 230              	htim1:
+ 231 0000 00000000 		.space	76
+ 231      00000000 
+ 231      00000000 
+ 231      00000000 
+ 231      00000000 
+ 232              		.text
+ 233              	.Letext0:
+ 234              		.file 2 "../../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h755xx.h"
+ 235              		.file 3 "c:\\program files (x86)\\arm gnu toolchain arm-none-eabi\\12.2 rel1\\arm-none-eabi\\inclu
+ 236              		.file 4 "c:\\program files (x86)\\arm gnu toolchain arm-none-eabi\\12.2 rel1\\arm-none-eabi\\inclu
+ 237              		.file 5 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
+ 238              		.file 6 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h"
+ 239              		.file 7 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h"
+ 240              		.file 8 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h"
+ 241              		.file 9 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
+ 242              		.file 10 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cortex.h"
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\cc3Euy1e.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32h7xx_hal_timebase_tim.c
-C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s:19     .text.HAL_InitTick:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s:25     .text.HAL_InitTick:00000000 HAL_InitTick
-C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s:159    .text.HAL_InitTick:0000007c $d
-C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s:168    .text.HAL_SuspendTick:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s:174    .text.HAL_SuspendTick:00000000 HAL_SuspendTick
-C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s:192    .text.HAL_SuspendTick:00000010 $d
-C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s:197    .text.HAL_ResumeTick:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s:203    .text.HAL_ResumeTick:00000000 HAL_ResumeTick
-C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s:221    .text.HAL_ResumeTick:00000010 $d
-C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s:231    .bss.htim1:00000000 htim1
-C:\Users\gigig\AppData\Local\Temp\ccYspuiP.s:227    .bss.htim1:00000000 $d
+C:\Users\gigig\AppData\Local\Temp\cc3Euy1e.s:20     .text.HAL_InitTick:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\cc3Euy1e.s:26     .text.HAL_InitTick:00000000 HAL_InitTick
+C:\Users\gigig\AppData\Local\Temp\cc3Euy1e.s:159    .text.HAL_InitTick:0000007c $d
+C:\Users\gigig\AppData\Local\Temp\cc3Euy1e.s:230    .bss.htim1:00000000 htim1
+C:\Users\gigig\AppData\Local\Temp\cc3Euy1e.s:168    .text.HAL_SuspendTick:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\cc3Euy1e.s:174    .text.HAL_SuspendTick:00000000 HAL_SuspendTick
+C:\Users\gigig\AppData\Local\Temp\cc3Euy1e.s:192    .text.HAL_SuspendTick:00000010 $d
+C:\Users\gigig\AppData\Local\Temp\cc3Euy1e.s:197    .text.HAL_ResumeTick:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\cc3Euy1e.s:203    .text.HAL_ResumeTick:00000000 HAL_ResumeTick
+C:\Users\gigig\AppData\Local\Temp\cc3Euy1e.s:221    .text.HAL_ResumeTick:00000010 $d
+C:\Users\gigig\AppData\Local\Temp\cc3Euy1e.s:227    .bss.htim1:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_NVIC_SetPriority
