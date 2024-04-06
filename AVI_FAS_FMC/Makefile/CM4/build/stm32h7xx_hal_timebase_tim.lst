@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s 			page 1
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccXlA9JS.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -19,16 +19,16 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s 			page 1
   16              		.text
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
-  19              		.file 1 "../../CM4/Core/Src/stm32h7xx_hal_timebase_tim.c"
-  20              		.section	.text.HAL_InitTick,"ax",%progbits
-  21              		.align	1
-  22              		.global	HAL_InitTick
-  23              		.syntax unified
-  24              		.thumb
-  25              		.thumb_func
-  27              	HAL_InitTick:
-  28              	.LVL0:
-  29              	.LFB132:
+  19              		.section	.text.HAL_InitTick,"ax",%progbits
+  20              		.align	1
+  21              		.global	HAL_InitTick
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	HAL_InitTick:
+  27              	.LVL0:
+  28              	.LFB132:
+  29              		.file 1 "../../CM4/Core/Src/stm32h7xx_hal_timebase_tim.c"
    1:../../CM4/Core/Src/stm32h7xx_hal_timebase_tim.c **** /* USER CODE BEGIN Header */
    2:../../CM4/Core/Src/stm32h7xx_hal_timebase_tim.c **** /**
    3:../../CM4/Core/Src/stm32h7xx_hal_timebase_tim.c ****   ******************************************************************************
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s 			page 1
   27:../../CM4/Core/Src/stm32h7xx_hal_timebase_tim.c **** /* Private variables ---------------------------------------------------------*/
   28:../../CM4/Core/Src/stm32h7xx_hal_timebase_tim.c **** TIM_HandleTypeDef        htim2;
   29:../../CM4/Core/Src/stm32h7xx_hal_timebase_tim.c **** /* Private function prototypes -----------------------------------------------*/
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s 			page 2
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccXlA9JS.s 			page 2
 
 
   30:../../CM4/Core/Src/stm32h7xx_hal_timebase_tim.c **** /* Private functions ---------------------------------------------------------*/
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s 			page 1
   69:../../CM4/Core/Src/stm32h7xx_hal_timebase_tim.c ****   uwAPB1Prescaler = clkconfig.APB1CLKDivider;
   70:../../CM4/Core/Src/stm32h7xx_hal_timebase_tim.c ****   /* Compute TIM2 clock */
   71:../../CM4/Core/Src/stm32h7xx_hal_timebase_tim.c ****   if (uwAPB1Prescaler == RCC_HCLK_DIV1)
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s 			page 3
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccXlA9JS.s 			page 3
 
 
   72:../../CM4/Core/Src/stm32h7xx_hal_timebase_tim.c ****   {
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s 			page 1
   62 0012 1C20     		movs	r0, #28
   63              	.LVL3:
   51:../../CM4/Core/Src/stm32h7xx_hal_timebase_tim.c **** 
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s 			page 4
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccXlA9JS.s 			page 4
 
 
   64              		.loc 1 51 3 is_stmt 0 view .LVU11
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s 			page 1
  103              		.loc 1 73 5 is_stmt 1 view .LVU26
   73:../../CM4/Core/Src/stm32h7xx_hal_timebase_tim.c ****   }
  104              		.loc 1 73 18 is_stmt 0 view .LVU27
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s 			page 5
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccXlA9JS.s 			page 5
 
 
  105 0048 FFF7FEFF 		bl	HAL_RCC_GetPCLK1Freq
@@ -252,8 +252,8 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s 			page 1
  111              		.loc 1 81 3 is_stmt 1 view .LVU29
   81:../../CM4/Core/Src/stm32h7xx_hal_timebase_tim.c **** 
  112              		.loc 1 81 46 is_stmt 0 view .LVU30
- 113 004e 114A     		ldr	r2, .L13+8
- 114 0050 A2FB0323 		umull	r2, r3, r2, r3
+ 113 004e 1148     		ldr	r0, .L13+8
+ 114 0050 A0FB0323 		umull	r2, r3, r0, r3
  115              	.LVL10:
   81:../../CM4/Core/Src/stm32h7xx_hal_timebase_tim.c **** 
  116              		.loc 1 81 46 view .LVU31
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s 			page 1
  142              		.loc 1 98 3 is_stmt 1 view .LVU44
   98:../../CM4/Core/Src/stm32h7xx_hal_timebase_tim.c ****   {
  143              		.loc 1 98 6 is_stmt 0 view .LVU45
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s 			page 6
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccXlA9JS.s 			page 6
 
 
  144 006e FFF7FEFF 		bl	HAL_TIM_Base_Init
@@ -350,7 +350,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s 			page 1
  182 008c 00000000 		.word	uwTickPrio
  183 0090 00440258 		.word	1476543488
  184 0094 83DE1B43 		.word	1125899907
- 185 0098 00000000 		.word	htim2
+ 185 0098 00000000 		.word	.LANCHOR0
  186              		.cfi_endproc
  187              	.LFE132:
  189              		.section	.text.HAL_SuspendTick,"ax",%progbits
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s 			page 1
  191              		.global	HAL_SuspendTick
  192              		.syntax unified
  193              		.thumb
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s 			page 7
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccXlA9JS.s 			page 7
 
 
  194              		.thumb_func
@@ -392,7 +392,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s 			page 1
  211              	.L17:
  212 000e 00BF     		.align	2
  213              	.L16:
- 214 0010 00000000 		.word	htim2
+ 214 0010 00000000 		.word	.LANCHOR0
  215              		.cfi_endproc
  216              	.LFE133:
  218              		.section	.text.HAL_ResumeTick,"ax",%progbits
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s 			page 1
  230              		@ frame_needed = 0, uses_anonymous_args = 0
  231              		@ link register save eliminated.
  128:../../CM4/Core/Src/stm32h7xx_hal_timebase_tim.c ****   /* Enable TIM2 Update interrupt */
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s 			page 8
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccXlA9JS.s 			page 8
 
 
  129:../../CM4/Core/Src/stm32h7xx_hal_timebase_tim.c ****   __HAL_TIM_ENABLE_IT(&htim2, TIM_IT_UPDATE);
@@ -434,45 +434,46 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s 			page 1
  240              	.L20:
  241 000e 00BF     		.align	2
  242              	.L19:
- 243 0010 00000000 		.word	htim2
+ 243 0010 00000000 		.word	.LANCHOR0
  244              		.cfi_endproc
  245              	.LFE134:
  247              		.global	htim2
  248              		.section	.bss.htim2,"aw",%nobits
  249              		.align	2
- 252              	htim2:
- 253 0000 00000000 		.space	76
- 253      00000000 
- 253      00000000 
- 253      00000000 
- 253      00000000 
- 254              		.text
- 255              	.Letext0:
- 256              		.file 2 "../../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h755xx.h"
- 257              		.file 3 "c:\\program files (x86)\\arm gnu toolchain arm-none-eabi\\12.2 rel1\\arm-none-eabi\\inclu
- 258              		.file 4 "c:\\program files (x86)\\arm gnu toolchain arm-none-eabi\\12.2 rel1\\arm-none-eabi\\inclu
- 259              		.file 5 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
- 260              		.file 6 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h"
- 261              		.file 7 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h"
- 262              		.file 8 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h"
- 263              		.file 9 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
- 264              		.file 10 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cortex.h"
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s 			page 9
+ 250              		.set	.LANCHOR0,. + 0
+ 253              	htim2:
+ 254 0000 00000000 		.space	76
+ 254      00000000 
+ 254      00000000 
+ 254      00000000 
+ 254      00000000 
+ 255              		.text
+ 256              	.Letext0:
+ 257              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 258              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 259              		.file 4 "../../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h755xx.h"
+ 260              		.file 5 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
+ 261              		.file 6 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h"
+ 262              		.file 7 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h"
+ 263              		.file 8 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h"
+ 264              		.file 9 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
+ 265              		.file 10 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cortex.h"
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccXlA9JS.s 			page 9
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32h7xx_hal_timebase_tim.c
-C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s:21     .text.HAL_InitTick:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s:27     .text.HAL_InitTick:00000000 HAL_InitTick
-C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s:182    .text.HAL_InitTick:0000008c $d
-C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s:252    .bss.htim2:00000000 htim2
-C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s:190    .text.HAL_SuspendTick:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s:196    .text.HAL_SuspendTick:00000000 HAL_SuspendTick
-C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s:214    .text.HAL_SuspendTick:00000010 $d
-C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s:219    .text.HAL_ResumeTick:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s:225    .text.HAL_ResumeTick:00000000 HAL_ResumeTick
-C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s:243    .text.HAL_ResumeTick:00000010 $d
-C:\Users\gigig\AppData\Local\Temp\ccrXsiBe.s:249    .bss.htim2:00000000 $d
+C:\Users\gigig\AppData\Local\Temp\ccXlA9JS.s:20     .text.HAL_InitTick:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccXlA9JS.s:26     .text.HAL_InitTick:00000000 HAL_InitTick
+C:\Users\gigig\AppData\Local\Temp\ccXlA9JS.s:182    .text.HAL_InitTick:0000008c $d
+C:\Users\gigig\AppData\Local\Temp\ccXlA9JS.s:190    .text.HAL_SuspendTick:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccXlA9JS.s:196    .text.HAL_SuspendTick:00000000 HAL_SuspendTick
+C:\Users\gigig\AppData\Local\Temp\ccXlA9JS.s:214    .text.HAL_SuspendTick:00000010 $d
+C:\Users\gigig\AppData\Local\Temp\ccXlA9JS.s:219    .text.HAL_ResumeTick:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccXlA9JS.s:225    .text.HAL_ResumeTick:00000000 HAL_ResumeTick
+C:\Users\gigig\AppData\Local\Temp\ccXlA9JS.s:243    .text.HAL_ResumeTick:00000010 $d
+C:\Users\gigig\AppData\Local\Temp\ccXlA9JS.s:253    .bss.htim2:00000000 htim2
+C:\Users\gigig\AppData\Local\Temp\ccXlA9JS.s:249    .bss.htim2:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_NVIC_SetPriority

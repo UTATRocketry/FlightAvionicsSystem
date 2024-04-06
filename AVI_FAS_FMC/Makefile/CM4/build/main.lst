@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 1
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -19,14 +19,14 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 1
   16              		.text
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
-  19              		.file 1 "../../CM4/Core/Src/main.c"
-  20              		.section	.text.MX_GPIO_Init,"ax",%progbits
-  21              		.align	1
-  22              		.syntax unified
-  23              		.thumb
-  24              		.thumb_func
-  26              	MX_GPIO_Init:
-  27              	.LFB138:
+  19              		.section	.text.MX_DMA_Init,"ax",%progbits
+  20              		.align	1
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	MX_DMA_Init:
+  26              	.LFB138:
+  27              		.file 1 "../../CM4/Core/Src/main.c"
    1:../../CM4/Core/Src/main.c **** /* USER CODE BEGIN Header */
    2:../../CM4/Core/Src/main.c **** /**
    3:../../CM4/Core/Src/main.c ****   ******************************************************************************
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 1
   29:../../CM4/Core/Src/main.c **** /* USER CODE BEGIN PTD */
   30:../../CM4/Core/Src/main.c **** 
   31:../../CM4/Core/Src/main.c **** /* USER CODE END PTD */
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 2
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s 			page 2
 
 
   32:../../CM4/Core/Src/main.c **** 
@@ -79,597 +79,679 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 1
   47:../../CM4/Core/Src/main.c **** /* Private variables ---------------------------------------------------------*/
   48:../../CM4/Core/Src/main.c **** 
   49:../../CM4/Core/Src/main.c **** UART_HandleTypeDef huart3;
-  50:../../CM4/Core/Src/main.c **** 
-  51:../../CM4/Core/Src/main.c **** /* Definitions for defaultTask */
-  52:../../CM4/Core/Src/main.c **** osThreadId_t defaultTaskHandle;
-  53:../../CM4/Core/Src/main.c **** const osThreadAttr_t defaultTask_attributes = {
-  54:../../CM4/Core/Src/main.c ****   .name = "defaultTask",
-  55:../../CM4/Core/Src/main.c ****   .stack_size = 128 * 4,
-  56:../../CM4/Core/Src/main.c ****   .priority = (osPriority_t) osPriorityNormal,
-  57:../../CM4/Core/Src/main.c **** };
-  58:../../CM4/Core/Src/main.c **** /* USER CODE BEGIN PV */
-  59:../../CM4/Core/Src/main.c **** 
-  60:../../CM4/Core/Src/main.c **** /* USER CODE END PV */
+  50:../../CM4/Core/Src/main.c **** DMA_HandleTypeDef hdma_usart3_rx;
+  51:../../CM4/Core/Src/main.c **** DMA_HandleTypeDef hdma_usart3_tx;
+  52:../../CM4/Core/Src/main.c **** 
+  53:../../CM4/Core/Src/main.c **** /* Definitions for CM4StatusLED */
+  54:../../CM4/Core/Src/main.c **** osThreadId_t CM4StatusLEDHandle;
+  55:../../CM4/Core/Src/main.c **** const osThreadAttr_t CM4StatusLED_attributes = {
+  56:../../CM4/Core/Src/main.c ****   .name = "CM4StatusLED",
+  57:../../CM4/Core/Src/main.c ****   .stack_size = 128 * 4,
+  58:../../CM4/Core/Src/main.c ****   .priority = (osPriority_t) osPriorityBelowNormal,
+  59:../../CM4/Core/Src/main.c **** };
+  60:../../CM4/Core/Src/main.c **** /* USER CODE BEGIN PV */
   61:../../CM4/Core/Src/main.c **** 
-  62:../../CM4/Core/Src/main.c **** /* Private function prototypes -----------------------------------------------*/
-  63:../../CM4/Core/Src/main.c **** static void MX_GPIO_Init(void);
-  64:../../CM4/Core/Src/main.c **** void StartDefaultTask(void *argument);
-  65:../../CM4/Core/Src/main.c **** 
-  66:../../CM4/Core/Src/main.c **** /* USER CODE BEGIN PFP */
-  67:../../CM4/Core/Src/main.c **** 
-  68:../../CM4/Core/Src/main.c **** /* USER CODE END PFP */
-  69:../../CM4/Core/Src/main.c **** 
-  70:../../CM4/Core/Src/main.c **** /* Private user code ---------------------------------------------------------*/
-  71:../../CM4/Core/Src/main.c **** /* USER CODE BEGIN 0 */
+  62:../../CM4/Core/Src/main.c **** /* USER CODE END PV */
+  63:../../CM4/Core/Src/main.c **** 
+  64:../../CM4/Core/Src/main.c **** /* Private function prototypes -----------------------------------------------*/
+  65:../../CM4/Core/Src/main.c **** static void MX_GPIO_Init(void);
+  66:../../CM4/Core/Src/main.c **** static void MX_DMA_Init(void);
+  67:../../CM4/Core/Src/main.c **** void CM4StatusLEDTask(void *argument);
+  68:../../CM4/Core/Src/main.c **** 
+  69:../../CM4/Core/Src/main.c **** /* USER CODE BEGIN PFP */
+  70:../../CM4/Core/Src/main.c **** 
+  71:../../CM4/Core/Src/main.c **** /* USER CODE END PFP */
   72:../../CM4/Core/Src/main.c **** 
-  73:../../CM4/Core/Src/main.c **** /* USER CODE END 0 */
-  74:../../CM4/Core/Src/main.c **** 
-  75:../../CM4/Core/Src/main.c **** /**
-  76:../../CM4/Core/Src/main.c ****   * @brief  The application entry point.
-  77:../../CM4/Core/Src/main.c ****   * @retval int
-  78:../../CM4/Core/Src/main.c ****   */
-  79:../../CM4/Core/Src/main.c **** int main(void)
-  80:../../CM4/Core/Src/main.c **** {
-  81:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN 1 */
-  82:../../CM4/Core/Src/main.c **** 
-  83:../../CM4/Core/Src/main.c ****   /* USER CODE END 1 */
-  84:../../CM4/Core/Src/main.c **** 
-  85:../../CM4/Core/Src/main.c **** /* USER CODE BEGIN Boot_Mode_Sequence_1 */
-  86:../../CM4/Core/Src/main.c ****   /*HW semaphore Clock enable*/
-  87:../../CM4/Core/Src/main.c ****   __HAL_RCC_HSEM_CLK_ENABLE();
-  88:../../CM4/Core/Src/main.c ****   /* Activate HSEM notification for Cortex-M4*/
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 3
+  73:../../CM4/Core/Src/main.c **** /* Private user code ---------------------------------------------------------*/
+  74:../../CM4/Core/Src/main.c **** /* USER CODE BEGIN 0 */
+  75:../../CM4/Core/Src/main.c **** 
+  76:../../CM4/Core/Src/main.c **** /* USER CODE END 0 */
+  77:../../CM4/Core/Src/main.c **** 
+  78:../../CM4/Core/Src/main.c **** /**
+  79:../../CM4/Core/Src/main.c ****   * @brief  The application entry point.
+  80:../../CM4/Core/Src/main.c ****   * @retval int
+  81:../../CM4/Core/Src/main.c ****   */
+  82:../../CM4/Core/Src/main.c **** int main(void)
+  83:../../CM4/Core/Src/main.c **** {
+  84:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN 1 */
+  85:../../CM4/Core/Src/main.c **** 
+  86:../../CM4/Core/Src/main.c ****   /* USER CODE END 1 */
+  87:../../CM4/Core/Src/main.c **** 
+  88:../../CM4/Core/Src/main.c **** /* USER CODE BEGIN Boot_Mode_Sequence_1 */
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s 			page 3
 
 
-  89:../../CM4/Core/Src/main.c ****   HAL_HSEM_ActivateNotification(__HAL_HSEM_SEMID_TO_MASK(HSEM_ID_0));
-  90:../../CM4/Core/Src/main.c ****   /*
-  91:../../CM4/Core/Src/main.c ****   Domain D2 goes to STOP mode (Cortex-M4 in deep-sleep) waiting for Cortex-M7 to
-  92:../../CM4/Core/Src/main.c ****   perform system initialization (system clock config, external memory configuration.. )
-  93:../../CM4/Core/Src/main.c ****   */
-  94:../../CM4/Core/Src/main.c ****   HAL_PWREx_ClearPendingEvent();
-  95:../../CM4/Core/Src/main.c ****   HAL_PWREx_EnterSTOPMode(PWR_MAINREGULATOR_ON, PWR_STOPENTRY_WFE, PWR_D2_DOMAIN);
-  96:../../CM4/Core/Src/main.c ****   /* Clear HSEM flag */
-  97:../../CM4/Core/Src/main.c ****   __HAL_HSEM_CLEAR_FLAG(__HAL_HSEM_SEMID_TO_MASK(HSEM_ID_0));
-  98:../../CM4/Core/Src/main.c **** 
-  99:../../CM4/Core/Src/main.c **** /* USER CODE END Boot_Mode_Sequence_1 */
- 100:../../CM4/Core/Src/main.c ****   /* MCU Configuration--------------------------------------------------------*/
+  89:../../CM4/Core/Src/main.c ****   /*HW semaphore Clock enable*/
+  90:../../CM4/Core/Src/main.c ****   __HAL_RCC_HSEM_CLK_ENABLE();
+  91:../../CM4/Core/Src/main.c ****   /* Activate HSEM notification for Cortex-M4*/
+  92:../../CM4/Core/Src/main.c ****   HAL_HSEM_ActivateNotification(__HAL_HSEM_SEMID_TO_MASK(HSEM_ID_0));
+  93:../../CM4/Core/Src/main.c ****   /*
+  94:../../CM4/Core/Src/main.c ****   Domain D2 goes to STOP mode (Cortex-M4 in deep-sleep) waiting for Cortex-M7 to
+  95:../../CM4/Core/Src/main.c ****   perform system initialization (system clock config, external memory configuration.. )
+  96:../../CM4/Core/Src/main.c ****   */
+  97:../../CM4/Core/Src/main.c ****   HAL_PWREx_ClearPendingEvent();
+  98:../../CM4/Core/Src/main.c ****   HAL_PWREx_EnterSTOPMode(PWR_MAINREGULATOR_ON, PWR_STOPENTRY_WFE, PWR_D2_DOMAIN);
+  99:../../CM4/Core/Src/main.c ****   /* Clear HSEM flag */
+ 100:../../CM4/Core/Src/main.c ****   __HAL_HSEM_CLEAR_FLAG(__HAL_HSEM_SEMID_TO_MASK(HSEM_ID_0));
  101:../../CM4/Core/Src/main.c **** 
- 102:../../CM4/Core/Src/main.c ****   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
- 103:../../CM4/Core/Src/main.c ****   HAL_Init();
+ 102:../../CM4/Core/Src/main.c **** /* USER CODE END Boot_Mode_Sequence_1 */
+ 103:../../CM4/Core/Src/main.c ****   /* MCU Configuration--------------------------------------------------------*/
  104:../../CM4/Core/Src/main.c **** 
- 105:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN Init */
- 106:../../CM4/Core/Src/main.c **** 
- 107:../../CM4/Core/Src/main.c ****   /* USER CODE END Init */
- 108:../../CM4/Core/Src/main.c **** 
- 109:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN SysInit */
- 110:../../CM4/Core/Src/main.c **** 
- 111:../../CM4/Core/Src/main.c ****   /* USER CODE END SysInit */
- 112:../../CM4/Core/Src/main.c **** 
- 113:../../CM4/Core/Src/main.c ****   /* Initialize all configured peripherals */
- 114:../../CM4/Core/Src/main.c ****   MX_GPIO_Init();
- 115:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN 2 */
- 116:../../CM4/Core/Src/main.c **** 
- 117:../../CM4/Core/Src/main.c ****   /* USER CODE END 2 */
- 118:../../CM4/Core/Src/main.c **** 
- 119:../../CM4/Core/Src/main.c ****   /* Init scheduler */
- 120:../../CM4/Core/Src/main.c ****   osKernelInitialize();
- 121:../../CM4/Core/Src/main.c **** 
- 122:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN RTOS_MUTEX */
- 123:../../CM4/Core/Src/main.c ****   /* add mutexes, ... */
- 124:../../CM4/Core/Src/main.c ****   /* USER CODE END RTOS_MUTEX */
+ 105:../../CM4/Core/Src/main.c ****   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+ 106:../../CM4/Core/Src/main.c ****   HAL_Init();
+ 107:../../CM4/Core/Src/main.c **** 
+ 108:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN Init */
+ 109:../../CM4/Core/Src/main.c **** 
+ 110:../../CM4/Core/Src/main.c ****   /* USER CODE END Init */
+ 111:../../CM4/Core/Src/main.c **** 
+ 112:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN SysInit */
+ 113:../../CM4/Core/Src/main.c **** 
+ 114:../../CM4/Core/Src/main.c ****   /* USER CODE END SysInit */
+ 115:../../CM4/Core/Src/main.c **** 
+ 116:../../CM4/Core/Src/main.c ****   /* Initialize all configured peripherals */
+ 117:../../CM4/Core/Src/main.c ****   MX_GPIO_Init();
+ 118:../../CM4/Core/Src/main.c ****   MX_DMA_Init();
+ 119:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN 2 */
+ 120:../../CM4/Core/Src/main.c ****   HAL_UART_Transmit_DMA(&huart3, (uint8_t *)"\rCORE 1: Initialization Complete...\r\n", 38);
+ 121:../../CM4/Core/Src/main.c ****   /* USER CODE END 2 */
+ 122:../../CM4/Core/Src/main.c **** 
+ 123:../../CM4/Core/Src/main.c ****   /* Init scheduler */
+ 124:../../CM4/Core/Src/main.c ****   osKernelInitialize();
  125:../../CM4/Core/Src/main.c **** 
- 126:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN RTOS_SEMAPHORES */
- 127:../../CM4/Core/Src/main.c ****   /* add semaphores, ... */
- 128:../../CM4/Core/Src/main.c ****   /* USER CODE END RTOS_SEMAPHORES */
+ 126:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN RTOS_MUTEX */
+ 127:../../CM4/Core/Src/main.c ****   /* add mutexes, ... */
+ 128:../../CM4/Core/Src/main.c ****   /* USER CODE END RTOS_MUTEX */
  129:../../CM4/Core/Src/main.c **** 
- 130:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN RTOS_TIMERS */
- 131:../../CM4/Core/Src/main.c ****   /* start timers, add new ones, ... */
- 132:../../CM4/Core/Src/main.c ****   /* USER CODE END RTOS_TIMERS */
+ 130:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN RTOS_SEMAPHORES */
+ 131:../../CM4/Core/Src/main.c ****   /* add semaphores, ... */
+ 132:../../CM4/Core/Src/main.c ****   /* USER CODE END RTOS_SEMAPHORES */
  133:../../CM4/Core/Src/main.c **** 
- 134:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN RTOS_QUEUES */
- 135:../../CM4/Core/Src/main.c ****   /* add queues, ... */
- 136:../../CM4/Core/Src/main.c ****   /* USER CODE END RTOS_QUEUES */
+ 134:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN RTOS_TIMERS */
+ 135:../../CM4/Core/Src/main.c ****   /* start timers, add new ones, ... */
+ 136:../../CM4/Core/Src/main.c ****   /* USER CODE END RTOS_TIMERS */
  137:../../CM4/Core/Src/main.c **** 
- 138:../../CM4/Core/Src/main.c ****   /* Create the thread(s) */
- 139:../../CM4/Core/Src/main.c ****   /* creation of defaultTask */
- 140:../../CM4/Core/Src/main.c ****   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
+ 138:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN RTOS_QUEUES */
+ 139:../../CM4/Core/Src/main.c ****   /* add queues, ... */
+ 140:../../CM4/Core/Src/main.c ****   /* USER CODE END RTOS_QUEUES */
  141:../../CM4/Core/Src/main.c **** 
- 142:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN RTOS_THREADS */
- 143:../../CM4/Core/Src/main.c ****   /* add threads, ... */
- 144:../../CM4/Core/Src/main.c ****   /* USER CODE END RTOS_THREADS */
+ 142:../../CM4/Core/Src/main.c ****   /* Create the thread(s) */
+ 143:../../CM4/Core/Src/main.c ****   /* creation of CM4StatusLED */
+ 144:../../CM4/Core/Src/main.c ****   CM4StatusLEDHandle = osThreadNew(CM4StatusLEDTask, NULL, &CM4StatusLED_attributes);
  145:../../CM4/Core/Src/main.c **** 
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 4
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s 			page 4
 
 
- 146:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN RTOS_EVENTS */
- 147:../../CM4/Core/Src/main.c ****   /* add events, ... */
- 148:../../CM4/Core/Src/main.c ****   /* USER CODE END RTOS_EVENTS */
+ 146:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN RTOS_THREADS */
+ 147:../../CM4/Core/Src/main.c ****   /* add threads, ... */
+ 148:../../CM4/Core/Src/main.c ****   /* USER CODE END RTOS_THREADS */
  149:../../CM4/Core/Src/main.c **** 
- 150:../../CM4/Core/Src/main.c ****   /* Start scheduler */
- 151:../../CM4/Core/Src/main.c ****   osKernelStart();
- 152:../../CM4/Core/Src/main.c **** 
- 153:../../CM4/Core/Src/main.c ****   /* We should never get here as control is now taken by the scheduler */
- 154:../../CM4/Core/Src/main.c ****   /* Infinite loop */
- 155:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN WHILE */
- 156:../../CM4/Core/Src/main.c ****   while (1)
- 157:../../CM4/Core/Src/main.c ****   {
- 158:../../CM4/Core/Src/main.c ****     /* USER CODE END WHILE */
- 159:../../CM4/Core/Src/main.c **** 
- 160:../../CM4/Core/Src/main.c ****     /* USER CODE BEGIN 3 */
- 161:../../CM4/Core/Src/main.c ****   }
- 162:../../CM4/Core/Src/main.c ****   /* USER CODE END 3 */
- 163:../../CM4/Core/Src/main.c **** }
- 164:../../CM4/Core/Src/main.c **** 
- 165:../../CM4/Core/Src/main.c **** /**
- 166:../../CM4/Core/Src/main.c ****   * @brief USART3 Initialization Function
- 167:../../CM4/Core/Src/main.c ****   * @param None
- 168:../../CM4/Core/Src/main.c ****   * @retval None
- 169:../../CM4/Core/Src/main.c ****   */
- 170:../../CM4/Core/Src/main.c **** void MX_USART3_UART_Init(void)
- 171:../../CM4/Core/Src/main.c **** {
- 172:../../CM4/Core/Src/main.c **** 
- 173:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN USART3_Init 0 */
- 174:../../CM4/Core/Src/main.c **** 
- 175:../../CM4/Core/Src/main.c ****   /* USER CODE END USART3_Init 0 */
+ 150:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN RTOS_EVENTS */
+ 151:../../CM4/Core/Src/main.c ****   /* add events, ... */
+ 152:../../CM4/Core/Src/main.c ****   /* USER CODE END RTOS_EVENTS */
+ 153:../../CM4/Core/Src/main.c **** 
+ 154:../../CM4/Core/Src/main.c ****   /* Start scheduler */
+ 155:../../CM4/Core/Src/main.c ****   osKernelStart();
+ 156:../../CM4/Core/Src/main.c **** 
+ 157:../../CM4/Core/Src/main.c ****   /* We should never get here as control is now taken by the scheduler */
+ 158:../../CM4/Core/Src/main.c ****   /* Infinite loop */
+ 159:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN WHILE */
+ 160:../../CM4/Core/Src/main.c ****   while (1)
+ 161:../../CM4/Core/Src/main.c ****   {
+ 162:../../CM4/Core/Src/main.c ****     /* USER CODE END WHILE */
+ 163:../../CM4/Core/Src/main.c **** 
+ 164:../../CM4/Core/Src/main.c ****     /* USER CODE BEGIN 3 */
+ 165:../../CM4/Core/Src/main.c ****   }
+ 166:../../CM4/Core/Src/main.c ****   /* USER CODE END 3 */
+ 167:../../CM4/Core/Src/main.c **** }
+ 168:../../CM4/Core/Src/main.c **** 
+ 169:../../CM4/Core/Src/main.c **** /**
+ 170:../../CM4/Core/Src/main.c ****   * @brief USART3 Initialization Function
+ 171:../../CM4/Core/Src/main.c ****   * @param None
+ 172:../../CM4/Core/Src/main.c ****   * @retval None
+ 173:../../CM4/Core/Src/main.c ****   */
+ 174:../../CM4/Core/Src/main.c **** void MX_USART3_UART_Init(void)
+ 175:../../CM4/Core/Src/main.c **** {
  176:../../CM4/Core/Src/main.c **** 
- 177:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN USART3_Init 1 */
+ 177:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN USART3_Init 0 */
  178:../../CM4/Core/Src/main.c **** 
- 179:../../CM4/Core/Src/main.c ****   /* USER CODE END USART3_Init 1 */
- 180:../../CM4/Core/Src/main.c ****   huart3.Instance = USART3;
- 181:../../CM4/Core/Src/main.c ****   huart3.Init.BaudRate = 115200;
- 182:../../CM4/Core/Src/main.c ****   huart3.Init.WordLength = UART_WORDLENGTH_8B;
- 183:../../CM4/Core/Src/main.c ****   huart3.Init.StopBits = UART_STOPBITS_1;
- 184:../../CM4/Core/Src/main.c ****   huart3.Init.Parity = UART_PARITY_NONE;
- 185:../../CM4/Core/Src/main.c ****   huart3.Init.Mode = UART_MODE_TX_RX;
- 186:../../CM4/Core/Src/main.c ****   huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
- 187:../../CM4/Core/Src/main.c ****   huart3.Init.OverSampling = UART_OVERSAMPLING_16;
- 188:../../CM4/Core/Src/main.c ****   huart3.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
- 189:../../CM4/Core/Src/main.c ****   huart3.Init.ClockPrescaler = UART_PRESCALER_DIV1;
- 190:../../CM4/Core/Src/main.c ****   huart3.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
- 191:../../CM4/Core/Src/main.c ****   if (HAL_UART_Init(&huart3) != HAL_OK)
- 192:../../CM4/Core/Src/main.c ****   {
- 193:../../CM4/Core/Src/main.c ****     Error_Handler();
- 194:../../CM4/Core/Src/main.c ****   }
- 195:../../CM4/Core/Src/main.c ****   if (HAL_UARTEx_SetTxFifoThreshold(&huart3, UART_TXFIFO_THRESHOLD_1_8) != HAL_OK)
+ 179:../../CM4/Core/Src/main.c ****   /* USER CODE END USART3_Init 0 */
+ 180:../../CM4/Core/Src/main.c **** 
+ 181:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN USART3_Init 1 */
+ 182:../../CM4/Core/Src/main.c **** 
+ 183:../../CM4/Core/Src/main.c ****   /* USER CODE END USART3_Init 1 */
+ 184:../../CM4/Core/Src/main.c ****   huart3.Instance = USART3;
+ 185:../../CM4/Core/Src/main.c ****   huart3.Init.BaudRate = 115200;
+ 186:../../CM4/Core/Src/main.c ****   huart3.Init.WordLength = UART_WORDLENGTH_8B;
+ 187:../../CM4/Core/Src/main.c ****   huart3.Init.StopBits = UART_STOPBITS_1;
+ 188:../../CM4/Core/Src/main.c ****   huart3.Init.Parity = UART_PARITY_NONE;
+ 189:../../CM4/Core/Src/main.c ****   huart3.Init.Mode = UART_MODE_TX_RX;
+ 190:../../CM4/Core/Src/main.c ****   huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+ 191:../../CM4/Core/Src/main.c ****   huart3.Init.OverSampling = UART_OVERSAMPLING_16;
+ 192:../../CM4/Core/Src/main.c ****   huart3.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
+ 193:../../CM4/Core/Src/main.c ****   huart3.Init.ClockPrescaler = UART_PRESCALER_DIV1;
+ 194:../../CM4/Core/Src/main.c ****   huart3.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
+ 195:../../CM4/Core/Src/main.c ****   if (HAL_UART_Init(&huart3) != HAL_OK)
  196:../../CM4/Core/Src/main.c ****   {
  197:../../CM4/Core/Src/main.c ****     Error_Handler();
  198:../../CM4/Core/Src/main.c ****   }
- 199:../../CM4/Core/Src/main.c ****   if (HAL_UARTEx_SetRxFifoThreshold(&huart3, UART_RXFIFO_THRESHOLD_1_8) != HAL_OK)
+ 199:../../CM4/Core/Src/main.c ****   if (HAL_UARTEx_SetTxFifoThreshold(&huart3, UART_TXFIFO_THRESHOLD_1_8) != HAL_OK)
  200:../../CM4/Core/Src/main.c ****   {
  201:../../CM4/Core/Src/main.c ****     Error_Handler();
  202:../../CM4/Core/Src/main.c ****   }
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 5
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s 			page 5
 
 
- 203:../../CM4/Core/Src/main.c ****   if (HAL_UARTEx_DisableFifoMode(&huart3) != HAL_OK)
+ 203:../../CM4/Core/Src/main.c ****   if (HAL_UARTEx_SetRxFifoThreshold(&huart3, UART_RXFIFO_THRESHOLD_1_8) != HAL_OK)
  204:../../CM4/Core/Src/main.c ****   {
  205:../../CM4/Core/Src/main.c ****     Error_Handler();
  206:../../CM4/Core/Src/main.c ****   }
- 207:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN USART3_Init 2 */
- 208:../../CM4/Core/Src/main.c **** 
- 209:../../CM4/Core/Src/main.c ****   /* USER CODE END USART3_Init 2 */
- 210:../../CM4/Core/Src/main.c **** 
- 211:../../CM4/Core/Src/main.c **** }
+ 207:../../CM4/Core/Src/main.c ****   if (HAL_UARTEx_DisableFifoMode(&huart3) != HAL_OK)
+ 208:../../CM4/Core/Src/main.c ****   {
+ 209:../../CM4/Core/Src/main.c ****     Error_Handler();
+ 210:../../CM4/Core/Src/main.c ****   }
+ 211:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN USART3_Init 2 */
  212:../../CM4/Core/Src/main.c **** 
- 213:../../CM4/Core/Src/main.c **** /**
- 214:../../CM4/Core/Src/main.c ****   * @brief GPIO Initialization Function
- 215:../../CM4/Core/Src/main.c ****   * @param None
- 216:../../CM4/Core/Src/main.c ****   * @retval None
- 217:../../CM4/Core/Src/main.c ****   */
- 218:../../CM4/Core/Src/main.c **** static void MX_GPIO_Init(void)
- 219:../../CM4/Core/Src/main.c **** {
-  28              		.loc 1 219 1 view -0
+ 213:../../CM4/Core/Src/main.c ****   /* USER CODE END USART3_Init 2 */
+ 214:../../CM4/Core/Src/main.c **** 
+ 215:../../CM4/Core/Src/main.c **** }
+ 216:../../CM4/Core/Src/main.c **** 
+ 217:../../CM4/Core/Src/main.c **** /**
+ 218:../../CM4/Core/Src/main.c ****   * Enable DMA controller clock
+ 219:../../CM4/Core/Src/main.c ****   */
+ 220:../../CM4/Core/Src/main.c **** static void MX_DMA_Init(void)
+ 221:../../CM4/Core/Src/main.c **** {
+  28              		.loc 1 221 1 view -0
   29              		.cfi_startproc
-  30              		@ args = 0, pretend = 0, frame = 24
+  30              		@ args = 0, pretend = 0, frame = 8
   31              		@ frame_needed = 0, uses_anonymous_args = 0
-  32 0000 30B5     		push	{r4, r5, lr}
-  33              	.LCFI0:
-  34              		.cfi_def_cfa_offset 12
-  35              		.cfi_offset 4, -12
-  36              		.cfi_offset 5, -8
-  37              		.cfi_offset 14, -4
-  38 0002 87B0     		sub	sp, sp, #28
-  39              	.LCFI1:
-  40              		.cfi_def_cfa_offset 40
- 220:../../CM4/Core/Src/main.c ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
-  41              		.loc 1 220 3 view .LVU1
-  42              		.loc 1 220 20 is_stmt 0 view .LVU2
-  43 0004 0024     		movs	r4, #0
-  44 0006 0194     		str	r4, [sp, #4]
-  45 0008 0294     		str	r4, [sp, #8]
-  46 000a 0394     		str	r4, [sp, #12]
-  47 000c 0494     		str	r4, [sp, #16]
-  48 000e 0594     		str	r4, [sp, #20]
- 221:../../CM4/Core/Src/main.c **** /* USER CODE BEGIN MX_GPIO_Init_1 */
- 222:../../CM4/Core/Src/main.c **** /* USER CODE END MX_GPIO_Init_1 */
- 223:../../CM4/Core/Src/main.c **** 
- 224:../../CM4/Core/Src/main.c ****   /* GPIO Ports Clock Enable */
- 225:../../CM4/Core/Src/main.c ****   __HAL_RCC_GPIOB_CLK_ENABLE();
-  49              		.loc 1 225 3 is_stmt 1 view .LVU3
-  50              	.LBB4:
-  51              		.loc 1 225 3 view .LVU4
-  52              		.loc 1 225 3 view .LVU5
-  53 0010 104B     		ldr	r3, .L3
-  54 0012 D3F8E020 		ldr	r2, [r3, #224]
-  55 0016 42F00202 		orr	r2, r2, #2
-  56 001a C3F8E020 		str	r2, [r3, #224]
-  57              		.loc 1 225 3 view .LVU6
-  58 001e D3F8E030 		ldr	r3, [r3, #224]
-  59 0022 03F00203 		and	r3, r3, #2
-  60 0026 0093     		str	r3, [sp]
-  61              		.loc 1 225 3 view .LVU7
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 6
+  32              		@ link register save eliminated.
+  33 0000 82B0     		sub	sp, sp, #8
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+ 222:../../CM4/Core/Src/main.c **** 
+ 223:../../CM4/Core/Src/main.c ****   /* DMA controller clock enable */
+ 224:../../CM4/Core/Src/main.c ****   __HAL_RCC_DMA1_CLK_ENABLE();
+  36              		.loc 1 224 3 view .LVU1
+  37              	.LBB4:
+  38              		.loc 1 224 3 view .LVU2
+  39              		.loc 1 224 3 view .LVU3
+  40 0002 074B     		ldr	r3, .L3
+  41 0004 D3F8D820 		ldr	r2, [r3, #216]
+  42 0008 42F00102 		orr	r2, r2, #1
+  43 000c C3F8D820 		str	r2, [r3, #216]
+  44              		.loc 1 224 3 view .LVU4
+  45 0010 D3F8D830 		ldr	r3, [r3, #216]
+  46 0014 03F00103 		and	r3, r3, #1
+  47 0018 0193     		str	r3, [sp, #4]
+  48              		.loc 1 224 3 view .LVU5
+  49 001a 019B     		ldr	r3, [sp, #4]
+  50              	.LBE4:
+  51              		.loc 1 224 3 view .LVU6
+ 225:../../CM4/Core/Src/main.c **** 
+ 226:../../CM4/Core/Src/main.c **** }
+  52              		.loc 1 226 1 is_stmt 0 view .LVU7
+  53 001c 02B0     		add	sp, sp, #8
+  54              	.LCFI1:
+  55              		.cfi_def_cfa_offset 0
+  56              		@ sp needed
+  57 001e 7047     		bx	lr
+  58              	.L4:
+  59              		.align	2
+  60              	.L3:
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s 			page 6
 
 
-  62 0028 009B     		ldr	r3, [sp]
-  63              	.LBE4:
-  64              		.loc 1 225 3 view .LVU8
- 226:../../CM4/Core/Src/main.c **** 
- 227:../../CM4/Core/Src/main.c ****   /*Configure GPIO pin Output Level */
- 228:../../CM4/Core/Src/main.c ****   HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
-  65              		.loc 1 228 3 view .LVU9
-  66 002a 0B4D     		ldr	r5, .L3+4
-  67 002c 2246     		mov	r2, r4
-  68 002e 4FF48041 		mov	r1, #16384
-  69 0032 2846     		mov	r0, r5
-  70 0034 FFF7FEFF 		bl	HAL_GPIO_WritePin
-  71              	.LVL0:
- 229:../../CM4/Core/Src/main.c **** 
- 230:../../CM4/Core/Src/main.c ****   /*Configure GPIO pin : LD3_Pin */
- 231:../../CM4/Core/Src/main.c ****   GPIO_InitStruct.Pin = LD3_Pin;
-  72              		.loc 1 231 3 view .LVU10
-  73              		.loc 1 231 23 is_stmt 0 view .LVU11
-  74 0038 4FF48043 		mov	r3, #16384
-  75 003c 0193     		str	r3, [sp, #4]
- 232:../../CM4/Core/Src/main.c ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  76              		.loc 1 232 3 is_stmt 1 view .LVU12
-  77              		.loc 1 232 24 is_stmt 0 view .LVU13
-  78 003e 0123     		movs	r3, #1
-  79 0040 0293     		str	r3, [sp, #8]
- 233:../../CM4/Core/Src/main.c ****   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  80              		.loc 1 233 3 is_stmt 1 view .LVU14
-  81              		.loc 1 233 24 is_stmt 0 view .LVU15
-  82 0042 0394     		str	r4, [sp, #12]
- 234:../../CM4/Core/Src/main.c ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  83              		.loc 1 234 3 is_stmt 1 view .LVU16
-  84              		.loc 1 234 25 is_stmt 0 view .LVU17
-  85 0044 0494     		str	r4, [sp, #16]
- 235:../../CM4/Core/Src/main.c ****   HAL_GPIO_Init(LD3_GPIO_Port, &GPIO_InitStruct);
-  86              		.loc 1 235 3 is_stmt 1 view .LVU18
-  87 0046 01A9     		add	r1, sp, #4
-  88 0048 2846     		mov	r0, r5
-  89 004a FFF7FEFF 		bl	HAL_GPIO_Init
-  90              	.LVL1:
- 236:../../CM4/Core/Src/main.c **** 
- 237:../../CM4/Core/Src/main.c **** /* USER CODE BEGIN MX_GPIO_Init_2 */
- 238:../../CM4/Core/Src/main.c **** /* USER CODE END MX_GPIO_Init_2 */
- 239:../../CM4/Core/Src/main.c **** }
-  91              		.loc 1 239 1 is_stmt 0 view .LVU19
-  92 004e 07B0     		add	sp, sp, #28
-  93              	.LCFI2:
-  94              		.cfi_def_cfa_offset 12
-  95              		@ sp needed
-  96 0050 30BD     		pop	{r4, r5, pc}
-  97              	.L4:
-  98 0052 00BF     		.align	2
-  99              	.L3:
- 100 0054 00440258 		.word	1476543488
- 101 0058 00040258 		.word	1476527104
- 102              		.cfi_endproc
- 103              	.LFE138:
- 105              		.section	.text.StartDefaultTask,"ax",%progbits
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 7
+  61 0020 00440258 		.word	1476543488
+  62              		.cfi_endproc
+  63              	.LFE138:
+  65              		.section	.text.MX_GPIO_Init,"ax",%progbits
+  66              		.align	1
+  67              		.syntax unified
+  68              		.thumb
+  69              		.thumb_func
+  71              	MX_GPIO_Init:
+  72              	.LFB139:
+ 227:../../CM4/Core/Src/main.c **** 
+ 228:../../CM4/Core/Src/main.c **** /**
+ 229:../../CM4/Core/Src/main.c ****   * @brief GPIO Initialization Function
+ 230:../../CM4/Core/Src/main.c ****   * @param None
+ 231:../../CM4/Core/Src/main.c ****   * @retval None
+ 232:../../CM4/Core/Src/main.c ****   */
+ 233:../../CM4/Core/Src/main.c **** static void MX_GPIO_Init(void)
+ 234:../../CM4/Core/Src/main.c **** {
+  73              		.loc 1 234 1 is_stmt 1 view -0
+  74              		.cfi_startproc
+  75              		@ args = 0, pretend = 0, frame = 24
+  76              		@ frame_needed = 0, uses_anonymous_args = 0
+  77 0000 30B5     		push	{r4, r5, lr}
+  78              	.LCFI2:
+  79              		.cfi_def_cfa_offset 12
+  80              		.cfi_offset 4, -12
+  81              		.cfi_offset 5, -8
+  82              		.cfi_offset 14, -4
+  83 0002 87B0     		sub	sp, sp, #28
+  84              	.LCFI3:
+  85              		.cfi_def_cfa_offset 40
+ 235:../../CM4/Core/Src/main.c ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
+  86              		.loc 1 235 3 view .LVU9
+  87              		.loc 1 235 20 is_stmt 0 view .LVU10
+  88 0004 0024     		movs	r4, #0
+  89 0006 0194     		str	r4, [sp, #4]
+  90 0008 0294     		str	r4, [sp, #8]
+  91 000a 0394     		str	r4, [sp, #12]
+  92 000c 0494     		str	r4, [sp, #16]
+  93 000e 0594     		str	r4, [sp, #20]
+ 236:../../CM4/Core/Src/main.c **** /* USER CODE BEGIN MX_GPIO_Init_1 */
+ 237:../../CM4/Core/Src/main.c **** /* USER CODE END MX_GPIO_Init_1 */
+ 238:../../CM4/Core/Src/main.c **** 
+ 239:../../CM4/Core/Src/main.c ****   /* GPIO Ports Clock Enable */
+ 240:../../CM4/Core/Src/main.c ****   __HAL_RCC_GPIOB_CLK_ENABLE();
+  94              		.loc 1 240 3 is_stmt 1 view .LVU11
+  95              	.LBB5:
+  96              		.loc 1 240 3 view .LVU12
+  97              		.loc 1 240 3 view .LVU13
+  98 0010 104B     		ldr	r3, .L7
+  99 0012 D3F8E020 		ldr	r2, [r3, #224]
+ 100 0016 42F00202 		orr	r2, r2, #2
+ 101 001a C3F8E020 		str	r2, [r3, #224]
+ 102              		.loc 1 240 3 view .LVU14
+ 103 001e D3F8E030 		ldr	r3, [r3, #224]
+ 104 0022 03F00203 		and	r3, r3, #2
+ 105 0026 0093     		str	r3, [sp]
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s 			page 7
 
 
- 106              		.align	1
- 107              		.global	StartDefaultTask
- 108              		.syntax unified
- 109              		.thumb
- 110              		.thumb_func
- 112              	StartDefaultTask:
- 113              	.LFB139:
- 240:../../CM4/Core/Src/main.c **** 
- 241:../../CM4/Core/Src/main.c **** /* USER CODE BEGIN 4 */
- 242:../../CM4/Core/Src/main.c **** 
- 243:../../CM4/Core/Src/main.c **** /* USER CODE END 4 */
+ 106              		.loc 1 240 3 view .LVU15
+ 107 0028 009B     		ldr	r3, [sp]
+ 108              	.LBE5:
+ 109              		.loc 1 240 3 view .LVU16
+ 241:../../CM4/Core/Src/main.c **** 
+ 242:../../CM4/Core/Src/main.c ****   /*Configure GPIO pin Output Level */
+ 243:../../CM4/Core/Src/main.c ****   HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+ 110              		.loc 1 243 3 view .LVU17
+ 111 002a 0B4D     		ldr	r5, .L7+4
+ 112 002c 2246     		mov	r2, r4
+ 113 002e 4FF48041 		mov	r1, #16384
+ 114 0032 2846     		mov	r0, r5
+ 115 0034 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 116              	.LVL0:
  244:../../CM4/Core/Src/main.c **** 
- 245:../../CM4/Core/Src/main.c **** /* USER CODE BEGIN Header_StartDefaultTask */
- 246:../../CM4/Core/Src/main.c **** /**
- 247:../../CM4/Core/Src/main.c ****   * @brief  Function implementing the defaultTask thread.
- 248:../../CM4/Core/Src/main.c ****   * @param  argument: Not used
- 249:../../CM4/Core/Src/main.c ****   * @retval None
- 250:../../CM4/Core/Src/main.c ****   */
- 251:../../CM4/Core/Src/main.c **** /* USER CODE END Header_StartDefaultTask */
- 252:../../CM4/Core/Src/main.c **** void StartDefaultTask(void *argument)
- 253:../../CM4/Core/Src/main.c **** {
- 114              		.loc 1 253 1 is_stmt 1 view -0
- 115              		.cfi_startproc
- 116              		@ Volatile: function does not return.
- 117              		@ args = 0, pretend = 0, frame = 0
- 118              		@ frame_needed = 0, uses_anonymous_args = 0
- 119              	.LVL2:
- 120              		.loc 1 253 1 is_stmt 0 view .LVU21
- 121 0000 08B5     		push	{r3, lr}
- 122              	.LCFI3:
- 123              		.cfi_def_cfa_offset 8
- 124              		.cfi_offset 3, -8
- 125              		.cfi_offset 14, -4
- 126              	.LVL3:
- 127              	.L6:
- 254:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN 5 */
- 255:../../CM4/Core/Src/main.c ****   /* Infinite loop */
- 256:../../CM4/Core/Src/main.c ****   for(;;)
- 128              		.loc 1 256 3 is_stmt 1 discriminator 1 view .LVU22
- 257:../../CM4/Core/Src/main.c ****   {
- 258:../../CM4/Core/Src/main.c ****     HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
- 129              		.loc 1 258 5 discriminator 1 view .LVU23
- 130 0002 0B4C     		ldr	r4, .L8
- 131 0004 0122     		movs	r2, #1
- 132 0006 4FF48041 		mov	r1, #16384
- 133 000a 2046     		mov	r0, r4
- 134 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
- 135              	.LVL4:
- 259:../../CM4/Core/Src/main.c ****     osDelay(1000);
- 136              		.loc 1 259 5 discriminator 1 view .LVU24
- 137 0010 4FF47A70 		mov	r0, #1000
- 138 0014 FFF7FEFF 		bl	osDelay
- 139              	.LVL5:
- 260:../../CM4/Core/Src/main.c ****     HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
- 140              		.loc 1 260 5 discriminator 1 view .LVU25
- 141 0018 0022     		movs	r2, #0
- 142 001a 4FF48041 		mov	r1, #16384
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 8
+ 245:../../CM4/Core/Src/main.c ****   /*Configure GPIO pin : LD3_Pin */
+ 246:../../CM4/Core/Src/main.c ****   GPIO_InitStruct.Pin = LD3_Pin;
+ 117              		.loc 1 246 3 view .LVU18
+ 118              		.loc 1 246 23 is_stmt 0 view .LVU19
+ 119 0038 4FF48043 		mov	r3, #16384
+ 120 003c 0193     		str	r3, [sp, #4]
+ 247:../../CM4/Core/Src/main.c ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+ 121              		.loc 1 247 3 is_stmt 1 view .LVU20
+ 122              		.loc 1 247 24 is_stmt 0 view .LVU21
+ 123 003e 0123     		movs	r3, #1
+ 124 0040 0293     		str	r3, [sp, #8]
+ 248:../../CM4/Core/Src/main.c ****   GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 125              		.loc 1 248 3 is_stmt 1 view .LVU22
+ 126              		.loc 1 248 24 is_stmt 0 view .LVU23
+ 127 0042 0394     		str	r4, [sp, #12]
+ 249:../../CM4/Core/Src/main.c ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ 128              		.loc 1 249 3 is_stmt 1 view .LVU24
+ 129              		.loc 1 249 25 is_stmt 0 view .LVU25
+ 130 0044 0494     		str	r4, [sp, #16]
+ 250:../../CM4/Core/Src/main.c ****   HAL_GPIO_Init(LD3_GPIO_Port, &GPIO_InitStruct);
+ 131              		.loc 1 250 3 is_stmt 1 view .LVU26
+ 132 0046 01A9     		add	r1, sp, #4
+ 133 0048 2846     		mov	r0, r5
+ 134 004a FFF7FEFF 		bl	HAL_GPIO_Init
+ 135              	.LVL1:
+ 251:../../CM4/Core/Src/main.c **** 
+ 252:../../CM4/Core/Src/main.c **** /* USER CODE BEGIN MX_GPIO_Init_2 */
+ 253:../../CM4/Core/Src/main.c **** /* USER CODE END MX_GPIO_Init_2 */
+ 254:../../CM4/Core/Src/main.c **** }
+ 136              		.loc 1 254 1 is_stmt 0 view .LVU27
+ 137 004e 07B0     		add	sp, sp, #28
+ 138              	.LCFI4:
+ 139              		.cfi_def_cfa_offset 12
+ 140              		@ sp needed
+ 141 0050 30BD     		pop	{r4, r5, pc}
+ 142              	.L8:
+ 143 0052 00BF     		.align	2
+ 144              	.L7:
+ 145 0054 00440258 		.word	1476543488
+ 146 0058 00040258 		.word	1476527104
+ 147              		.cfi_endproc
+ 148              	.LFE139:
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s 			page 8
 
 
- 143 001e 2046     		mov	r0, r4
- 144 0020 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 145              	.LVL6:
- 261:../../CM4/Core/Src/main.c ****     osDelay(1000);
- 146              		.loc 1 261 5 discriminator 1 view .LVU26
- 147 0024 4FF47A70 		mov	r0, #1000
- 148 0028 FFF7FEFF 		bl	osDelay
- 149              	.LVL7:
- 256:../../CM4/Core/Src/main.c ****   {
- 150              		.loc 1 256 3 discriminator 1 view .LVU27
- 151 002c E9E7     		b	.L6
- 152              	.L9:
- 153 002e 00BF     		.align	2
- 154              	.L8:
- 155 0030 00040258 		.word	1476527104
- 156              		.cfi_endproc
- 157              	.LFE139:
- 159              		.section	.text.main,"ax",%progbits
- 160              		.align	1
- 161              		.global	main
- 162              		.syntax unified
- 163              		.thumb
- 164              		.thumb_func
- 166              	main:
- 167              	.LFB136:
-  80:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN 1 */
- 168              		.loc 1 80 1 view -0
- 169              		.cfi_startproc
- 170              		@ Volatile: function does not return.
- 171              		@ args = 0, pretend = 0, frame = 8
- 172              		@ frame_needed = 0, uses_anonymous_args = 0
- 173 0000 00B5     		push	{lr}
- 174              	.LCFI4:
- 175              		.cfi_def_cfa_offset 4
- 176              		.cfi_offset 14, -4
- 177 0002 83B0     		sub	sp, sp, #12
- 178              	.LCFI5:
- 179              		.cfi_def_cfa_offset 16
-  87:../../CM4/Core/Src/main.c ****   /* Activate HSEM notification for Cortex-M4*/
- 180              		.loc 1 87 3 view .LVU29
- 181              	.LBB5:
-  87:../../CM4/Core/Src/main.c ****   /* Activate HSEM notification for Cortex-M4*/
- 182              		.loc 1 87 3 view .LVU30
-  87:../../CM4/Core/Src/main.c ****   /* Activate HSEM notification for Cortex-M4*/
- 183              		.loc 1 87 3 view .LVU31
- 184 0004 1D4B     		ldr	r3, .L16
- 185 0006 D3F8E020 		ldr	r2, [r3, #224]
- 186 000a 42F00072 		orr	r2, r2, #33554432
- 187 000e C3F8E020 		str	r2, [r3, #224]
-  87:../../CM4/Core/Src/main.c ****   /* Activate HSEM notification for Cortex-M4*/
- 188              		.loc 1 87 3 view .LVU32
- 189 0012 D3F8E030 		ldr	r3, [r3, #224]
- 190 0016 03F00073 		and	r3, r3, #33554432
- 191 001a 0193     		str	r3, [sp, #4]
-  87:../../CM4/Core/Src/main.c ****   /* Activate HSEM notification for Cortex-M4*/
- 192              		.loc 1 87 3 view .LVU33
- 193 001c 019B     		ldr	r3, [sp, #4]
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 9
+ 150              		.section	.text.CM4StatusLEDTask,"ax",%progbits
+ 151              		.align	1
+ 152              		.global	CM4StatusLEDTask
+ 153              		.syntax unified
+ 154              		.thumb
+ 155              		.thumb_func
+ 157              	CM4StatusLEDTask:
+ 158              	.LFB140:
+ 255:../../CM4/Core/Src/main.c **** 
+ 256:../../CM4/Core/Src/main.c **** /* USER CODE BEGIN 4 */
+ 257:../../CM4/Core/Src/main.c **** 
+ 258:../../CM4/Core/Src/main.c **** /* USER CODE END 4 */
+ 259:../../CM4/Core/Src/main.c **** 
+ 260:../../CM4/Core/Src/main.c **** /* USER CODE BEGIN Header_CM4StatusLEDTask */
+ 261:../../CM4/Core/Src/main.c **** /**
+ 262:../../CM4/Core/Src/main.c ****   * @brief  Function implementing the CM4StatusLEDTas thread.
+ 263:../../CM4/Core/Src/main.c ****   * @param  argument: Not used
+ 264:../../CM4/Core/Src/main.c ****   * @retval None
+ 265:../../CM4/Core/Src/main.c ****   */
+ 266:../../CM4/Core/Src/main.c **** /* USER CODE END Header_CM4StatusLEDTask */
+ 267:../../CM4/Core/Src/main.c **** void CM4StatusLEDTask(void *argument)
+ 268:../../CM4/Core/Src/main.c **** {
+ 159              		.loc 1 268 1 is_stmt 1 view -0
+ 160              		.cfi_startproc
+ 161              		@ Volatile: function does not return.
+ 162              		@ args = 0, pretend = 0, frame = 0
+ 163              		@ frame_needed = 0, uses_anonymous_args = 0
+ 164              	.LVL2:
+ 165              		.loc 1 268 1 is_stmt 0 view .LVU29
+ 166 0000 08B5     		push	{r3, lr}
+ 167              	.LCFI5:
+ 168              		.cfi_def_cfa_offset 8
+ 169              		.cfi_offset 3, -8
+ 170              		.cfi_offset 14, -4
+ 171              	.LVL3:
+ 172              	.L10:
+ 269:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN 5 */
+ 270:../../CM4/Core/Src/main.c ****   /* Infinite loop */
+ 271:../../CM4/Core/Src/main.c ****   for(;;)
+ 173              		.loc 1 271 3 is_stmt 1 discriminator 1 view .LVU30
+ 272:../../CM4/Core/Src/main.c ****   {
+ 273:../../CM4/Core/Src/main.c ****     HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
+ 174              		.loc 1 273 5 discriminator 1 view .LVU31
+ 175 0002 0B4C     		ldr	r4, .L12
+ 176 0004 0122     		movs	r2, #1
+ 177 0006 4FF48041 		mov	r1, #16384
+ 178 000a 2046     		mov	r0, r4
+ 179 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 180              	.LVL4:
+ 274:../../CM4/Core/Src/main.c ****     osDelay(1000);
+ 181              		.loc 1 274 5 discriminator 1 view .LVU32
+ 182 0010 4FF47A70 		mov	r0, #1000
+ 183 0014 FFF7FEFF 		bl	osDelay
+ 184              	.LVL5:
+ 275:../../CM4/Core/Src/main.c ****     HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+ 185              		.loc 1 275 5 discriminator 1 view .LVU33
+ 186 0018 0022     		movs	r2, #0
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s 			page 9
 
 
- 194              	.LBE5:
-  87:../../CM4/Core/Src/main.c ****   /* Activate HSEM notification for Cortex-M4*/
- 195              		.loc 1 87 3 view .LVU34
-  89:../../CM4/Core/Src/main.c ****   /*
- 196              		.loc 1 89 3 view .LVU35
- 197 001e 0120     		movs	r0, #1
- 198 0020 FFF7FEFF 		bl	HAL_HSEM_ActivateNotification
- 199              	.LVL8:
-  94:../../CM4/Core/Src/main.c ****   HAL_PWREx_EnterSTOPMode(PWR_MAINREGULATOR_ON, PWR_STOPENTRY_WFE, PWR_D2_DOMAIN);
- 200              		.loc 1 94 3 view .LVU36
- 201 0024 FFF7FEFF 		bl	HAL_PWREx_ClearPendingEvent
- 202              	.LVL9:
-  95:../../CM4/Core/Src/main.c ****   /* Clear HSEM flag */
- 203              		.loc 1 95 3 view .LVU37
- 204 0028 0122     		movs	r2, #1
- 205 002a 0221     		movs	r1, #2
- 206 002c 0020     		movs	r0, #0
- 207 002e FFF7FEFF 		bl	HAL_PWREx_EnterSTOPMode
- 208              	.LVL10:
-  97:../../CM4/Core/Src/main.c **** 
- 209              		.loc 1 97 3 view .LVU38
- 210 0032 134B     		ldr	r3, .L16+4
- 211 0034 1B68     		ldr	r3, [r3]
- 212 0036 C3F30313 		ubfx	r3, r3, #4, #4
- 213 003a 072B     		cmp	r3, #7
- 214 003c 16D0     		beq	.L15
-  97:../../CM4/Core/Src/main.c **** 
- 215              		.loc 1 97 3 is_stmt 0 discriminator 2 view .LVU39
- 216 003e 114A     		ldr	r2, .L16+8
- 217 0040 D2F81431 		ldr	r3, [r2, #276]
- 218 0044 43F00103 		orr	r3, r3, #1
- 219 0048 C2F81431 		str	r3, [r2, #276]
- 220              	.L12:
- 103:../../CM4/Core/Src/main.c **** 
- 221              		.loc 1 103 3 is_stmt 1 view .LVU40
- 222 004c FFF7FEFF 		bl	HAL_Init
- 223              	.LVL11:
- 114:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN 2 */
- 224              		.loc 1 114 3 view .LVU41
- 225 0050 FFF7FEFF 		bl	MX_GPIO_Init
- 226              	.LVL12:
- 120:../../CM4/Core/Src/main.c **** 
- 227              		.loc 1 120 3 view .LVU42
- 228 0054 FFF7FEFF 		bl	osKernelInitialize
- 229              	.LVL13:
- 140:../../CM4/Core/Src/main.c **** 
- 230              		.loc 1 140 3 view .LVU43
- 140:../../CM4/Core/Src/main.c **** 
- 231              		.loc 1 140 23 is_stmt 0 view .LVU44
- 232 0058 0B4A     		ldr	r2, .L16+12
- 233 005a 0021     		movs	r1, #0
- 234 005c 0B48     		ldr	r0, .L16+16
- 235 005e FFF7FEFF 		bl	osThreadNew
- 236              	.LVL14:
- 140:../../CM4/Core/Src/main.c **** 
- 237              		.loc 1 140 21 view .LVU45
- 238 0062 0B4B     		ldr	r3, .L16+20
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 10
+ 187 001a 4FF48041 		mov	r1, #16384
+ 188 001e 2046     		mov	r0, r4
+ 189 0020 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 190              	.LVL6:
+ 276:../../CM4/Core/Src/main.c ****     osDelay(1000);
+ 191              		.loc 1 276 5 discriminator 1 view .LVU34
+ 192 0024 4FF47A70 		mov	r0, #1000
+ 193 0028 FFF7FEFF 		bl	osDelay
+ 194              	.LVL7:
+ 271:../../CM4/Core/Src/main.c ****   {
+ 195              		.loc 1 271 8 discriminator 1 view .LVU35
+ 196 002c E9E7     		b	.L10
+ 197              	.L13:
+ 198 002e 00BF     		.align	2
+ 199              	.L12:
+ 200 0030 00040258 		.word	1476527104
+ 201              		.cfi_endproc
+ 202              	.LFE140:
+ 204              		.section	.rodata.main.str1.4,"aMS",%progbits,1
+ 205              		.align	2
+ 206              	.LC0:
+ 207 0000 0D434F52 		.ascii	"\015CORE 1: Initialization Complete...\015\012\000"
+ 207      4520313A 
+ 207      20496E69 
+ 207      7469616C 
+ 207      697A6174 
+ 208              		.section	.text.main,"ax",%progbits
+ 209              		.align	1
+ 210              		.global	main
+ 211              		.syntax unified
+ 212              		.thumb
+ 213              		.thumb_func
+ 215              	main:
+ 216              	.LFB136:
+  83:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN 1 */
+ 217              		.loc 1 83 1 view -0
+ 218              		.cfi_startproc
+ 219              		@ Volatile: function does not return.
+ 220              		@ args = 0, pretend = 0, frame = 8
+ 221              		@ frame_needed = 0, uses_anonymous_args = 0
+ 222 0000 00B5     		push	{lr}
+ 223              	.LCFI6:
+ 224              		.cfi_def_cfa_offset 4
+ 225              		.cfi_offset 14, -4
+ 226 0002 83B0     		sub	sp, sp, #12
+ 227              	.LCFI7:
+ 228              		.cfi_def_cfa_offset 16
+  90:../../CM4/Core/Src/main.c ****   /* Activate HSEM notification for Cortex-M4*/
+ 229              		.loc 1 90 3 view .LVU37
+ 230              	.LBB6:
+  90:../../CM4/Core/Src/main.c ****   /* Activate HSEM notification for Cortex-M4*/
+ 231              		.loc 1 90 3 view .LVU38
+  90:../../CM4/Core/Src/main.c ****   /* Activate HSEM notification for Cortex-M4*/
+ 232              		.loc 1 90 3 view .LVU39
+ 233 0004 214B     		ldr	r3, .L20
+ 234 0006 D3F8E020 		ldr	r2, [r3, #224]
+ 235 000a 42F00072 		orr	r2, r2, #33554432
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s 			page 10
 
 
- 239 0064 1860     		str	r0, [r3]
- 151:../../CM4/Core/Src/main.c **** 
- 240              		.loc 1 151 3 is_stmt 1 view .LVU46
- 241 0066 FFF7FEFF 		bl	osKernelStart
- 242              	.LVL15:
- 243              	.L13:
- 156:../../CM4/Core/Src/main.c ****   {
- 244              		.loc 1 156 3 discriminator 1 view .LVU47
- 161:../../CM4/Core/Src/main.c ****   /* USER CODE END 3 */
- 245              		.loc 1 161 3 discriminator 1 view .LVU48
- 156:../../CM4/Core/Src/main.c ****   {
- 246              		.loc 1 156 9 discriminator 1 view .LVU49
- 247 006a FEE7     		b	.L13
- 248              	.L15:
-  97:../../CM4/Core/Src/main.c **** 
- 249              		.loc 1 97 3 is_stmt 0 discriminator 1 view .LVU50
- 250 006c 054A     		ldr	r2, .L16+8
- 251 006e D2F80431 		ldr	r3, [r2, #260]
- 252 0072 43F00103 		orr	r3, r3, #1
- 253 0076 C2F80431 		str	r3, [r2, #260]
- 254 007a E7E7     		b	.L12
- 255              	.L17:
- 256              		.align	2
- 257              	.L16:
- 258 007c 00440258 		.word	1476543488
- 259 0080 00ED00E0 		.word	-536810240
- 260 0084 00640258 		.word	1476551680
- 261 0088 00000000 		.word	defaultTask_attributes
- 262 008c 00000000 		.word	StartDefaultTask
- 263 0090 00000000 		.word	defaultTaskHandle
- 264              		.cfi_endproc
- 265              	.LFE136:
- 267              		.section	.text.HAL_TIM_PeriodElapsedCallback,"ax",%progbits
- 268              		.align	1
- 269              		.global	HAL_TIM_PeriodElapsedCallback
- 270              		.syntax unified
- 271              		.thumb
- 272              		.thumb_func
- 274              	HAL_TIM_PeriodElapsedCallback:
- 275              	.LVL16:
- 276              	.LFB140:
- 262:../../CM4/Core/Src/main.c ****   }
- 263:../../CM4/Core/Src/main.c ****   /* USER CODE END 5 */
- 264:../../CM4/Core/Src/main.c **** }
- 265:../../CM4/Core/Src/main.c **** 
- 266:../../CM4/Core/Src/main.c **** /**
- 267:../../CM4/Core/Src/main.c ****   * @brief  Period elapsed callback in non blocking mode
- 268:../../CM4/Core/Src/main.c ****   * @note   This function is called  when TIM2 interrupt took place, inside
- 269:../../CM4/Core/Src/main.c ****   * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
- 270:../../CM4/Core/Src/main.c ****   * a global variable "uwTick" used as application time base.
- 271:../../CM4/Core/Src/main.c ****   * @param  htim : TIM handle
- 272:../../CM4/Core/Src/main.c ****   * @retval None
- 273:../../CM4/Core/Src/main.c ****   */
- 274:../../CM4/Core/Src/main.c **** void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
- 275:../../CM4/Core/Src/main.c **** {
- 277              		.loc 1 275 1 is_stmt 1 view -0
- 278              		.cfi_startproc
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 11
+ 236 000e C3F8E020 		str	r2, [r3, #224]
+  90:../../CM4/Core/Src/main.c ****   /* Activate HSEM notification for Cortex-M4*/
+ 237              		.loc 1 90 3 view .LVU40
+ 238 0012 D3F8E030 		ldr	r3, [r3, #224]
+ 239 0016 03F00073 		and	r3, r3, #33554432
+ 240 001a 0193     		str	r3, [sp, #4]
+  90:../../CM4/Core/Src/main.c ****   /* Activate HSEM notification for Cortex-M4*/
+ 241              		.loc 1 90 3 view .LVU41
+ 242 001c 019B     		ldr	r3, [sp, #4]
+ 243              	.LBE6:
+  90:../../CM4/Core/Src/main.c ****   /* Activate HSEM notification for Cortex-M4*/
+ 244              		.loc 1 90 3 view .LVU42
+  92:../../CM4/Core/Src/main.c ****   /*
+ 245              		.loc 1 92 3 view .LVU43
+ 246 001e 0120     		movs	r0, #1
+ 247 0020 FFF7FEFF 		bl	HAL_HSEM_ActivateNotification
+ 248              	.LVL8:
+  97:../../CM4/Core/Src/main.c ****   HAL_PWREx_EnterSTOPMode(PWR_MAINREGULATOR_ON, PWR_STOPENTRY_WFE, PWR_D2_DOMAIN);
+ 249              		.loc 1 97 3 view .LVU44
+ 250 0024 FFF7FEFF 		bl	HAL_PWREx_ClearPendingEvent
+ 251              	.LVL9:
+  98:../../CM4/Core/Src/main.c ****   /* Clear HSEM flag */
+ 252              		.loc 1 98 3 view .LVU45
+ 253 0028 0122     		movs	r2, #1
+ 254 002a 0221     		movs	r1, #2
+ 255 002c 0020     		movs	r0, #0
+ 256 002e FFF7FEFF 		bl	HAL_PWREx_EnterSTOPMode
+ 257              	.LVL10:
+ 100:../../CM4/Core/Src/main.c **** 
+ 258              		.loc 1 100 3 view .LVU46
+ 259 0032 174B     		ldr	r3, .L20+4
+ 260 0034 1B68     		ldr	r3, [r3]
+ 261 0036 C3F30313 		ubfx	r3, r3, #4, #4
+ 262 003a 072B     		cmp	r3, #7
+ 263 003c 1DD0     		beq	.L19
+ 100:../../CM4/Core/Src/main.c **** 
+ 264              		.loc 1 100 3 is_stmt 0 discriminator 2 view .LVU47
+ 265 003e 154A     		ldr	r2, .L20+8
+ 266 0040 D2F81431 		ldr	r3, [r2, #276]
+ 267 0044 43F00103 		orr	r3, r3, #1
+ 268 0048 C2F81431 		str	r3, [r2, #276]
+ 269              	.L16:
+ 106:../../CM4/Core/Src/main.c **** 
+ 270              		.loc 1 106 3 is_stmt 1 view .LVU48
+ 271 004c FFF7FEFF 		bl	HAL_Init
+ 272              	.LVL11:
+ 117:../../CM4/Core/Src/main.c ****   MX_DMA_Init();
+ 273              		.loc 1 117 3 view .LVU49
+ 274 0050 FFF7FEFF 		bl	MX_GPIO_Init
+ 275              	.LVL12:
+ 118:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN 2 */
+ 276              		.loc 1 118 3 view .LVU50
+ 277 0054 FFF7FEFF 		bl	MX_DMA_Init
+ 278              	.LVL13:
+ 120:../../CM4/Core/Src/main.c ****   /* USER CODE END 2 */
+ 279              		.loc 1 120 3 view .LVU51
+ 280 0058 2622     		movs	r2, #38
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s 			page 11
 
 
- 279              		@ args = 0, pretend = 0, frame = 0
- 280              		@ frame_needed = 0, uses_anonymous_args = 0
- 281              		.loc 1 275 1 is_stmt 0 view .LVU52
- 282 0000 08B5     		push	{r3, lr}
- 283              	.LCFI6:
- 284              		.cfi_def_cfa_offset 8
- 285              		.cfi_offset 3, -8
- 286              		.cfi_offset 14, -4
- 276:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN Callback 0 */
- 277:../../CM4/Core/Src/main.c **** 
- 278:../../CM4/Core/Src/main.c ****   /* USER CODE END Callback 0 */
- 279:../../CM4/Core/Src/main.c ****   if (htim->Instance == TIM2) {
- 287              		.loc 1 279 3 is_stmt 1 view .LVU53
- 288              		.loc 1 279 11 is_stmt 0 view .LVU54
- 289 0002 0368     		ldr	r3, [r0]
- 290              		.loc 1 279 6 view .LVU55
- 291 0004 B3F1804F 		cmp	r3, #1073741824
- 292 0008 00D0     		beq	.L21
- 293              	.LVL17:
- 294              	.L18:
- 280:../../CM4/Core/Src/main.c ****     HAL_IncTick();
- 281:../../CM4/Core/Src/main.c ****   }
- 282:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN Callback 1 */
- 283:../../CM4/Core/Src/main.c **** 
- 284:../../CM4/Core/Src/main.c ****   /* USER CODE END Callback 1 */
- 285:../../CM4/Core/Src/main.c **** }
- 295              		.loc 1 285 1 view .LVU56
- 296 000a 08BD     		pop	{r3, pc}
- 297              	.LVL18:
- 298              	.L21:
- 280:../../CM4/Core/Src/main.c ****     HAL_IncTick();
- 299              		.loc 1 280 5 is_stmt 1 view .LVU57
- 300 000c FFF7FEFF 		bl	HAL_IncTick
- 301              	.LVL19:
- 302              		.loc 1 285 1 is_stmt 0 view .LVU58
- 303 0010 FBE7     		b	.L18
- 304              		.cfi_endproc
- 305              	.LFE140:
- 307              		.section	.text.Error_Handler,"ax",%progbits
- 308              		.align	1
- 309              		.global	Error_Handler
- 310              		.syntax unified
- 311              		.thumb
- 312              		.thumb_func
- 314              	Error_Handler:
- 315              	.LFB141:
- 286:../../CM4/Core/Src/main.c **** 
- 287:../../CM4/Core/Src/main.c **** /**
- 288:../../CM4/Core/Src/main.c ****   * @brief  This function is executed in case of error occurrence.
- 289:../../CM4/Core/Src/main.c ****   * @retval None
- 290:../../CM4/Core/Src/main.c ****   */
- 291:../../CM4/Core/Src/main.c **** void Error_Handler(void)
- 292:../../CM4/Core/Src/main.c **** {
- 316              		.loc 1 292 1 is_stmt 1 view -0
- 317              		.cfi_startproc
- 318              		@ Volatile: function does not return.
- 319              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 12
+ 281 005a 0F49     		ldr	r1, .L20+12
+ 282 005c 0F48     		ldr	r0, .L20+16
+ 283 005e FFF7FEFF 		bl	HAL_UART_Transmit_DMA
+ 284              	.LVL14:
+ 124:../../CM4/Core/Src/main.c **** 
+ 285              		.loc 1 124 3 view .LVU52
+ 286 0062 FFF7FEFF 		bl	osKernelInitialize
+ 287              	.LVL15:
+ 144:../../CM4/Core/Src/main.c **** 
+ 288              		.loc 1 144 3 view .LVU53
+ 144:../../CM4/Core/Src/main.c **** 
+ 289              		.loc 1 144 24 is_stmt 0 view .LVU54
+ 290 0066 0E4A     		ldr	r2, .L20+20
+ 291 0068 0021     		movs	r1, #0
+ 292 006a 0E48     		ldr	r0, .L20+24
+ 293 006c FFF7FEFF 		bl	osThreadNew
+ 294              	.LVL16:
+ 144:../../CM4/Core/Src/main.c **** 
+ 295              		.loc 1 144 22 view .LVU55
+ 296 0070 0D4B     		ldr	r3, .L20+28
+ 297 0072 1860     		str	r0, [r3]
+ 155:../../CM4/Core/Src/main.c **** 
+ 298              		.loc 1 155 3 is_stmt 1 view .LVU56
+ 299 0074 FFF7FEFF 		bl	osKernelStart
+ 300              	.LVL17:
+ 301              	.L17:
+ 160:../../CM4/Core/Src/main.c ****   {
+ 302              		.loc 1 160 3 discriminator 1 view .LVU57
+ 165:../../CM4/Core/Src/main.c ****   /* USER CODE END 3 */
+ 303              		.loc 1 165 3 discriminator 1 view .LVU58
+ 160:../../CM4/Core/Src/main.c ****   {
+ 304              		.loc 1 160 9 discriminator 1 view .LVU59
+ 305 0078 FEE7     		b	.L17
+ 306              	.L19:
+ 100:../../CM4/Core/Src/main.c **** 
+ 307              		.loc 1 100 3 is_stmt 0 discriminator 1 view .LVU60
+ 308 007a 064A     		ldr	r2, .L20+8
+ 309 007c D2F80431 		ldr	r3, [r2, #260]
+ 310 0080 43F00103 		orr	r3, r3, #1
+ 311 0084 C2F80431 		str	r3, [r2, #260]
+ 312 0088 E0E7     		b	.L16
+ 313              	.L21:
+ 314 008a 00BF     		.align	2
+ 315              	.L20:
+ 316 008c 00440258 		.word	1476543488
+ 317 0090 00ED00E0 		.word	-536810240
+ 318 0094 00640258 		.word	1476551680
+ 319 0098 00000000 		.word	.LC0
+ 320 009c 00000000 		.word	.LANCHOR0
+ 321 00a0 00000000 		.word	.LANCHOR1
+ 322 00a4 00000000 		.word	CM4StatusLEDTask
+ 323 00a8 00000000 		.word	.LANCHOR2
+ 324              		.cfi_endproc
+ 325              	.LFE136:
+ 327              		.section	.text.HAL_TIM_PeriodElapsedCallback,"ax",%progbits
+ 328              		.align	1
+ 329              		.global	HAL_TIM_PeriodElapsedCallback
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s 			page 12
 
 
- 320              		@ frame_needed = 0, uses_anonymous_args = 0
- 321              		@ link register save eliminated.
- 293:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN Error_Handler_Debug */
- 294:../../CM4/Core/Src/main.c ****   /* User can add his own implementation to report the HAL error return state */
- 295:../../CM4/Core/Src/main.c ****   __disable_irq();
- 322              		.loc 1 295 3 view .LVU60
- 323              	.LBB6:
- 324              	.LBI6:
- 325              		.file 2 "../../Drivers/CMSIS/Include/cmsis_gcc.h"
+ 330              		.syntax unified
+ 331              		.thumb
+ 332              		.thumb_func
+ 334              	HAL_TIM_PeriodElapsedCallback:
+ 335              	.LVL18:
+ 336              	.LFB141:
+ 277:../../CM4/Core/Src/main.c ****   }
+ 278:../../CM4/Core/Src/main.c ****   /* USER CODE END 5 */
+ 279:../../CM4/Core/Src/main.c **** }
+ 280:../../CM4/Core/Src/main.c **** 
+ 281:../../CM4/Core/Src/main.c **** /**
+ 282:../../CM4/Core/Src/main.c ****   * @brief  Period elapsed callback in non blocking mode
+ 283:../../CM4/Core/Src/main.c ****   * @note   This function is called  when TIM2 interrupt took place, inside
+ 284:../../CM4/Core/Src/main.c ****   * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+ 285:../../CM4/Core/Src/main.c ****   * a global variable "uwTick" used as application time base.
+ 286:../../CM4/Core/Src/main.c ****   * @param  htim : TIM handle
+ 287:../../CM4/Core/Src/main.c ****   * @retval None
+ 288:../../CM4/Core/Src/main.c ****   */
+ 289:../../CM4/Core/Src/main.c **** void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+ 290:../../CM4/Core/Src/main.c **** {
+ 337              		.loc 1 290 1 is_stmt 1 view -0
+ 338              		.cfi_startproc
+ 339              		@ args = 0, pretend = 0, frame = 0
+ 340              		@ frame_needed = 0, uses_anonymous_args = 0
+ 341              		.loc 1 290 1 is_stmt 0 view .LVU62
+ 342 0000 08B5     		push	{r3, lr}
+ 343              	.LCFI8:
+ 344              		.cfi_def_cfa_offset 8
+ 345              		.cfi_offset 3, -8
+ 346              		.cfi_offset 14, -4
+ 291:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN Callback 0 */
+ 292:../../CM4/Core/Src/main.c **** 
+ 293:../../CM4/Core/Src/main.c ****   /* USER CODE END Callback 0 */
+ 294:../../CM4/Core/Src/main.c ****   if (htim->Instance == TIM2) {
+ 347              		.loc 1 294 3 is_stmt 1 view .LVU63
+ 348              		.loc 1 294 11 is_stmt 0 view .LVU64
+ 349 0002 0368     		ldr	r3, [r0]
+ 350              		.loc 1 294 6 view .LVU65
+ 351 0004 B3F1804F 		cmp	r3, #1073741824
+ 352 0008 00D0     		beq	.L25
+ 353              	.LVL19:
+ 354              	.L22:
+ 295:../../CM4/Core/Src/main.c ****     HAL_IncTick();
+ 296:../../CM4/Core/Src/main.c ****   }
+ 297:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN Callback 1 */
+ 298:../../CM4/Core/Src/main.c **** 
+ 299:../../CM4/Core/Src/main.c ****   /* USER CODE END Callback 1 */
+ 300:../../CM4/Core/Src/main.c **** }
+ 355              		.loc 1 300 1 view .LVU66
+ 356 000a 08BD     		pop	{r3, pc}
+ 357              	.LVL20:
+ 358              	.L25:
+ 295:../../CM4/Core/Src/main.c ****     HAL_IncTick();
+ 359              		.loc 1 295 5 is_stmt 1 view .LVU67
+ 360 000c FFF7FEFF 		bl	HAL_IncTick
+ 361              	.LVL21:
+ 362              		.loc 1 300 1 is_stmt 0 view .LVU68
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s 			page 13
+
+
+ 363 0010 FBE7     		b	.L22
+ 364              		.cfi_endproc
+ 365              	.LFE141:
+ 367              		.section	.text.Error_Handler,"ax",%progbits
+ 368              		.align	1
+ 369              		.global	Error_Handler
+ 370              		.syntax unified
+ 371              		.thumb
+ 372              		.thumb_func
+ 374              	Error_Handler:
+ 375              	.LFB142:
+ 301:../../CM4/Core/Src/main.c **** 
+ 302:../../CM4/Core/Src/main.c **** /**
+ 303:../../CM4/Core/Src/main.c ****   * @brief  This function is executed in case of error occurrence.
+ 304:../../CM4/Core/Src/main.c ****   * @retval None
+ 305:../../CM4/Core/Src/main.c ****   */
+ 306:../../CM4/Core/Src/main.c **** void Error_Handler(void)
+ 307:../../CM4/Core/Src/main.c **** {
+ 376              		.loc 1 307 1 is_stmt 1 view -0
+ 377              		.cfi_startproc
+ 378              		@ Volatile: function does not return.
+ 379              		@ args = 0, pretend = 0, frame = 0
+ 380              		@ frame_needed = 0, uses_anonymous_args = 0
+ 381              		@ link register save eliminated.
+ 308:../../CM4/Core/Src/main.c ****   /* USER CODE BEGIN Error_Handler_Debug */
+ 309:../../CM4/Core/Src/main.c ****   /* User can add his own implementation to report the HAL error return state */
+ 310:../../CM4/Core/Src/main.c ****   __disable_irq();
+ 382              		.loc 1 310 3 view .LVU70
+ 383              	.LBB7:
+ 384              	.LBI7:
+ 385              		.file 2 "../../Drivers/CMSIS/Include/cmsis_gcc.h"
    1:../../Drivers/CMSIS/Include/cmsis_gcc.h **** /**************************************************************************//**
    2:../../Drivers/CMSIS/Include/cmsis_gcc.h ****  * @file     cmsis_gcc.h
    3:../../Drivers/CMSIS/Include/cmsis_gcc.h ****  * @brief    CMSIS compiler GCC header file
@@ -696,6 +778,9 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 1
   24:../../Drivers/CMSIS/Include/cmsis_gcc.h **** 
   25:../../Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef __CMSIS_GCC_H
   26:../../Drivers/CMSIS/Include/cmsis_gcc.h **** #define __CMSIS_GCC_H
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s 			page 14
+
+
   27:../../Drivers/CMSIS/Include/cmsis_gcc.h **** 
   28:../../Drivers/CMSIS/Include/cmsis_gcc.h **** /* ignore some GCC warnings */
   29:../../Drivers/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic push
@@ -718,9 +803,6 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 1
   46:../../Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __STATIC_INLINE
   47:../../Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __STATIC_INLINE                        static inline
   48:../../Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 13
-
-
   49:../../Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __STATIC_FORCEINLINE                 
   50:../../Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __STATIC_FORCEINLINE                   __attribute__((always_inline)) static inline
   51:../../Drivers/CMSIS/Include/cmsis_gcc.h **** #endif                                           
@@ -756,6 +838,9 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 1
   81:../../Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
   82:../../Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT16_WRITE { uint16_t v; };
   83:../../Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s 			page 15
+
+
   84:../../Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT16_WRITE(addr, val)    (void)((((struct T_UINT16_WRITE *)(void *)(addr))-
   85:../../Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
   86:../../Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT16_READ
@@ -778,9 +863,6 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 1
  103:../../Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
  104:../../Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
  105:../../Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 14
-
-
  106:../../Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT32_READ { uint32_t v; };
  107:../../Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
  108:../../Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32_READ(addr)          (((const struct T_UINT32_READ *)(const void *)(add
@@ -816,6 +898,9 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 1
  138:../../Drivers/CMSIS/Include/cmsis_gcc.h ****     uint32_t  wlen;
  139:../../Drivers/CMSIS/Include/cmsis_gcc.h ****   } __copy_table_t;
  140:../../Drivers/CMSIS/Include/cmsis_gcc.h ****   
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s 			page 16
+
+
  141:../../Drivers/CMSIS/Include/cmsis_gcc.h ****   typedef struct {
  142:../../Drivers/CMSIS/Include/cmsis_gcc.h ****     uint32_t* dest;
  143:../../Drivers/CMSIS/Include/cmsis_gcc.h ****     uint32_t  wlen;
@@ -838,9 +923,6 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 1
  160:../../Drivers/CMSIS/Include/cmsis_gcc.h ****     }
  161:../../Drivers/CMSIS/Include/cmsis_gcc.h ****   }
  162:../../Drivers/CMSIS/Include/cmsis_gcc.h ****  
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 15
-
-
  163:../../Drivers/CMSIS/Include/cmsis_gcc.h ****   _start();
  164:../../Drivers/CMSIS/Include/cmsis_gcc.h **** }
  165:../../Drivers/CMSIS/Include/cmsis_gcc.h ****   
@@ -876,6 +958,9 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 1
  195:../../Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  196:../../Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __enable_irq(void)
  197:../../Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s 			page 17
+
+
  198:../../Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("cpsie i" : : : "memory");
  199:../../Drivers/CMSIS/Include/cmsis_gcc.h **** }
  200:../../Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -886,268 +971,298 @@ ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 1
  205:../../Drivers/CMSIS/Include/cmsis_gcc.h ****            Can only be executed in Privileged modes.
  206:../../Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  207:../../Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __disable_irq(void)
- 326              		.loc 2 207 27 view .LVU61
- 327              	.LBB7:
+ 386              		.loc 2 207 27 view .LVU71
+ 387              	.LBB8:
  208:../../Drivers/CMSIS/Include/cmsis_gcc.h **** {
  209:../../Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("cpsid i" : : : "memory");
- 328              		.loc 2 209 3 view .LVU62
- 329              		.syntax unified
- 330              	@ 209 "../../Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 331 0000 72B6     		cpsid i
- 332              	@ 0 "" 2
- 333              		.thumb
- 334              		.syntax unified
- 335              	.L23:
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 16
+ 388              		.loc 2 209 3 view .LVU72
+ 389              		.syntax unified
+ 390              	@ 209 "../../Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 391 0000 72B6     		cpsid i
+ 392              	@ 0 "" 2
+ 393              		.thumb
+ 394              		.syntax unified
+ 395              	.L27:
+ 396              	.LBE8:
+ 397              	.LBE7:
+ 311:../../CM4/Core/Src/main.c ****   while (1)
+ 398              		.loc 1 311 3 discriminator 1 view .LVU73
+ 312:../../CM4/Core/Src/main.c ****   {
+ 313:../../CM4/Core/Src/main.c ****   }
+ 399              		.loc 1 313 3 discriminator 1 view .LVU74
+ 311:../../CM4/Core/Src/main.c ****   while (1)
+ 400              		.loc 1 311 9 discriminator 1 view .LVU75
+ 401 0002 FEE7     		b	.L27
+ 402              		.cfi_endproc
+ 403              	.LFE142:
+ 405              		.section	.text.MX_USART3_UART_Init,"ax",%progbits
+ 406              		.align	1
+ 407              		.global	MX_USART3_UART_Init
+ 408              		.syntax unified
+ 409              		.thumb
+ 410              		.thumb_func
+ 412              	MX_USART3_UART_Init:
+ 413              	.LFB137:
+ 175:../../CM4/Core/Src/main.c **** 
+ 414              		.loc 1 175 1 view -0
+ 415              		.cfi_startproc
+ 416              		@ args = 0, pretend = 0, frame = 0
+ 417              		@ frame_needed = 0, uses_anonymous_args = 0
+ 418 0000 08B5     		push	{r3, lr}
+ 419              	.LCFI9:
+ 420              		.cfi_def_cfa_offset 8
+ 421              		.cfi_offset 3, -8
+ 422              		.cfi_offset 14, -4
+ 184:../../CM4/Core/Src/main.c ****   huart3.Init.BaudRate = 115200;
+ 423              		.loc 1 184 3 view .LVU77
+ 184:../../CM4/Core/Src/main.c ****   huart3.Init.BaudRate = 115200;
+ 424              		.loc 1 184 19 is_stmt 0 view .LVU78
+ 425 0002 1548     		ldr	r0, .L38
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s 			page 18
 
 
- 336              	.LBE7:
- 337              	.LBE6:
- 296:../../CM4/Core/Src/main.c ****   while (1)
- 338              		.loc 1 296 3 discriminator 1 view .LVU63
- 297:../../CM4/Core/Src/main.c ****   {
- 298:../../CM4/Core/Src/main.c ****   }
- 339              		.loc 1 298 3 discriminator 1 view .LVU64
- 296:../../CM4/Core/Src/main.c ****   while (1)
- 340              		.loc 1 296 9 discriminator 1 view .LVU65
- 341 0002 FEE7     		b	.L23
- 342              		.cfi_endproc
- 343              	.LFE141:
- 345              		.section	.text.MX_USART3_UART_Init,"ax",%progbits
- 346              		.align	1
- 347              		.global	MX_USART3_UART_Init
- 348              		.syntax unified
- 349              		.thumb
- 350              		.thumb_func
- 352              	MX_USART3_UART_Init:
- 353              	.LFB137:
- 171:../../CM4/Core/Src/main.c **** 
- 354              		.loc 1 171 1 view -0
- 355              		.cfi_startproc
- 356              		@ args = 0, pretend = 0, frame = 0
- 357              		@ frame_needed = 0, uses_anonymous_args = 0
- 358 0000 08B5     		push	{r3, lr}
- 359              	.LCFI7:
- 360              		.cfi_def_cfa_offset 8
- 361              		.cfi_offset 3, -8
- 362              		.cfi_offset 14, -4
- 180:../../CM4/Core/Src/main.c ****   huart3.Init.BaudRate = 115200;
- 363              		.loc 1 180 3 view .LVU67
- 180:../../CM4/Core/Src/main.c ****   huart3.Init.BaudRate = 115200;
- 364              		.loc 1 180 19 is_stmt 0 view .LVU68
- 365 0002 1548     		ldr	r0, .L34
- 366 0004 154B     		ldr	r3, .L34+4
- 367 0006 0360     		str	r3, [r0]
- 181:../../CM4/Core/Src/main.c ****   huart3.Init.WordLength = UART_WORDLENGTH_8B;
- 368              		.loc 1 181 3 is_stmt 1 view .LVU69
- 181:../../CM4/Core/Src/main.c ****   huart3.Init.WordLength = UART_WORDLENGTH_8B;
- 369              		.loc 1 181 24 is_stmt 0 view .LVU70
- 370 0008 4FF4E133 		mov	r3, #115200
- 371 000c 4360     		str	r3, [r0, #4]
- 182:../../CM4/Core/Src/main.c ****   huart3.Init.StopBits = UART_STOPBITS_1;
- 372              		.loc 1 182 3 is_stmt 1 view .LVU71
- 182:../../CM4/Core/Src/main.c ****   huart3.Init.StopBits = UART_STOPBITS_1;
- 373              		.loc 1 182 26 is_stmt 0 view .LVU72
- 374 000e 0023     		movs	r3, #0
- 375 0010 8360     		str	r3, [r0, #8]
- 183:../../CM4/Core/Src/main.c ****   huart3.Init.Parity = UART_PARITY_NONE;
- 376              		.loc 1 183 3 is_stmt 1 view .LVU73
- 183:../../CM4/Core/Src/main.c ****   huart3.Init.Parity = UART_PARITY_NONE;
- 377              		.loc 1 183 24 is_stmt 0 view .LVU74
- 378 0012 C360     		str	r3, [r0, #12]
- 184:../../CM4/Core/Src/main.c ****   huart3.Init.Mode = UART_MODE_TX_RX;
- 379              		.loc 1 184 3 is_stmt 1 view .LVU75
- 184:../../CM4/Core/Src/main.c ****   huart3.Init.Mode = UART_MODE_TX_RX;
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 17
-
-
- 380              		.loc 1 184 22 is_stmt 0 view .LVU76
- 381 0014 0361     		str	r3, [r0, #16]
- 185:../../CM4/Core/Src/main.c ****   huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
- 382              		.loc 1 185 3 is_stmt 1 view .LVU77
- 185:../../CM4/Core/Src/main.c ****   huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
- 383              		.loc 1 185 20 is_stmt 0 view .LVU78
- 384 0016 0C22     		movs	r2, #12
- 385 0018 4261     		str	r2, [r0, #20]
- 186:../../CM4/Core/Src/main.c ****   huart3.Init.OverSampling = UART_OVERSAMPLING_16;
- 386              		.loc 1 186 3 is_stmt 1 view .LVU79
- 186:../../CM4/Core/Src/main.c ****   huart3.Init.OverSampling = UART_OVERSAMPLING_16;
- 387              		.loc 1 186 25 is_stmt 0 view .LVU80
- 388 001a 8361     		str	r3, [r0, #24]
- 187:../../CM4/Core/Src/main.c ****   huart3.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
- 389              		.loc 1 187 3 is_stmt 1 view .LVU81
- 187:../../CM4/Core/Src/main.c ****   huart3.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
- 390              		.loc 1 187 28 is_stmt 0 view .LVU82
- 391 001c C361     		str	r3, [r0, #28]
- 188:../../CM4/Core/Src/main.c ****   huart3.Init.ClockPrescaler = UART_PRESCALER_DIV1;
- 392              		.loc 1 188 3 is_stmt 1 view .LVU83
- 188:../../CM4/Core/Src/main.c ****   huart3.Init.ClockPrescaler = UART_PRESCALER_DIV1;
- 393              		.loc 1 188 30 is_stmt 0 view .LVU84
- 394 001e 0362     		str	r3, [r0, #32]
- 189:../../CM4/Core/Src/main.c ****   huart3.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
- 395              		.loc 1 189 3 is_stmt 1 view .LVU85
- 189:../../CM4/Core/Src/main.c ****   huart3.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
- 396              		.loc 1 189 30 is_stmt 0 view .LVU86
- 397 0020 4362     		str	r3, [r0, #36]
- 190:../../CM4/Core/Src/main.c ****   if (HAL_UART_Init(&huart3) != HAL_OK)
- 398              		.loc 1 190 3 is_stmt 1 view .LVU87
- 190:../../CM4/Core/Src/main.c ****   if (HAL_UART_Init(&huart3) != HAL_OK)
- 399              		.loc 1 190 38 is_stmt 0 view .LVU88
- 400 0022 8362     		str	r3, [r0, #40]
- 191:../../CM4/Core/Src/main.c ****   {
- 401              		.loc 1 191 3 is_stmt 1 view .LVU89
- 191:../../CM4/Core/Src/main.c ****   {
- 402              		.loc 1 191 7 is_stmt 0 view .LVU90
- 403 0024 FFF7FEFF 		bl	HAL_UART_Init
- 404              	.LVL20:
- 191:../../CM4/Core/Src/main.c ****   {
- 405              		.loc 1 191 6 view .LVU91
- 406 0028 70B9     		cbnz	r0, .L30
+ 426 0004 154B     		ldr	r3, .L38+4
+ 427 0006 0360     		str	r3, [r0]
+ 185:../../CM4/Core/Src/main.c ****   huart3.Init.WordLength = UART_WORDLENGTH_8B;
+ 428              		.loc 1 185 3 is_stmt 1 view .LVU79
+ 185:../../CM4/Core/Src/main.c ****   huart3.Init.WordLength = UART_WORDLENGTH_8B;
+ 429              		.loc 1 185 24 is_stmt 0 view .LVU80
+ 430 0008 4FF4E133 		mov	r3, #115200
+ 431 000c 4360     		str	r3, [r0, #4]
+ 186:../../CM4/Core/Src/main.c ****   huart3.Init.StopBits = UART_STOPBITS_1;
+ 432              		.loc 1 186 3 is_stmt 1 view .LVU81
+ 186:../../CM4/Core/Src/main.c ****   huart3.Init.StopBits = UART_STOPBITS_1;
+ 433              		.loc 1 186 26 is_stmt 0 view .LVU82
+ 434 000e 0023     		movs	r3, #0
+ 435 0010 8360     		str	r3, [r0, #8]
+ 187:../../CM4/Core/Src/main.c ****   huart3.Init.Parity = UART_PARITY_NONE;
+ 436              		.loc 1 187 3 is_stmt 1 view .LVU83
+ 187:../../CM4/Core/Src/main.c ****   huart3.Init.Parity = UART_PARITY_NONE;
+ 437              		.loc 1 187 24 is_stmt 0 view .LVU84
+ 438 0012 C360     		str	r3, [r0, #12]
+ 188:../../CM4/Core/Src/main.c ****   huart3.Init.Mode = UART_MODE_TX_RX;
+ 439              		.loc 1 188 3 is_stmt 1 view .LVU85
+ 188:../../CM4/Core/Src/main.c ****   huart3.Init.Mode = UART_MODE_TX_RX;
+ 440              		.loc 1 188 22 is_stmt 0 view .LVU86
+ 441 0014 0361     		str	r3, [r0, #16]
+ 189:../../CM4/Core/Src/main.c ****   huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+ 442              		.loc 1 189 3 is_stmt 1 view .LVU87
+ 189:../../CM4/Core/Src/main.c ****   huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+ 443              		.loc 1 189 20 is_stmt 0 view .LVU88
+ 444 0016 0C22     		movs	r2, #12
+ 445 0018 4261     		str	r2, [r0, #20]
+ 190:../../CM4/Core/Src/main.c ****   huart3.Init.OverSampling = UART_OVERSAMPLING_16;
+ 446              		.loc 1 190 3 is_stmt 1 view .LVU89
+ 190:../../CM4/Core/Src/main.c ****   huart3.Init.OverSampling = UART_OVERSAMPLING_16;
+ 447              		.loc 1 190 25 is_stmt 0 view .LVU90
+ 448 001a 8361     		str	r3, [r0, #24]
+ 191:../../CM4/Core/Src/main.c ****   huart3.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
+ 449              		.loc 1 191 3 is_stmt 1 view .LVU91
+ 191:../../CM4/Core/Src/main.c ****   huart3.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
+ 450              		.loc 1 191 28 is_stmt 0 view .LVU92
+ 451 001c C361     		str	r3, [r0, #28]
+ 192:../../CM4/Core/Src/main.c ****   huart3.Init.ClockPrescaler = UART_PRESCALER_DIV1;
+ 452              		.loc 1 192 3 is_stmt 1 view .LVU93
+ 192:../../CM4/Core/Src/main.c ****   huart3.Init.ClockPrescaler = UART_PRESCALER_DIV1;
+ 453              		.loc 1 192 30 is_stmt 0 view .LVU94
+ 454 001e 0362     		str	r3, [r0, #32]
+ 193:../../CM4/Core/Src/main.c ****   huart3.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
+ 455              		.loc 1 193 3 is_stmt 1 view .LVU95
+ 193:../../CM4/Core/Src/main.c ****   huart3.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
+ 456              		.loc 1 193 30 is_stmt 0 view .LVU96
+ 457 0020 4362     		str	r3, [r0, #36]
+ 194:../../CM4/Core/Src/main.c ****   if (HAL_UART_Init(&huart3) != HAL_OK)
+ 458              		.loc 1 194 3 is_stmt 1 view .LVU97
+ 194:../../CM4/Core/Src/main.c ****   if (HAL_UART_Init(&huart3) != HAL_OK)
+ 459              		.loc 1 194 38 is_stmt 0 view .LVU98
+ 460 0022 8362     		str	r3, [r0, #40]
  195:../../CM4/Core/Src/main.c ****   {
- 407              		.loc 1 195 3 is_stmt 1 view .LVU92
- 195:../../CM4/Core/Src/main.c ****   {
- 408              		.loc 1 195 7 is_stmt 0 view .LVU93
- 409 002a 0021     		movs	r1, #0
- 410 002c 0A48     		ldr	r0, .L34
- 411 002e FFF7FEFF 		bl	HAL_UARTEx_SetTxFifoThreshold
- 412              	.LVL21:
- 195:../../CM4/Core/Src/main.c ****   {
- 413              		.loc 1 195 6 view .LVU94
- 414 0032 58B9     		cbnz	r0, .L31
- 199:../../CM4/Core/Src/main.c ****   {
- 415              		.loc 1 199 3 is_stmt 1 view .LVU95
- 199:../../CM4/Core/Src/main.c ****   {
- 416              		.loc 1 199 7 is_stmt 0 view .LVU96
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 18
+ 461              		.loc 1 195 3 is_stmt 1 view .LVU99
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s 			page 19
 
 
- 417 0034 0021     		movs	r1, #0
- 418 0036 0848     		ldr	r0, .L34
- 419 0038 FFF7FEFF 		bl	HAL_UARTEx_SetRxFifoThreshold
- 420              	.LVL22:
+ 195:../../CM4/Core/Src/main.c ****   {
+ 462              		.loc 1 195 7 is_stmt 0 view .LVU100
+ 463 0024 FFF7FEFF 		bl	HAL_UART_Init
+ 464              	.LVL22:
+ 195:../../CM4/Core/Src/main.c ****   {
+ 465              		.loc 1 195 6 view .LVU101
+ 466 0028 70B9     		cbnz	r0, .L34
  199:../../CM4/Core/Src/main.c ****   {
- 421              		.loc 1 199 6 view .LVU97
- 422 003c 40B9     		cbnz	r0, .L32
+ 467              		.loc 1 199 3 is_stmt 1 view .LVU102
+ 199:../../CM4/Core/Src/main.c ****   {
+ 468              		.loc 1 199 7 is_stmt 0 view .LVU103
+ 469 002a 0021     		movs	r1, #0
+ 470 002c 0A48     		ldr	r0, .L38
+ 471 002e FFF7FEFF 		bl	HAL_UARTEx_SetTxFifoThreshold
+ 472              	.LVL23:
+ 199:../../CM4/Core/Src/main.c ****   {
+ 473              		.loc 1 199 6 view .LVU104
+ 474 0032 58B9     		cbnz	r0, .L35
  203:../../CM4/Core/Src/main.c ****   {
- 423              		.loc 1 203 3 is_stmt 1 view .LVU98
+ 475              		.loc 1 203 3 is_stmt 1 view .LVU105
  203:../../CM4/Core/Src/main.c ****   {
- 424              		.loc 1 203 7 is_stmt 0 view .LVU99
- 425 003e 0648     		ldr	r0, .L34
- 426 0040 FFF7FEFF 		bl	HAL_UARTEx_DisableFifoMode
- 427              	.LVL23:
+ 476              		.loc 1 203 7 is_stmt 0 view .LVU106
+ 477 0034 0021     		movs	r1, #0
+ 478 0036 0848     		ldr	r0, .L38
+ 479 0038 FFF7FEFF 		bl	HAL_UARTEx_SetRxFifoThreshold
+ 480              	.LVL24:
  203:../../CM4/Core/Src/main.c ****   {
- 428              		.loc 1 203 6 view .LVU100
- 429 0044 30B9     		cbnz	r0, .L33
- 211:../../CM4/Core/Src/main.c **** 
- 430              		.loc 1 211 1 view .LVU101
- 431 0046 08BD     		pop	{r3, pc}
- 432              	.L30:
- 193:../../CM4/Core/Src/main.c ****   }
- 433              		.loc 1 193 5 is_stmt 1 view .LVU102
- 434 0048 FFF7FEFF 		bl	Error_Handler
- 435              	.LVL24:
- 436              	.L31:
+ 481              		.loc 1 203 6 view .LVU107
+ 482 003c 40B9     		cbnz	r0, .L36
+ 207:../../CM4/Core/Src/main.c ****   {
+ 483              		.loc 1 207 3 is_stmt 1 view .LVU108
+ 207:../../CM4/Core/Src/main.c ****   {
+ 484              		.loc 1 207 7 is_stmt 0 view .LVU109
+ 485 003e 0648     		ldr	r0, .L38
+ 486 0040 FFF7FEFF 		bl	HAL_UARTEx_DisableFifoMode
+ 487              	.LVL25:
+ 207:../../CM4/Core/Src/main.c ****   {
+ 488              		.loc 1 207 6 view .LVU110
+ 489 0044 30B9     		cbnz	r0, .L37
+ 215:../../CM4/Core/Src/main.c **** 
+ 490              		.loc 1 215 1 view .LVU111
+ 491 0046 08BD     		pop	{r3, pc}
+ 492              	.L34:
  197:../../CM4/Core/Src/main.c ****   }
- 437              		.loc 1 197 5 view .LVU103
- 438 004c FFF7FEFF 		bl	Error_Handler
- 439              	.LVL25:
- 440              	.L32:
+ 493              		.loc 1 197 5 is_stmt 1 view .LVU112
+ 494 0048 FFF7FEFF 		bl	Error_Handler
+ 495              	.LVL26:
+ 496              	.L35:
  201:../../CM4/Core/Src/main.c ****   }
- 441              		.loc 1 201 5 view .LVU104
- 442 0050 FFF7FEFF 		bl	Error_Handler
- 443              	.LVL26:
- 444              	.L33:
+ 497              		.loc 1 201 5 view .LVU113
+ 498 004c FFF7FEFF 		bl	Error_Handler
+ 499              	.LVL27:
+ 500              	.L36:
  205:../../CM4/Core/Src/main.c ****   }
- 445              		.loc 1 205 5 view .LVU105
- 446 0054 FFF7FEFF 		bl	Error_Handler
- 447              	.LVL27:
- 448              	.L35:
- 449              		.align	2
- 450              	.L34:
- 451 0058 00000000 		.word	huart3
- 452 005c 00480040 		.word	1073760256
- 453              		.cfi_endproc
- 454              	.LFE137:
- 456              		.global	defaultTask_attributes
- 457              		.section	.rodata.str1.4,"aMS",%progbits,1
- 458              		.align	2
- 459              	.LC0:
- 460 0000 64656661 		.ascii	"defaultTask\000"
- 460      756C7454 
- 460      61736B00 
- 461              		.section	.rodata.defaultTask_attributes,"a"
- 462              		.align	2
- 465              	defaultTask_attributes:
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 19
+ 501              		.loc 1 205 5 view .LVU114
+ 502 0050 FFF7FEFF 		bl	Error_Handler
+ 503              	.LVL28:
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s 			page 20
 
 
- 466 0000 00000000 		.word	.LC0
- 467 0004 00000000 		.space	16
- 467      00000000 
- 467      00000000 
- 467      00000000 
- 468 0014 00020000 		.word	512
- 469 0018 18000000 		.word	24
- 470 001c 00000000 		.space	8
- 470      00000000 
- 471              		.global	defaultTaskHandle
- 472              		.section	.bss.defaultTaskHandle,"aw",%nobits
- 473              		.align	2
- 476              	defaultTaskHandle:
- 477 0000 00000000 		.space	4
- 478              		.global	huart3
- 479              		.section	.bss.huart3,"aw",%nobits
- 480              		.align	2
- 483              	huart3:
- 484 0000 00000000 		.space	148
- 484      00000000 
- 484      00000000 
- 484      00000000 
- 484      00000000 
- 485              		.text
- 486              	.Letext0:
- 487              		.file 3 "c:\\program files (x86)\\arm gnu toolchain arm-none-eabi\\12.2 rel1\\arm-none-eabi\\inclu
- 488              		.file 4 "c:\\program files (x86)\\arm gnu toolchain arm-none-eabi\\12.2 rel1\\arm-none-eabi\\inclu
- 489              		.file 5 "../../Drivers/CMSIS/Include/core_cm4.h"
- 490              		.file 6 "../../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h755xx.h"
- 491              		.file 7 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
- 492              		.file 8 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h"
- 493              		.file 9 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h"
- 494              		.file 10 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h"
- 495              		.file 11 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h"
- 496              		.file 12 "../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h"
- 497              		.file 13 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h"
- 498              		.file 14 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
- 499              		.file 15 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h"
- 500              		.file 16 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hsem.h"
-ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s 			page 20
+ 504              	.L37:
+ 209:../../CM4/Core/Src/main.c ****   }
+ 505              		.loc 1 209 5 view .LVU115
+ 506 0054 FFF7FEFF 		bl	Error_Handler
+ 507              	.LVL29:
+ 508              	.L39:
+ 509              		.align	2
+ 510              	.L38:
+ 511 0058 00000000 		.word	.LANCHOR0
+ 512 005c 00480040 		.word	1073760256
+ 513              		.cfi_endproc
+ 514              	.LFE137:
+ 516              		.global	CM4StatusLED_attributes
+ 517              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 518              		.align	2
+ 519              	.LC1:
+ 520 0000 434D3453 		.ascii	"CM4StatusLED\000"
+ 520      74617475 
+ 520      734C4544 
+ 520      00
+ 521              		.global	CM4StatusLEDHandle
+ 522              		.global	hdma_usart3_tx
+ 523              		.global	hdma_usart3_rx
+ 524              		.global	huart3
+ 525              		.section	.bss.CM4StatusLEDHandle,"aw",%nobits
+ 526              		.align	2
+ 527              		.set	.LANCHOR2,. + 0
+ 530              	CM4StatusLEDHandle:
+ 531 0000 00000000 		.space	4
+ 532              		.section	.bss.hdma_usart3_rx,"aw",%nobits
+ 533              		.align	2
+ 536              	hdma_usart3_rx:
+ 537 0000 00000000 		.space	120
+ 537      00000000 
+ 537      00000000 
+ 537      00000000 
+ 537      00000000 
+ 538              		.section	.bss.hdma_usart3_tx,"aw",%nobits
+ 539              		.align	2
+ 542              	hdma_usart3_tx:
+ 543 0000 00000000 		.space	120
+ 543      00000000 
+ 543      00000000 
+ 543      00000000 
+ 543      00000000 
+ 544              		.section	.bss.huart3,"aw",%nobits
+ 545              		.align	2
+ 546              		.set	.LANCHOR0,. + 0
+ 549              	huart3:
+ 550 0000 00000000 		.space	148
+ 550      00000000 
+ 550      00000000 
+ 550      00000000 
+ 550      00000000 
+ 551              		.section	.rodata.CM4StatusLED_attributes,"a"
+ 552              		.align	2
+ 553              		.set	.LANCHOR1,. + 0
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s 			page 21
+
+
+ 556              	CM4StatusLED_attributes:
+ 557 0000 00000000 		.word	.LC1
+ 558 0004 00000000 		.space	16
+ 558      00000000 
+ 558      00000000 
+ 558      00000000 
+ 559 0014 00020000 		.word	512
+ 560 0018 10000000 		.word	16
+ 561 001c 00000000 		.space	8
+ 561      00000000 
+ 562              		.text
+ 563              	.Letext0:
+ 564              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 565              		.file 4 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 566              		.file 5 "../../Drivers/CMSIS/Include/core_cm4.h"
+ 567              		.file 6 "../../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h755xx.h"
+ 568              		.file 7 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
+ 569              		.file 8 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h"
+ 570              		.file 9 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h"
+ 571              		.file 10 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h"
+ 572              		.file 11 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h"
+ 573              		.file 12 "../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h"
+ 574              		.file 13 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
+ 575              		.file 14 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h"
+ 576              		.file 15 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hsem.h"
+ 577              		.file 16 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h"
+ARM GAS  C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s 			page 22
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s:21     .text.MX_GPIO_Init:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s:26     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
-C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s:100    .text.MX_GPIO_Init:00000054 $d
-C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s:106    .text.StartDefaultTask:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s:112    .text.StartDefaultTask:00000000 StartDefaultTask
-C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s:155    .text.StartDefaultTask:00000030 $d
-C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s:160    .text.main:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s:166    .text.main:00000000 main
-C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s:258    .text.main:0000007c $d
-C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s:465    .rodata.defaultTask_attributes:00000000 defaultTask_attributes
-C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s:476    .bss.defaultTaskHandle:00000000 defaultTaskHandle
-C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s:268    .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s:274    .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
-C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s:308    .text.Error_Handler:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s:314    .text.Error_Handler:00000000 Error_Handler
-C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s:346    .text.MX_USART3_UART_Init:00000000 $t
-C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s:352    .text.MX_USART3_UART_Init:00000000 MX_USART3_UART_Init
-C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s:451    .text.MX_USART3_UART_Init:00000058 $d
-C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s:483    .bss.huart3:00000000 huart3
-C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s:458    .rodata.str1.4:00000000 $d
-C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s:462    .rodata.defaultTask_attributes:00000000 $d
-C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s:473    .bss.defaultTaskHandle:00000000 $d
-C:\Users\gigig\AppData\Local\Temp\ccRniHNh.s:480    .bss.huart3:00000000 $d
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:20     .text.MX_DMA_Init:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:25     .text.MX_DMA_Init:00000000 MX_DMA_Init
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:61     .text.MX_DMA_Init:00000020 $d
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:66     .text.MX_GPIO_Init:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:71     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:145    .text.MX_GPIO_Init:00000054 $d
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:151    .text.CM4StatusLEDTask:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:157    .text.CM4StatusLEDTask:00000000 CM4StatusLEDTask
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:200    .text.CM4StatusLEDTask:00000030 $d
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:205    .rodata.main.str1.4:00000000 $d
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:209    .text.main:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:215    .text.main:00000000 main
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:316    .text.main:0000008c $d
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:328    .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:334    .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:368    .text.Error_Handler:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:374    .text.Error_Handler:00000000 Error_Handler
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:406    .text.MX_USART3_UART_Init:00000000 $t
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:412    .text.MX_USART3_UART_Init:00000000 MX_USART3_UART_Init
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:511    .text.MX_USART3_UART_Init:00000058 $d
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:556    .rodata.CM4StatusLED_attributes:00000000 CM4StatusLED_attributes
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:518    .rodata.str1.4:00000000 $d
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:530    .bss.CM4StatusLEDHandle:00000000 CM4StatusLEDHandle
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:542    .bss.hdma_usart3_tx:00000000 hdma_usart3_tx
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:536    .bss.hdma_usart3_rx:00000000 hdma_usart3_rx
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:549    .bss.huart3:00000000 huart3
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:526    .bss.CM4StatusLEDHandle:00000000 $d
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:533    .bss.hdma_usart3_rx:00000000 $d
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:539    .bss.hdma_usart3_tx:00000000 $d
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:545    .bss.huart3:00000000 $d
+C:\Users\gigig\AppData\Local\Temp\ccJBgBzC.s:552    .rodata.CM4StatusLED_attributes:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_GPIO_WritePin
@@ -1157,6 +1272,7 @@ HAL_HSEM_ActivateNotification
 HAL_PWREx_ClearPendingEvent
 HAL_PWREx_EnterSTOPMode
 HAL_Init
+HAL_UART_Transmit_DMA
 osKernelInitialize
 osThreadNew
 osKernelStart

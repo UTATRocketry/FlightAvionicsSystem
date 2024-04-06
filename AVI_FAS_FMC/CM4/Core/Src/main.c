@@ -47,13 +47,15 @@
 /* Private variables ---------------------------------------------------------*/
 
 UART_HandleTypeDef huart3;
+DMA_HandleTypeDef hdma_usart3_rx;
+DMA_HandleTypeDef hdma_usart3_tx;
 
-/* Definitions for defaultTask */
-osThreadId_t defaultTaskHandle;
-const osThreadAttr_t defaultTask_attributes = {
-  .name = "defaultTask",
+/* Definitions for CM4StatusLED */
+osThreadId_t CM4StatusLEDHandle;
+const osThreadAttr_t CM4StatusLED_attributes = {
+  .name = "CM4StatusLED",
   .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityNormal,
+  .priority = (osPriority_t) osPriorityBelowNormal,
 };
 /* USER CODE BEGIN PV */
 
@@ -61,7 +63,8 @@ const osThreadAttr_t defaultTask_attributes = {
 
 /* Private function prototypes -----------------------------------------------*/
 static void MX_GPIO_Init(void);
-void StartDefaultTask(void *argument);
+static void MX_DMA_Init(void);
+void CM4StatusLEDTask(void *argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -112,8 +115,9 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   /* USER CODE BEGIN 2 */
-
+  HAL_UART_Transmit_DMA(&huart3, (uint8_t *)"\rCORE 1: Initialization Complete...\r\n", 38);
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -136,8 +140,8 @@ int main(void)
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
-  /* creation of defaultTask */
-  defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
+  /* creation of CM4StatusLED */
+  CM4StatusLEDHandle = osThreadNew(CM4StatusLEDTask, NULL, &CM4StatusLED_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -211,6 +215,17 @@ void MX_USART3_UART_Init(void)
 }
 
 /**
+  * Enable DMA controller clock
+  */
+static void MX_DMA_Init(void)
+{
+
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA1_CLK_ENABLE();
+
+}
+
+/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -242,14 +257,14 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE END 4 */
 
-/* USER CODE BEGIN Header_StartDefaultTask */
+/* USER CODE BEGIN Header_CM4StatusLEDTask */
 /**
-  * @brief  Function implementing the defaultTask thread.
+  * @brief  Function implementing the CM4StatusLEDTas thread.
   * @param  argument: Not used
   * @retval None
   */
-/* USER CODE END Header_StartDefaultTask */
-void StartDefaultTask(void *argument)
+/* USER CODE END Header_CM4StatusLEDTask */
+void CM4StatusLEDTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
   /* Infinite loop */
