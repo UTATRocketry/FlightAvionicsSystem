@@ -141,7 +141,7 @@ Error_Handler();
   MX_USART3_UART_Init();
   MX_RTC_Init();
   /* USER CODE BEGIN 2 */
-  HAL_UART_Transmit_DMA(&huart3, (uint8_t *)"\rCORE 0: Initialization Complete...\r\n", 38);
+  HAL_UART_Transmit_DMA(&huart3, (uint8_t *)"CORE 0: Initialization Complete...\n", 38);
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -335,11 +335,11 @@ static void MX_USART3_UART_Init(void)
   {
     Error_Handler();
   }
-  if (HAL_UARTEx_SetTxFifoThreshold(&huart3, UART_TXFIFO_THRESHOLD_1_8) != HAL_OK)
+  if (HAL_UARTEx_SetTxFifoThreshold(&huart3, UART_TXFIFO_THRESHOLD_1_2) != HAL_OK)
   {
     Error_Handler();
   }
-  if (HAL_UARTEx_SetRxFifoThreshold(&huart3, UART_RXFIFO_THRESHOLD_1_8) != HAL_OK)
+  if (HAL_UARTEx_SetRxFifoThreshold(&huart3, UART_RXFIFO_THRESHOLD_1_2) != HAL_OK)
   {
     Error_Handler();
   }
@@ -421,6 +421,7 @@ void CM7StatusLEDTask(void *argument)
   for(;;)
   {
     HAL_GPIO_TogglePin(LD1_GPIO_Port, LD1_Pin);
+    HAL_UART_Transmit_DMA(&huart3, (uint8_t *)"Green\n", 6);
     osDelay(1000);
   }
   /* USER CODE END 5 */

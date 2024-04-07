@@ -117,7 +117,8 @@ int main(void)
   MX_GPIO_Init();
   MX_DMA_Init();
   /* USER CODE BEGIN 2 */
-  HAL_UART_Transmit_DMA(&huart3, (uint8_t *)"\rCORE 1: Initialization Complete...\r\n", 38);
+  MX_USART3_UART_Init();
+  HAL_UART_Transmit_DMA(&huart3, (uint8_t *)"CORE 1: Initialization Complete...\n", 38);
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -196,11 +197,11 @@ void MX_USART3_UART_Init(void)
   {
     Error_Handler();
   }
-  if (HAL_UARTEx_SetTxFifoThreshold(&huart3, UART_TXFIFO_THRESHOLD_1_8) != HAL_OK)
+  if (HAL_UARTEx_SetTxFifoThreshold(&huart3, UART_TXFIFO_THRESHOLD_1_2) != HAL_OK)
   {
     Error_Handler();
   }
-  if (HAL_UARTEx_SetRxFifoThreshold(&huart3, UART_RXFIFO_THRESHOLD_1_8) != HAL_OK)
+  if (HAL_UARTEx_SetRxFifoThreshold(&huart3, UART_RXFIFO_THRESHOLD_1_2) != HAL_OK)
   {
     Error_Handler();
   }
@@ -270,9 +271,8 @@ void CM4StatusLEDTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
-    osDelay(1000);
-    HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
+    HAL_UART_Transmit_DMA(&huart3, (uint8_t *)"Red\n", 4);
     osDelay(1000);
   }
   /* USER CODE END 5 */
