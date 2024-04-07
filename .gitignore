@@ -2,4 +2,4 @@
 /.vscode/
 /build/
 .build/
-*/build/
+./AVI_FAS_FMC/Makefile/CM4/build
