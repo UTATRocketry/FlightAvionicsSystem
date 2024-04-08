@@ -141,7 +141,7 @@ Error_Handler();
   MX_USART3_UART_Init();
   MX_RTC_Init();
   /* USER CODE BEGIN 2 */
-  HAL_UART_Transmit_DMA(&huart3, (uint8_t *)"CORE 0: Initialization Complete...\n", 38);
+  HAL_UART_Transmit_DMA(&huart3, (uint8_t *)"CORE 0: Initialization Complete:::\n", 38);
   /* USER CODE END 2 */
 
   /* Init scheduler */
