@@ -1,6 +1,3 @@
 /.metadata/
 /.vscode/
-/build/
-.build/
-/AVI_FAS_FMC/Makefile/CM4/build/
 **/build
