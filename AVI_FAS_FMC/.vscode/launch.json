@@ -1,32 +1,51 @@
 {
-    "configurations": [
+  "configurations": [
+    {
+      "showDevDebugOutput": "parsed",
+      "cwd": "${workspaceRoot}",
+      "executable": "./build/.elf",
+      "name": "Debug STM32",
+      "request": "launch",
+      "type": "cortex-debug",
+      "servertype": "openocd",
+      "preLaunchTask": "Build STM",
+      "device": "",
+      "configFiles": [
+        "openocd.cfg"
+      ]
+    },
+    {
+      "showDevDebugOutput": "parsed",
+      "cwd": "${workspaceRoot}",
+      "executable": "./build/.elf",
+      "name": "Attach STM32",
+      "request": "attach",
+      "type": "cortex-debug",
+      "servertype": "openocd",
+      "preLaunchTask": "Build STM",
+      "device": "",
+      "configFiles": [
+        "openocd.cfg"
+      ]
+    },
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "cwd": "c:/Users/Admin/OneDrive - University of Toronto/Documents/GitHub/FlightAvionicsSystem/AVI_FAS_FMC",
+      "program": "c:/Users/Admin/OneDrive - University of Toronto/Documents/GitHub/FlightAvionicsSystem/AVI_FAS_FMC/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
         {
-            "showDevDebugOutput": "parsed",
-            "cwd": "${workspaceRoot}",
-            "executable": "./build/.elf",
-            "name": "Debug STM32",
-            "request": "launch",
-            "type": "cortex-debug",
-            "servertype": "openocd",
-            "preLaunchTask": "Build STM",
-            "device": "",
-            "configFiles": [
-                "openocd.cfg"
-            ]
-        },
-        {
-            "showDevDebugOutput": "parsed",
-            "cwd": "${workspaceRoot}",
-            "executable": "./build/.elf",
-            "name": "Attach STM32",
-            "request": "attach",
-            "type": "cortex-debug",
-            "servertype": "openocd",
-            "preLaunchTask": "Build STM",
-            "device": "",
-            "configFiles": [
-                "openocd.cfg"
-            ]
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
         }
-    ]
+      ]
+    }
+  ]
 }
