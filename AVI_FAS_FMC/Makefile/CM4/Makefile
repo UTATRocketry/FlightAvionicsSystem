@@ -68,6 +68,7 @@ C_SOURCES =  \
 ../../Common/Src/system_stm32h7xx_dualcore_boot_cm4_cm7.c \
 ../../CM4/Core/Src/freertos.c \
 ../../CM4/Core/Src/stm32h7xx_hal_timebase_tim.c \
+../../CM4/Core/Src/user_messages.c \
 ../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rtc.c \
 ../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rtc_ex.c \
 ../../Middlewares/Third_Party/FreeRTOS/Source/croutine.c \
@@ -79,7 +80,8 @@ C_SOURCES =  \
 ../../Middlewares/Third_Party/FreeRTOS/Source/timers.c \
 ../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c \
 ../../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c \
-../../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c
+../../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c \
+../../Custom/Shared/Source/string_utilities.c
 
 # ASM sources
 ASM_SOURCES =  \
@@ -143,10 +145,11 @@ C_INCLUDES =  \
 -I../../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy \
 -I../../Drivers/CMSIS/Device/ST/STM32H7xx/Include \
 -I../../Drivers/CMSIS/Include \
--I../../Common/Inc \
 -I../../Middlewares/Third_Party/FreeRTOS/Source/include \
 -I../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 \
--I../../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+-I../../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F \
+-I../../Custom/Shared/Include \
+-I../../Common/Inc
 
 
 # compile gcc flags
