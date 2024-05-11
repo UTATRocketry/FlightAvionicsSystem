@@ -1,5 +1,7 @@
 #include "../Include/core_comms.h"
 
+#include <stdint.h>
+
 // Initialize pointers to shared memory structs
 const osMutexAttr_t comm_CM4_to_CM7_messages_mutex_attr = {
     .name = "comm_CM4_to_CM7_messages_mutex"
@@ -13,5 +15,5 @@ void core_comms_init_all_channels(void) {
 void core_comms_init_CM4_to_CM7_messages()
 {
   comm_CM4_to_CM7_messages_ptr->mutexHandle = osMutexNew(&comm_CM4_to_CM7_messages_mutex_attr);
-  memset(comm_CM4_to_CM7_messages_ptr->buffer, 0, CORE_COMM_CHANNEL_BUFFER_LEN);
+  memset(comm_CM4_to_CM7_messages_ptr->buffer, 0, (size_t)CORE_COMM_CHANNEL_BUFFER_LEN);
 }

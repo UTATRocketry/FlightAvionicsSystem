@@ -4,8 +4,8 @@
 #include "cmsis_os2.h"
 
 /* Communication channel properties */
-#define CORE_COMM_CHANNEL_BUFFER_LEN 512
-#define CORE_COMM_MUTEX_WAIT 50
+#define CORE_COMM_CHANNEL_BUFFER_LEN (512)
+#define CORE_COMM_MUTEX_WAIT (50)
 
 typedef struct core_comm_channel {
     uint8_t buffer[CORE_COMM_CHANNEL_BUFFER_LEN];
@@ -16,8 +16,8 @@ typedef struct core_comm_channel {
 #define MEM_ALIGN(x) (((x) + 0x00000003) & ~0x00000003)
 
 /* Shared RAM space to be used is SRAM4 in D3 domain */
-#define SHARED_RAM_ADDR 0x38000000
-#define SHARED_RAM_LEN  0x0000FFFF
+#define SHARED_RAM_ADDR (0x38000000)
+#define SHARED_RAM_LEN  (0x0000FFFF)
 
 /* Addresses of shared memory structs */
 #define BUFF_CM4_TO_CM7_MESSAGES_ADDR MEM_ALIGN(SHARED_RAM_ADDR)
