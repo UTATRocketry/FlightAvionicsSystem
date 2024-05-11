@@ -1,4 +1,4 @@
-#include "user_messages.h"
+#include "../Include/user_messages.h"
 
 /* Global struct */
 user_message_buffer_queue message_queue;

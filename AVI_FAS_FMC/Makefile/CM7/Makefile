@@ -80,7 +80,9 @@ C_SOURCES =  \
 ../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c \
 ../../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c \
 ../../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c \
-../../Custom/Shared/Source/string_utilities.c
+../../Custom/Shared/Source/core_comms.c \
+../../Custom/Shared/Source/string_utilities.c \
+../../Custom/Shared/Source/user_messages.c
 
 # ASM sources
 ASM_SOURCES =  \

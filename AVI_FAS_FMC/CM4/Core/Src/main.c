@@ -24,7 +24,7 @@
 /* USER CODE BEGIN Includes */
 
 #include <string.h>
-#include "messages.h"
+#include "core_comms.h"
 #include "string_utilities.h"
 
 /* USER CODE END Includes */
@@ -72,8 +72,6 @@ static void MX_USART3_UART_Init(void);
 void CM4StatusLEDTask(void *argument);
 
 /* USER CODE BEGIN PFP */
-
-static void CM4_to_CM7_Messages_Init(void);
 
 /* USER CODE END PFP */
 
@@ -133,7 +131,10 @@ int main(void)
   osKernelInitialize();
 
   /* USER CODE BEGIN RTOS_MUTEX */
-  CM4_to_CM7_Messages_Init(); // not the best place for this
+
+  // Initialize all core communication channels
+  core_comms_init_all_channels();
+
   /* USER CODE END RTOS_MUTEX */
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
@@ -271,12 +272,6 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
-void CM4_to_CM7_Messages_Init()
-{
-  comm_CM4_to_CM7_messages_ptr->mutexHandle = osMutexNew(&comm_CM4_to_CM7_messages_mutex_attr);
-  memset(comm_CM4_to_CM7_messages_ptr->buffer, 0, CORE_COMM_CHANNEL_BUFFER_LEN);
-}
-
 void CM4_USART3_DMA_Send(uint8_t *message, _ssize_t message_length)
 {
   if (message_length == -1)
@@ -290,9 +285,9 @@ void CM4_USART3_DMA_Send(uint8_t *message, _ssize_t message_length)
   HAL_UART_Transmit_DMA(&huart3, message, message_length);
 }
 
-void HAL_UART_TxCpltCallback(UART_HandleTypeDef* husart) {
-    HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
-}
+// void HAL_UART_TxCpltCallback(UART_HandleTypeDef* husart) {
+//     HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
+// }
 
 /* USER CODE END 4 */
 
@@ -310,33 +305,26 @@ void CM4StatusLEDTask(void *argument)
   /* Infinite loop */
   for (;;)
   {
-    // HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
+    HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
 
-    // uint8_t val = 0;
+    uint8_t val = 0;
 
-    // int status = osMutexAcquire(comm_CM4_to_CM7_messages_ptr->mutexHandle, CORE_COMM_MUTEX_WAIT);
-    // if (status != osOK)
-    // {
-    //   Error_Handler();
-    // }
+    int status = osMutexAcquire(comm_CM4_to_CM7_messages_ptr->mutexHandle, CORE_COMM_MUTEX_WAIT);
+    if (status != osOK)
+    {
+      Error_Handler();
+    }
 
-    // val = comm_CM4_to_CM7_messages_ptr->buffer[0];
+    val = comm_CM4_to_CM7_messages_ptr->buffer[0];
 
-    // status = osMutexRelease(comm_CM4_to_CM7_messages_ptr->mutexHandle);
-    // if (status != osOK)
-    // {
-    //   Error_Handler();
-    // }
+    status = osMutexRelease(comm_CM4_to_CM7_messages_ptr->mutexHandle);
+    if (status != osOK)
+    {
+      Error_Handler();
+    }
 
-    // char buffer[16] ="\0";
-    // itoa(val, buffer, 10);
-
-    // CM4_USART3_DMA_Send((uint8_t*)"CM4: Toggle!_\0", -1);
-    // osDelay(3);
-    // CM4_USART3_DMA_Send((uint8_t*)buffer, -1);
-    // osDelay(3);
     char buffer[48];
-    format_str(buffer, 48, "New %s %d testing %.5f \n\0", "Hello", 4, 143.1415962812);
+    format_str(buffer, 48, "Found %d\n\0", val);
 
     CM4_USART3_DMA_Send((uint8_t*)buffer, -1);
 

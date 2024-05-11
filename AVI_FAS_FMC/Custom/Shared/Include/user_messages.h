@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef USER_MESSAGES_H
 #define USER_MESSAGES_H
 

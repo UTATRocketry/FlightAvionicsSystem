@@ -23,7 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
-#include "messages.h"
+#include "core_comms.h"
 #include <string.h>
 
 /* USER CODE END Includes */
