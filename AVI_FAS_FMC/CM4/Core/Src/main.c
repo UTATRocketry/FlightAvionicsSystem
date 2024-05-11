@@ -18,13 +18,14 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "cmsis_os2.h"
+#include "cmsis_os.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
 #include <string.h>
 #include "core_comms.h"
+#include "user_messages.h"
 #include "string_utilities.h"
 
 /* USER CODE END Includes */
@@ -57,9 +58,16 @@ DMA_HandleTypeDef hdma_usart3_tx;
 /* Definitions for CM4StatusLED */
 osThreadId_t CM4StatusLEDHandle;
 const osThreadAttr_t CM4StatusLED_attributes = {
-    .name = "CM4StatusLED",
-    .stack_size = 128 * 4,
-    .priority = (osPriority_t)osPriorityBelowNormal,
+  .name = "CM4StatusLED",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityBelowNormal,
+};
+/* Definitions for CM4UserMessages */
+osThreadId_t CM4UserMessagesHandle;
+const osThreadAttr_t CM4UserMessages_attributes = {
+  .name = "CM4UserMessages",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityHigh,
 };
 /* USER CODE BEGIN PV */
 
@@ -70,6 +78,7 @@ static void MX_GPIO_Init(void);
 static void MX_DMA_Init(void);
 static void MX_USART3_UART_Init(void);
 void CM4StatusLEDTask(void *argument);
+void CM4UserMessagesTask(void *argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -81,16 +90,16 @@ void CM4StatusLEDTask(void *argument);
 /* USER CODE END 0 */
 
 /**
- * @brief  The application entry point.
- * @retval int
- */
+  * @brief  The application entry point.
+  * @retval int
+  */
 int main(void)
 {
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
 
-  /* USER CODE BEGIN Boot_Mode_Sequence_1 */
+/* USER CODE BEGIN Boot_Mode_Sequence_1 */
   /*HW semaphore Clock enable*/
   __HAL_RCC_HSEM_CLK_ENABLE();
   /* Activate HSEM notification for Cortex-M4*/
@@ -104,7 +113,7 @@ int main(void)
   /* Clear HSEM flag */
   __HAL_HSEM_CLEAR_FLAG(__HAL_HSEM_SEMID_TO_MASK(HSEM_ID_0));
 
-  /* USER CODE END Boot_Mode_Sequence_1 */
+/* USER CODE END Boot_Mode_Sequence_1 */
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
@@ -135,6 +144,12 @@ int main(void)
   // Initialize all core communication channels
   core_comms_init_all_channels();
 
+  // Initailize user messages buffer queue
+  user_messages_initialize();
+
+  // Initialize usart3 availability semaphore
+  usart3_available_sem_initialize();
+
   /* USER CODE END RTOS_MUTEX */
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
@@ -152,6 +167,9 @@ int main(void)
   /* Create the thread(s) */
   /* creation of CM4StatusLED */
   CM4StatusLEDHandle = osThreadNew(CM4StatusLEDTask, NULL, &CM4StatusLED_attributes);
+
+  /* creation of CM4UserMessages */
+  CM4UserMessagesHandle = osThreadNew(CM4UserMessagesTask, NULL, &CM4UserMessages_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -177,10 +195,10 @@ int main(void)
 }
 
 /**
- * @brief USART3 Initialization Function
- * @param None
- * @retval None
- */
+  * @brief USART3 Initialization Function
+  * @param None
+  * @retval None
+  */
 static void MX_USART3_UART_Init(void)
 {
 
@@ -221,11 +239,12 @@ static void MX_USART3_UART_Init(void)
   /* USER CODE BEGIN USART3_Init 2 */
 
   /* USER CODE END USART3_Init 2 */
+
 }
 
 /**
- * Enable DMA controller clock
- */
+  * Enable DMA controller clock
+  */
 static void MX_DMA_Init(void)
 {
 
@@ -239,18 +258,19 @@ static void MX_DMA_Init(void)
   /* DMA1_Stream1_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA1_Stream1_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA1_Stream1_IRQn);
+
 }
 
 /**
- * @brief GPIO Initialization Function
- * @param None
- * @retval None
- */
+  * @brief GPIO Initialization Function
+  * @param None
+  * @retval None
+  */
 static void MX_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
-  /* USER CODE BEGIN MX_GPIO_Init_1 */
-  /* USER CODE END MX_GPIO_Init_1 */
+/* USER CODE BEGIN MX_GPIO_Init_1 */
+/* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOB_CLK_ENABLE();
@@ -266,8 +286,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LD3_GPIO_Port, &GPIO_InitStruct);
 
-  /* USER CODE BEGIN MX_GPIO_Init_2 */
-  /* USER CODE END MX_GPIO_Init_2 */
+/* USER CODE BEGIN MX_GPIO_Init_2 */
+/* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
@@ -285,9 +305,10 @@ void CM4_USART3_DMA_Send(uint8_t *message, _ssize_t message_length)
   HAL_UART_Transmit_DMA(&huart3, message, message_length);
 }
 
-// void HAL_UART_TxCpltCallback(UART_HandleTypeDef* husart) {
-//     HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
-// }
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef* husart) {
+  // Indicate that UART is available
+  int status = usart3_available_sem_post();
+}
 
 /* USER CODE END 4 */
 
@@ -309,7 +330,7 @@ void CM4StatusLEDTask(void *argument)
 
     uint8_t val = 0;
 
-    int status = osMutexAcquire(comm_CM4_to_CM7_messages_ptr->mutexHandle, CORE_COMM_MUTEX_WAIT);
+    int status = osMutexAcquire(comm_CM4_to_CM7_messages_ptr->mutex_handle, CORE_COMM_MUTEX_WAIT);
     if (status != osOK)
     {
       Error_Handler();
@@ -317,7 +338,7 @@ void CM4StatusLEDTask(void *argument)
 
     val = comm_CM4_to_CM7_messages_ptr->buffer[0];
 
-    status = osMutexRelease(comm_CM4_to_CM7_messages_ptr->mutexHandle);
+    status = osMutexRelease(comm_CM4_to_CM7_messages_ptr->mutex_handle);
     if (status != osOK)
     {
       Error_Handler();
@@ -326,28 +347,56 @@ void CM4StatusLEDTask(void *argument)
     char buffer[48];
     format_str(buffer, 48, "Found %d\n\0", val);
 
-    CM4_USART3_DMA_Send((uint8_t*)buffer, -1);
+    status = user_messages_enqueue((uint8_t*)buffer);
+
+    HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
 
     osDelay(250);
   }
   /* USER CODE END 5 */
 }
 
+/* USER CODE BEGIN Header_CM4UserMessagesTask */
 /**
- * @brief  Period elapsed callback in non blocking mode
- * @note   This function is called  when TIM2 interrupt took place, inside
- * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
- * a global variable "uwTick" used as application time base.
- * @param  htim : TIM handle
- * @retval None
- */
+* @brief Function implementing the CM4UserMessages thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_CM4UserMessagesTask */
+void CM4UserMessagesTask(void *argument)
+{
+  /* USER CODE BEGIN CM4UserMessagesTask */
+  /* Infinite loop */
+  for(;;)
+  {
+    user_message message;
+    // Wait until a new message is available
+    int status = user_messages_wait_dequeue(&message);
+
+    // Wait until UART is available
+    status = usart3_available_sem_wait();
+
+    // Send message over UART
+    CM4_USART3_DMA_Send((uint8_t*)(message.buffer), -1);
+
+  }
+  /* USER CODE END CM4UserMessagesTask */
+}
+
+/**
+  * @brief  Period elapsed callback in non blocking mode
+  * @note   This function is called  when TIM2 interrupt took place, inside
+  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+  * a global variable "uwTick" used as application time base.
+  * @param  htim : TIM handle
+  * @retval None
+  */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   /* USER CODE BEGIN Callback 0 */
 
   /* USER CODE END Callback 0 */
-  if (htim->Instance == TIM2)
-  {
+  if (htim->Instance == TIM2) {
     HAL_IncTick();
   }
   /* USER CODE BEGIN Callback 1 */
@@ -356,9 +405,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 }
 
 /**
- * @brief  This function is executed in case of error occurrence.
- * @retval None
- */
+  * @brief  This function is executed in case of error occurrence.
+  * @retval None
+  */
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
@@ -370,14 +419,14 @@ void Error_Handler(void)
   /* USER CODE END Error_Handler_Debug */
 }
 
-#ifdef USE_FULL_ASSERT
+#ifdef  USE_FULL_ASSERT
 /**
- * @brief  Reports the name of the source file and the source line number
- *         where the assert_param error has occurred.
- * @param  file: pointer to the source file name
- * @param  line: assert_param error line source number
- * @retval None
- */
+  * @brief  Reports the name of the source file and the source line number
+  *         where the assert_param error has occurred.
+  * @param  file: pointer to the source file name
+  * @param  line: assert_param error line source number
+  * @retval None
+  */
 void assert_failed(uint8_t *file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */
