@@ -14,6 +14,6 @@ void core_comms_init_all_channels(void) {
 
 void core_comms_init_CM4_to_CM7_messages()
 {
-  comm_CM4_to_CM7_messages_ptr->mutexHandle = osMutexNew(&comm_CM4_to_CM7_messages_mutex_attr);
+  comm_CM4_to_CM7_messages_ptr->mutex_handle = osMutexNew(&comm_CM4_to_CM7_messages_mutex_attr);
   memset(comm_CM4_to_CM7_messages_ptr->buffer, 0, (size_t)CORE_COMM_CHANNEL_BUFFER_LEN);
 }

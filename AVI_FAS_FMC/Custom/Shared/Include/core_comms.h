@@ -9,7 +9,7 @@
 
 typedef struct core_comm_channel {
     uint8_t buffer[CORE_COMM_CHANNEL_BUFFER_LEN];
-    osMutexId_t mutexHandle;
+    osMutexId_t mutex_handle;
 } core_comm_channel;
 
 /* Align x to 4 bytes */
