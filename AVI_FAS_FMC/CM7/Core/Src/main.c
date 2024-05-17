@@ -366,27 +366,17 @@ void CM7StatusLEDTask(void *argument)
   {
     HAL_GPIO_TogglePin(LD1_GPIO_Port, LD1_Pin);
 
-    char buffer[48];
-    format_str(buffer, 48, "Message from CM7: %d!\n\0", num++);
+    int status;
+    char to_cm4_buf[48] = {0}, from_cm4_buf[48] = {0};
 
-    while(!core_comms_channel_acknowledged(comm_CM4_to_CM7_messages_ptr));
-    int status = core_comms_channel_send(comm_CM4_to_CM7_messages_ptr, buffer, 48);
+    if(core_comms_channel_ready(comm_CM4_to_CM7_messages_ptr)) {      
+      status = core_comms_channel_receive(comm_CM4_to_CM7_messages_ptr, from_cm4_buf, 48);
+    }
+    
+    format_str(to_cm4_buf, 48, "To CM4: %s\0", from_cm4_buf);
 
-  //   num += 11;
-
-  //   int status = osMutexAcquire(comm_CM4_to_CM7_messages_ptr->mutex_handle, CORE_COMM_MUTEX_WAIT);
-  //   if (status != osOK)
-  //   {
-  //     Error_Handler();
-  //   }
-
-  //  comm_CM4_to_CM7_messages_ptr->buffer[0] = num;
-
-  //   status = osMutexRelease(comm_CM4_to_CM7_messages_ptr->mutex_handle);
-  //   if (status != osOK)
-  //   {
-  //     Error_Handler();
-  //   }
+    // while(!core_comms_channel_acknowledged(comm_CM7_to_CM4_messages_ptr));
+    status = core_comms_channel_send(comm_CM7_to_CM4_messages_ptr, to_cm4_buf, 48);
 
     osDelay(500);
   }

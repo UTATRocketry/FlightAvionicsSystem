@@ -26,13 +26,20 @@ typedef struct core_comm_channel {
 #define BUFF_CM4_TO_CM7_MESSAGES_ADDR MEM_ALIGN(SHARED_RAM_ADDR)
 #define BUFF_CM4_TO_CM7_MESSAGES_LEN MEM_ALIGN(sizeof(core_comm_channel))
 
+#define BUFF_CM7_TO_CM4_MESSAGES_ADDR MEM_ALIGN(SHARED_RAM_ADDR + BUFF_CM4_TO_CM7_MESSAGES_LEN)
+#define BUFF_CM7_TO_CM4_MESSAGES_LEN MEM_ALIGN(sizeof(core_comm_channel))
+
 /* Declaring pointers to shared memory structs */
 extern const osMutexAttr_t comm_CM4_to_CM7_messages_mutex_attr;
 extern volatile core_comm_channel * const comm_CM4_to_CM7_messages_ptr;
 
+extern const osMutexAttr_t comm_CM7_to_CM4_messages_mutex_attr;
+extern volatile core_comm_channel * const comm_CM7_to_CM4_messages_ptr;
+
 /* Initialization functions */
 void core_comms_init_all_channels(void);
 void core_comms_init_CM4_to_CM7_messages(void);
+void core_comms_init_CM7_to_CM4_messages(void);
 
 /* Sending and receiving functions */
 int core_comms_channel_ready(volatile core_comm_channel* comm_ptr);

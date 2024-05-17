@@ -324,35 +324,29 @@ void CM4StatusLEDTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
   /* Infinite loop */
+  int num = 0;
   for (;;)
   {
     HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
 
-    char outbuf[48] = {0};
     int status;
+    char to_cm7_buf[48] = {0}, from_cm7_buf[48] = {0}, printbuffer[100];
+    format_str(to_cm7_buf, 48, "To CM7: %d\0", num++);
 
-    if(core_comms_channel_ready(comm_CM4_to_CM7_messages_ptr)) {      
-      status = core_comms_channel_receive(comm_CM4_to_CM7_messages_ptr, outbuf, 48);
+    // while(!core_comms_channel_acknowledged(comm_CM4_to_CM7_messages_ptr));
+    status = core_comms_channel_send(comm_CM4_to_CM7_messages_ptr, to_cm7_buf, 48);
+
+    if(core_comms_channel_ready(comm_CM7_to_CM4_messages_ptr)) {      
+      status = core_comms_channel_receive(comm_CM7_to_CM4_messages_ptr, from_cm7_buf, 48);
     }
 
-    // int status = osMutexAcquire(comm_CM4_to_CM7_messages_ptr->mutex_handle, CORE_COMM_MUTEX_WAIT);
-    // if (status != osOK)
-    // {
-    //   Error_Handler();
-    // }
-
-    // val = comm_CM4_to_CM7_messages_ptr->buffer[0];
-
-    // status = osMutexRelease(comm_CM4_to_CM7_messages_ptr->mutex_handle);
-    // if (status != osOK)
-    // {
-    //   Error_Handler();
-    // }
-
-    char buffer[100];
-    format_str(buffer, 100, "Found %s\n\0", outbuf);
-
-    status = user_messages_enqueue((uint8_t*)buffer);
+    // Record outgoing message
+    // format_str(printbuffer, 100, "Sent: %s\n\0", to_cm7_buf);
+    // status = user_messages_enqueue((uint8_t*)printbuffer);
+    
+    // Record incoming message
+    format_str(printbuffer, 100, "Rcvd: %s\n\0", from_cm7_buf);
+    status = user_messages_enqueue((uint8_t*)printbuffer);
 
     osDelay(250);
   }
