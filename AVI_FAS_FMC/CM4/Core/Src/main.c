@@ -132,7 +132,6 @@ int main(void)
   MX_DMA_Init();
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
-  CM4_USART3_DMA_Send((uint8_t *)"CM4 (Core 0) Initialization Complete\n\0", -1);
 
   /* USER CODE END 2 */
 
@@ -141,14 +140,16 @@ int main(void)
 
   /* USER CODE BEGIN RTOS_MUTEX */
 
+  // Initialize usart3 availability semaphore
+  usart3_available_sem_initialize(); 
+
   // Initialize all core communication channels
   core_comms_init_all_channels();
 
   // Initailize user messages buffer queue
   user_messages_initialize();
 
-  // Initialize usart3 availability semaphore
-  usart3_available_sem_initialize();
+  user_messages_enqueue((uint8_t*)"CM4 (Core 0) Initialization Complete!\n\0");
 
   /* USER CODE END RTOS_MUTEX */
 
@@ -322,34 +323,36 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef* husart) {
 void CM4StatusLEDTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
-  osDelay(1000);
   /* Infinite loop */
   for (;;)
   {
     HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
 
-    uint8_t val = 0;
+    char outbuf[48] = {0};
+    int status;
 
-    int status = osMutexAcquire(comm_CM4_to_CM7_messages_ptr->mutex_handle, CORE_COMM_MUTEX_WAIT);
-    if (status != osOK)
-    {
-      Error_Handler();
+    if(core_comms_channel_ready(comm_CM4_to_CM7_messages_ptr)) {      
+      status = core_comms_channel_receive(comm_CM4_to_CM7_messages_ptr, outbuf, 48);
     }
 
-    val = comm_CM4_to_CM7_messages_ptr->buffer[0];
+    // int status = osMutexAcquire(comm_CM4_to_CM7_messages_ptr->mutex_handle, CORE_COMM_MUTEX_WAIT);
+    // if (status != osOK)
+    // {
+    //   Error_Handler();
+    // }
 
-    status = osMutexRelease(comm_CM4_to_CM7_messages_ptr->mutex_handle);
-    if (status != osOK)
-    {
-      Error_Handler();
-    }
+    // val = comm_CM4_to_CM7_messages_ptr->buffer[0];
 
-    char buffer[48];
-    format_str(buffer, 48, "Found %d\n\0", val);
+    // status = osMutexRelease(comm_CM4_to_CM7_messages_ptr->mutex_handle);
+    // if (status != osOK)
+    // {
+    //   Error_Handler();
+    // }
+
+    char buffer[100];
+    format_str(buffer, 100, "Found %s\n\0", outbuf);
 
     status = user_messages_enqueue((uint8_t*)buffer);
-
-    HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
 
     osDelay(250);
   }
@@ -372,6 +375,7 @@ void CM4UserMessagesTask(void *argument)
     user_message message;
     // Wait until a new message is available
     int status = user_messages_wait_dequeue(&message);
+    
 
     // Wait until UART is available
     status = usart3_available_sem_wait();
@@ -415,6 +419,8 @@ void Error_Handler(void)
   __disable_irq();
   while (1)
   {
+    HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
+    osDelay(25);
   }
   /* USER CODE END Error_Handler_Debug */
 }

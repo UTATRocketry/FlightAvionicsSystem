@@ -359,7 +359,6 @@ static void MX_GPIO_Init(void)
 void CM7StatusLEDTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
-  osDelay(1000);
   int num = 0;
 
   /* Infinite loop */
@@ -367,21 +366,27 @@ void CM7StatusLEDTask(void *argument)
   {
     HAL_GPIO_TogglePin(LD1_GPIO_Port, LD1_Pin);
 
-    num += 11;
+    char buffer[48];
+    format_str(buffer, 48, "Message from CM7: %d!\n\0", num++);
 
-    int status = osMutexAcquire(comm_CM4_to_CM7_messages_ptr->mutex_handle, CORE_COMM_MUTEX_WAIT);
-    if (status != osOK)
-    {
-      Error_Handler();
-    }
+    while(!core_comms_channel_acknowledged(comm_CM4_to_CM7_messages_ptr));
+    int status = core_comms_channel_send(comm_CM4_to_CM7_messages_ptr, buffer, 48);
 
-   comm_CM4_to_CM7_messages_ptr->buffer[0] = num;
+  //   num += 11;
 
-    status = osMutexRelease(comm_CM4_to_CM7_messages_ptr->mutex_handle);
-    if (status != osOK)
-    {
-      Error_Handler();
-    }
+  //   int status = osMutexAcquire(comm_CM4_to_CM7_messages_ptr->mutex_handle, CORE_COMM_MUTEX_WAIT);
+  //   if (status != osOK)
+  //   {
+  //     Error_Handler();
+  //   }
+
+  //  comm_CM4_to_CM7_messages_ptr->buffer[0] = num;
+
+  //   status = osMutexRelease(comm_CM4_to_CM7_messages_ptr->mutex_handle);
+  //   if (status != osOK)
+  //   {
+  //     Error_Handler();
+  //   }
 
     osDelay(500);
   }
@@ -420,6 +425,8 @@ void Error_Handler(void)
   __disable_irq();
   while (1)
   {
+    HAL_GPIO_TogglePin(LD1_GPIO_Port, LD1_Pin);
+    osDelay(100);
   }
   /* USER CODE END Error_Handler_Debug */
 }

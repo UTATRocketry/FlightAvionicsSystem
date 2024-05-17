@@ -17,11 +17,14 @@ const osSemaphoreAttr_t usart3_available_sem_attr = {
 
 
 
-/* Global struct */
+/* Global */
 static user_message_buffer_queue message_queue;
+osSemaphoreId_t usart3_available_sem_handle;
+int temp_sem;
 
 void usart3_available_sem_initialize() {
   usart3_available_sem_handle = osSemaphoreNew(1, 1, &usart3_available_sem_attr);
+  // usart3_available_sem_post();
 }
 
 int usart3_available_sem_post() {
@@ -34,7 +37,7 @@ int usart3_available_sem_post() {
 }
 
 int usart3_available_sem_wait() {
-  int status = osSemaphoreAcquire(usart3_available_sem_handle, osWaitForever);
+  int status = osSemaphoreAcquire(usart3_available_sem_handle, 100);
   if (status != osOK)
   {
     return status;

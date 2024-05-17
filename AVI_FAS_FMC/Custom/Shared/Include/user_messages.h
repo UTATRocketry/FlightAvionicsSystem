@@ -30,7 +30,7 @@ extern const osSemaphoreAttr_t user_message_buffer_queue_sem_attr;
 
 /* Declare semaphore for UART callbacks */
 extern const osSemaphoreAttr_t usart3_available_sem_attr;
-extern const osSemaphoreId_t usart3_available_sem_handle;
+extern osSemaphoreId_t usart3_available_sem_handle;
 
 void usart3_available_sem_initialize();
 int usart3_available_sem_post();

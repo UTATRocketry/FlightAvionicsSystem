@@ -1,6 +1,7 @@
 #ifndef CORE_COMMS_H
 #define CORE_COMMS_H
 
+#include <stdint.h>
 #include "cmsis_os2.h"
 
 /* Communication channel properties */
@@ -8,8 +9,10 @@
 #define CORE_COMM_MUTEX_WAIT (50)
 
 typedef struct core_comm_channel {
-    uint8_t buffer[CORE_COMM_CHANNEL_BUFFER_LEN];
+    volatile uint8_t buffer[CORE_COMM_CHANNEL_BUFFER_LEN];
     osMutexId_t mutex_handle;
+    volatile int ready_to_read;
+    volatile int receiver_acknowledged;
 } core_comm_channel;
 
 /* Align x to 4 bytes */
@@ -30,5 +33,11 @@ extern volatile core_comm_channel * const comm_CM4_to_CM7_messages_ptr;
 /* Initialization functions */
 void core_comms_init_all_channels(void);
 void core_comms_init_CM4_to_CM7_messages(void);
+
+/* Sending and receiving functions */
+int core_comms_channel_ready(volatile core_comm_channel* comm_ptr);
+int core_comms_channel_acknowledged(volatile core_comm_channel* comm_ptr);
+int core_comms_channel_send(volatile core_comm_channel* comm_ptr, uint8_t* send_buffer, int buffer_len);
+int core_comms_channel_receive(volatile core_comm_channel* comm_ptr, uint8_t* rcv_buffer, int buffer_len);
 
 #endif /* CORE_COMMS_H */
