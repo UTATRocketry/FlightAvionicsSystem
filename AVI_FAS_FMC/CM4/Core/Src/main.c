@@ -140,6 +140,15 @@ int main(void)
 
   /* USER CODE BEGIN RTOS_MUTEX */
 
+  /*
+    The CM4 is the lead processor.
+    It initializes all mutexes, semaphores, etc. and other structs
+  */
+
+  /*
+    WIP => FIXME
+    usart3 initialization function not fully implemented
+  */
   // Initialize usart3 availability semaphore
   usart3_available_sem_initialize(); 
 
@@ -149,6 +158,11 @@ int main(void)
   // Initailize user messages buffer queue
   user_messages_initialize();
 
+  /*
+    WIP => FIXME
+    Need to figure out someway to also receive and send the CM7 initialization message.
+    Maybe send a wakeup signal and wait for the core to send a message, and then proceed from there?
+  */
   user_messages_enqueue((uint8_t*)"CM4 (Core 0) Initialization Complete!\n\0");
 
   /* USER CODE END RTOS_MUTEX */
@@ -293,6 +307,10 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
+/* 
+  Utility Function
+  Send a message over UART
+*/
 void CM4_USART3_DMA_Send(uint8_t *message, _ssize_t message_length)
 {
   if (message_length == -1)
@@ -303,11 +321,18 @@ void CM4_USART3_DMA_Send(uint8_t *message, _ssize_t message_length)
   {
     Error_Handler();
   }
+
+  /*
+    DMA is used for UART transfer
+  */
   HAL_UART_Transmit_DMA(&huart3, message, message_length);
 }
 
 void HAL_UART_TxCpltCallback(UART_HandleTypeDef* husart) {
-  // Indicate that UART is available
+  /*
+    HAL_UART_TxCpltCallback is a built-in callback that runs once a UART transaction is complete
+    Implement a callback to update UART availability
+  */
   int status = usart3_available_sem_post();
 }
 
@@ -324,18 +349,31 @@ void CM4StatusLEDTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
   /* Infinite loop */
+  /* 
+    WIP
+    This is an arbitrary test task. This tests sending and receiving messages and concurrency issues with message channels.
+    Note: concurrency and ACK/Ready bits not functional yet
+  */
+  // Debug number
   int num = 0;
   for (;;)
   {
+    // Debug LED
     HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
 
+    // Test sending and receiving messages
     int status;
     char to_cm7_buf[48] = {0}, from_cm7_buf[48] = {0}, printbuffer[100];
-    format_str(to_cm7_buf, 48, "To CM7: %d\0", num++);
 
+    // Format a message
+    format_str(to_cm7_buf, 48, "To CM7: %d\0", num++);
+    
+    // As CM4, Send message to CM7
     // while(!core_comms_channel_acknowledged(comm_CM4_to_CM7_messages_ptr));
     status = core_comms_channel_send(comm_CM4_to_CM7_messages_ptr, to_cm7_buf, 48);
 
+    // As CM4, Receive data from CM7
+    // Note: the ready bits not fully functional yet
     if(core_comms_channel_ready(comm_CM7_to_CM4_messages_ptr)) {      
       status = core_comms_channel_receive(comm_CM7_to_CM4_messages_ptr, from_cm7_buf, 48);
     }
@@ -346,8 +384,16 @@ void CM4StatusLEDTask(void *argument)
     
     // Record incoming message
     format_str(printbuffer, 100, "Rcvd: %s\n\0", from_cm7_buf);
+    
+    // Send the message to be printed via UART
     status = user_messages_enqueue((uint8_t*)printbuffer);
 
+    /*
+      WIP => FIXME
+      Crude way to run every ~250 ms
+      To truly make this run each 250 ms, we'd want to use timer-based interrupts
+      As well, keep track of overrun times (i.e. if the task is interrupted early or starts late due to running over 250ms)
+    */
     osDelay(250);
   }
   /* USER CODE END 5 */
@@ -366,10 +412,24 @@ void CM4UserMessagesTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
+    /*
+      WIP => FIXME
+      Review this function to make sure things are working properly.
+      The intention is NOT a polling approach.
+      Each loop iteration, we send one UART message to the user terminal.
+      If we dequeue a message, and nothing is ready, the task should BLOCK and wait.
+    */
+
+    /*
+      Messages cannot be queued with this message, as a subsequent DMA trnasfer will overwrite an in-progress transfer
+      Need to create a UART sending/receiving task
+      Need to use the UART availability functionality (not yet implemented) to block that task until UART available
+      Need to indicate UART is unavailable right before sending a message; callback will indicate when it's available again
+    */
     user_message message;
+    
     // Wait until a new message is available
     int status = user_messages_wait_dequeue(&message);
-    
 
     // Wait until UART is available
     status = usart3_available_sem_wait();

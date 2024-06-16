@@ -11,10 +11,12 @@
 #define USER_MESSAGES_OVERFLOW_MESSAGE ("User Message Buffer Overflow!\0")
 #define USER_MESSAGES_TOO_LONG_MESSAGE ("User Message Too Long!\0")
 
+// Note: more properties may be useful here
 typedef struct user_message {
     char buffer[USER_MESSAGES_BUFFER_LEN];
 } user_message;
 
+// Note: the mutex and semaphore may not both be necessary
 typedef struct user_message_buffer_queue {
     user_message messages[USER_MESSAGES_QUEUE_SIZE];
     uint8_t head;
@@ -24,6 +26,13 @@ typedef struct user_message_buffer_queue {
     osSemaphoreId_t sem_handle;
 } user_message_buffer_queue;
 
+/* 
+    Utility function errors
+    Ideally, this would be contained in a separate .h function called errors.h implemented by every other file
+*/
+#define USER_MESSAGE_ERROR_SEMAPHORE_NOT_ACQUIRED (-1)
+#define USER_MESSAGE_ERROR_SEMAPHORE_NOT_RELEASED (-2)
+
 /* Declaring pointers for message buffer */
 extern const osMutexAttr_t user_message_buffer_queue_mutex_attr;
 extern const osSemaphoreAttr_t user_message_buffer_queue_sem_attr;
@@ -32,6 +41,7 @@ extern const osSemaphoreAttr_t user_message_buffer_queue_sem_attr;
 extern const osSemaphoreAttr_t usart3_available_sem_attr;
 extern osSemaphoreId_t usart3_available_sem_handle;
 
+// Note: these functions are not compelte yet
 void usart3_available_sem_initialize();
 int usart3_available_sem_post();
 int usart3_available_sem_wait();

@@ -29,6 +29,13 @@ typedef struct core_comm_channel {
 #define BUFF_CM7_TO_CM4_MESSAGES_ADDR MEM_ALIGN(SHARED_RAM_ADDR + BUFF_CM4_TO_CM7_MESSAGES_LEN)
 #define BUFF_CM7_TO_CM4_MESSAGES_LEN MEM_ALIGN(sizeof(core_comm_channel))
 
+/* 
+    Utility function errors
+    Ideally, this would be contained in a separate .h function called errors.h implemented by every other file
+*/
+#define CORE_COMM_ERROR_MUTEX_NOT_ACQUIRED (-1)
+#define CORE_COMM_ERROR_MUTEX_NOT_RELEASED (-2)
+
 /* Declaring pointers to shared memory structs */
 extern const osMutexAttr_t comm_CM4_to_CM7_messages_mutex_attr;
 extern volatile core_comm_channel * const comm_CM4_to_CM7_messages_ptr;
@@ -37,13 +44,13 @@ extern const osMutexAttr_t comm_CM7_to_CM4_messages_mutex_attr;
 extern volatile core_comm_channel * const comm_CM7_to_CM4_messages_ptr;
 
 /* Initialization functions */
-void core_comms_init_all_channels(void);
+void core_comms_init_all_channels(void); /* Calls subsequent init functions */
 void core_comms_init_CM4_to_CM7_messages(void);
 void core_comms_init_CM7_to_CM4_messages(void);
 
 /* Sending and receiving functions */
 int core_comms_channel_ready(volatile core_comm_channel* comm_ptr);
-int core_comms_channel_acknowledged(volatile core_comm_channel* comm_ptr);
+int core_comms_channel_acknowledged(volatile core_comm_channel* comm_ptr); 
 int core_comms_channel_send(volatile core_comm_channel* comm_ptr, uint8_t* send_buffer, int buffer_len);
 int core_comms_channel_receive(volatile core_comm_channel* comm_ptr, uint8_t* rcv_buffer, int buffer_len);
 

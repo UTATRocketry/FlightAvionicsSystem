@@ -18,29 +18,38 @@ const osSemaphoreAttr_t usart3_available_sem_attr = {
 
 
 /* Global */
+/*
+  usart3 is used by default, this may change depending on the final system architecture and PCB design
+*/
 static user_message_buffer_queue message_queue;
 osSemaphoreId_t usart3_available_sem_handle;
-int temp_sem;
 
+/*
+  WIP => FIXME
+  The usart3 availability logic is not complete yet. There are some concurrency issues, same with the ACK bits etc. in core_comms
+  It is not very functional right now
+*/
 void usart3_available_sem_initialize() {
   usart3_available_sem_handle = osSemaphoreNew(1, 1, &usart3_available_sem_attr);
   // usart3_available_sem_post();
 }
 
+// Indicate UART is available
 int usart3_available_sem_post() {
   int status = osSemaphoreRelease(usart3_available_sem_handle);
   if (status != osOK)
   {
-    return status;
+    return USER_MESSAGE_ERROR_SEMAPHORE_NOT_RELEASED;
   }
   return 0;
 }
 
+// Indicate UART is busy
 int usart3_available_sem_wait() {
   int status = osSemaphoreAcquire(usart3_available_sem_handle, 100);
   if (status != osOK)
   {
-    return status;
+    return USER_MESSAGE_ERROR_SEMAPHORE_NOT_ACQUIRED;
   }
   return 0;
 }

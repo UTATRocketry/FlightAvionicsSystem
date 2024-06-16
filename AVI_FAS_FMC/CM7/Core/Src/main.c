@@ -148,6 +148,13 @@ int main(void)
 
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */
+
+  /*
+    WIP => FIXME
+    Ideally, we would send an initialization message somewhere. 
+    Since the CM4 handles UART messages, and we aren't certain when the CM4 is ready.
+    We need to implement some kind of init message. 
+  */
   /* USER CODE END RTOS_MUTEX */
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
@@ -359,25 +366,39 @@ static void MX_GPIO_Init(void)
 void CM7StatusLEDTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
-  int num = 0;
-
   /* Infinite loop */
+  /* 
+    WIP
+    This is an arbitrary test task. This tests sending and receiving messages and concurrency issues with message channels.
+    Note: concurrency and ACK/Ready bits not functional yet
+  */
   for (;;)
   {
+    // Debug LED
     HAL_GPIO_TogglePin(LD1_GPIO_Port, LD1_Pin);
 
+    // Test sending and receiving messages
     int status;
     char to_cm4_buf[48] = {0}, from_cm4_buf[48] = {0};
 
+    // As CM7, Receive data from CM4
     if(core_comms_channel_ready(comm_CM4_to_CM7_messages_ptr)) {      
       status = core_comms_channel_receive(comm_CM4_to_CM7_messages_ptr, from_cm4_buf, 48);
     }
     
+    // Format an echo message
     format_str(to_cm4_buf, 48, "To CM4: %s\0", from_cm4_buf);
 
+    // As CM7, Send echoed message to CM4
     // while(!core_comms_channel_acknowledged(comm_CM7_to_CM4_messages_ptr));
     status = core_comms_channel_send(comm_CM7_to_CM4_messages_ptr, to_cm4_buf, 48);
 
+    /*
+      WIP => FIXME
+      Crude way to run every ~500 ms
+      To truly make this run each 500 ms, we'd want to use timer-based interrupts
+      As well, keep track of overrun times (i.e. if the task is interrupted early or starts late due to running over 500ms)
+    */
     osDelay(500);
   }
   /* USER CODE END 5 */

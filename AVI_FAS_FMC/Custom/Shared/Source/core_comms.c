@@ -3,7 +3,11 @@
 #include <stdint.h>
 #include <string.h>
 
-// Initialize pointers to shared memory structs
+/* 
+  Initialize pointers to shared memory structs
+  Each message buffer needs a osMutexAttr_t upon initialization struct which contains basic details (i.e. label)
+  the core_comm_channel struct contains all the data for the communication channel, including a mutex, data buffer, ACK bits, etc.
+*/
 const osMutexAttr_t comm_CM4_to_CM7_messages_mutex_attr = {
     .name = "comm_CM4_to_CM7_messages_mutex"
 };
@@ -14,6 +18,10 @@ const osMutexAttr_t comm_CM7_to_CM4_messages_mutex_attr = {
 };
 volatile core_comm_channel * const comm_CM7_to_CM4_messages_ptr = (core_comm_channel*)BUFF_CM7_TO_CM4_MESSAGES_ADDR;
 
+
+/* 
+  Initialization Functions
+*/
 void core_comms_init_all_channels(void) {
     core_comms_init_CM4_to_CM7_messages();
     core_comms_init_CM7_to_CM4_messages();
@@ -36,8 +44,16 @@ void core_comms_init_CM7_to_CM4_messages()
 }
 
 
-
+/*
+  Utility functions
+*/
 int core_comms_channel_ready(volatile core_comm_channel* comm_ptr) {
+  /*
+    WIP => FIXME
+    This requires some careful mapping out of which core / thread holds the mutex and all the concurrency issues that are involved
+    The current implementation does not properly work
+  */
+
   int val;
 
   int status = osMutexAcquire(comm_ptr->mutex_handle, CORE_COMM_MUTEX_WAIT);
@@ -58,6 +74,12 @@ int core_comms_channel_ready(volatile core_comm_channel* comm_ptr) {
 }
 
 int core_comms_channel_acknowledged(volatile core_comm_channel* comm_ptr) {
+  /*
+    WIP => FIXME
+    This requires some careful mapping out of which core / thread holds the mutex and all the concurrency issues that are involved
+    The current implementation does not properly work
+  */
+
   int val;
 
   int status = osMutexAcquire(comm_ptr->mutex_handle, CORE_COMM_MUTEX_WAIT);
@@ -78,49 +100,72 @@ int core_comms_channel_acknowledged(volatile core_comm_channel* comm_ptr) {
 }
 
 int core_comms_channel_send(volatile core_comm_channel* comm_ptr, uint8_t* send_buffer, int buffer_len) {
+  /*
+    WIP => FIXME
+    Ideally, this function would also ensure that the channel is ready for communication
+    This functionality has not been added yet
+  */
   int status = osMutexAcquire(comm_ptr->mutex_handle, CORE_COMM_MUTEX_WAIT);
   if (status != osOK)
   {
-    return -1;
+    return CORE_COMM_ERROR_MUTEX_NOT_ACQUIRED;
   }
 
+  // Assert new message has not yet been received
   comm_ptr->receiver_acknowledged = 0;
+  // Fill up the channel buffer
+  // Can only send messages of max length CORE_COMM_CHANNEL_BUFFER_LEN
+  int bytes_sent = 0;
   if(buffer_len < 0) {
-    strncpy(comm_ptr->buffer, send_buffer, CORE_COMM_CHANNEL_BUFFER_LEN);
+    bytes_sent = CORE_COMM_CHANNEL_BUFFER_LEN;
   } else {
-    strncpy(comm_ptr->buffer, send_buffer, buffer_len);
+    bytes_sent = buffer_len;
   }
+  strncpy(comm_ptr->buffer, send_buffer, bytes_sent);
+  // Assert new message is ready to be read
   comm_ptr->ready_to_read = 1;
 
   status = osMutexRelease(comm_ptr->mutex_handle);
   if (status != osOK)
   {
-    return -1;
+    return CORE_COMM_ERROR_MUTEX_NOT_RELEASED;
   }
 
-  return 0;
+  return bytes_sent;
 }
 
 int core_comms_channel_receive(volatile core_comm_channel* comm_ptr, uint8_t* rcv_buffer, int buffer_len) {
+  /*
+    WIP => FIXME
+    Ideally, this function would also ensure that the channel is ready for communication
+    This functionality has not been added yet
+  */
   int status = osMutexAcquire(comm_ptr->mutex_handle, CORE_COMM_MUTEX_WAIT);
   if (status != osOK)
   {
-    return -1;
+    return CORE_COMM_ERROR_MUTEX_NOT_ACQUIRED;
   }
 
+  // Assert message is read
   comm_ptr->ready_to_read = 0;
+  // Fill up the receiver buffer
+  // Can only receive messages of max length CORE_COMM_CHANNEL_BUFFER_LEN
+  // Logically, this may not need to be here, considering messages longer than that can't be sent
+  int bytes_rcvd;
   if(buffer_len < 0) {
-    strncpy(rcv_buffer, comm_ptr->buffer, CORE_COMM_CHANNEL_BUFFER_LEN);
+    bytes_rcvd = CORE_COMM_CHANNEL_BUFFER_LEN;
   } else {
-    strncpy(rcv_buffer, comm_ptr->buffer, buffer_len);
+    bytes_rcvd = buffer_len;
   }
+  strncpy(rcv_buffer, comm_ptr->buffer, bytes_rcvd);
+  // Assert message has been received
   comm_ptr->receiver_acknowledged = 1;
 
   status = osMutexRelease(comm_ptr->mutex_handle);
   if (status != osOK)
   {
-    return -1;
+    return CORE_COMM_ERROR_MUTEX_NOT_RELEASED;
   }
 
-  return 0;
+  return bytes_rcvd;
 }
