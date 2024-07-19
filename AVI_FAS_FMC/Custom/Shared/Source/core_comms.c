@@ -30,7 +30,7 @@ void core_comms_init_all_channels(void) {
 void core_comms_init_CM4_to_CM7_messages()
 {
   comm_CM4_to_CM7_messages_ptr->mutex_handle = osMutexNew(&comm_CM4_to_CM7_messages_mutex_attr);
-  memset(comm_CM4_to_CM7_messages_ptr->buffer, 0, (size_t)CORE_COMM_CHANNEL_BUFFER_LEN);
+  memset((void *) comm_CM4_to_CM7_messages_ptr->buffer, 0, (size_t)CORE_COMM_CHANNEL_BUFFER_LEN);
   comm_CM4_to_CM7_messages_ptr->receiver_acknowledged = 1; // start off as ready to send
   comm_CM4_to_CM7_messages_ptr->ready_to_read = 0;
 }
@@ -38,7 +38,7 @@ void core_comms_init_CM4_to_CM7_messages()
 void core_comms_init_CM7_to_CM4_messages()
 {
   comm_CM7_to_CM4_messages_ptr->mutex_handle = osMutexNew(&comm_CM7_to_CM4_messages_mutex_attr);
-  memset(comm_CM7_to_CM4_messages_ptr->buffer, 0, (size_t)CORE_COMM_CHANNEL_BUFFER_LEN);
+  memset((void *) comm_CM7_to_CM4_messages_ptr->buffer, 0, (size_t)CORE_COMM_CHANNEL_BUFFER_LEN);
   comm_CM7_to_CM4_messages_ptr->receiver_acknowledged = 1; // start off as ready to send
   comm_CM7_to_CM4_messages_ptr->ready_to_read = 0;
 }
@@ -121,7 +121,7 @@ int core_comms_channel_send(volatile core_comm_channel* comm_ptr, uint8_t* send_
   } else {
     bytes_sent = buffer_len;
   }
-  strncpy(comm_ptr->buffer, send_buffer, bytes_sent);
+  strncpy((char *)comm_ptr->buffer, (char *) send_buffer, bytes_sent);
   // Assert new message is ready to be read
   comm_ptr->ready_to_read = 1;
 
@@ -157,7 +157,7 @@ int core_comms_channel_receive(volatile core_comm_channel* comm_ptr, uint8_t* rc
   } else {
     bytes_rcvd = buffer_len;
   }
-  strncpy(rcv_buffer, comm_ptr->buffer, bytes_rcvd);
+  strncpy((char *)rcv_buffer, (const char *) comm_ptr->buffer, bytes_rcvd);
   // Assert message has been received
   comm_ptr->receiver_acknowledged = 1;
 

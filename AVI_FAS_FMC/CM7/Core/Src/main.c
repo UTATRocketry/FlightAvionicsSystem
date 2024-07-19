@@ -24,6 +24,7 @@
 /* USER CODE BEGIN Includes */
 
 #include "core_comms.h"
+#include "string_utilities.h"
 #include <string.h>
 
 /* USER CODE END Includes */
@@ -383,7 +384,7 @@ void CM7StatusLEDTask(void *argument)
 
     // As CM7, Receive data from CM4
     if(core_comms_channel_ready(comm_CM4_to_CM7_messages_ptr)) {      
-      status = core_comms_channel_receive(comm_CM4_to_CM7_messages_ptr, from_cm4_buf, 48);
+      status = core_comms_channel_receive(comm_CM4_to_CM7_messages_ptr, (uint8_t *) from_cm4_buf, 48);
     }
     
     // Format an echo message
@@ -391,7 +392,7 @@ void CM7StatusLEDTask(void *argument)
 
     // As CM7, Send echoed message to CM4
     // while(!core_comms_channel_acknowledged(comm_CM7_to_CM4_messages_ptr));
-    status = core_comms_channel_send(comm_CM7_to_CM4_messages_ptr, to_cm4_buf, 48);
+    status = core_comms_channel_send(comm_CM7_to_CM4_messages_ptr, (uint8_t *) to_cm4_buf, 48);
 
     /*
       WIP => FIXME

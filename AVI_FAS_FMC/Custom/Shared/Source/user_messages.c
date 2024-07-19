@@ -82,7 +82,7 @@ int user_messages_enqueue(uint8_t* str) {
       return 1;
   }
   // Insert
-  strcpy((message_queue.messages[message_queue.tail]).buffer, str);
+  strcpy((message_queue.messages[message_queue.tail]).buffer, (char *) str);
   message_queue.tail = (message_queue.tail + 1) % USER_MESSAGES_QUEUE_SIZE;
   message_queue.num_occupied++;
 
