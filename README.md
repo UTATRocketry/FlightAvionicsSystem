@@ -20,7 +20,7 @@ For more information FAS Hardware see [here]().
 Bellow are the general steps to Contributing to the FAS project
 
 1. **Fork the Repository**: Start by forking our repository to your GitHub account. This creates a copy of the project for you to work on.
-2. **Clone the Repository**: Clone your forked repository to your local machine using `git clone`.\
+2. **Clone the Repository**: Clone your forked repository to your local machine using `git clone`.
 3. **Create a Branch**: Before making any changes, create a new branch for your feature or bug fix. This keeps the main branch clean and allows for easier review. Use a descriptive name for your branch.
 4. **Make Changes**: Now you're ready to make your changes! Write your code, add new features, or fix bugs. Ensure that your changes adhere to our coding standards and guidelines.
 5. **Commit Changes**: Once you're satisfied with your changes, commit them to your branch using `git commit`. Be sure to write clear and concise commit messages.
@@ -74,7 +74,7 @@ The Development of the FAS firmware relies on the following development tools:
 #### AVI_FAS_FMC
 As of March 2024, STM32-for-VSCode does not support dual core MCUs, thus, the project must be built manually. In order to build the project begin by opening a terminal at the following directory:
 ```
-cd C:/.../AVI_FAS_FMC/Makfile
+> cd C:/.../AVI_FAS_FMC/Makfile
 ```
 Run the makefile using the following command:
 ```
@@ -95,7 +95,7 @@ The project can be built using the STM32-for-VSCode Extension by clicking build.
 Alternatively, the project can be built manually using `make`.
 In order to build the project begin by opening a terminal at the following directory:
 ```
-cd C:/.../AVI_FAS_SPB
+> cd C:/.../AVI_FAS_SPB
 ```
 Run the makefile using the following command:
 ```
