@@ -1,28 +1,32 @@
 /* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * @file           : main.c
-  * @brief          : Main program body
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2024 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file           : main.c
+ * @brief          : Main program body
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2024 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "string.h"
 #include "cmsis_os.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+
+#include <string.h>
+#include "core_comms.h"
+#include "user_messages.h"
+#include "string_utilities.h"
 
 /* USER CODE END Includes */
 
@@ -46,35 +50,24 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-#if defined ( __ICCARM__ ) /*!< IAR Compiler */
-#pragma location=0x30000000
-ETH_DMADescTypeDef  DMARxDscrTab[ETH_RX_DESC_CNT]; /* Ethernet Rx DMA Descriptors */
-#pragma location=0x30000200
-ETH_DMADescTypeDef  DMATxDscrTab[ETH_TX_DESC_CNT]; /* Ethernet Tx DMA Descriptors */
-
-#elif defined ( __CC_ARM )  /* MDK ARM Compiler */
-
-__attribute__((at(0x30000000))) ETH_DMADescTypeDef  DMARxDscrTab[ETH_RX_DESC_CNT]; /* Ethernet Rx DMA Descriptors */
-__attribute__((at(0x30000200))) ETH_DMADescTypeDef  DMATxDscrTab[ETH_TX_DESC_CNT]; /* Ethernet Tx DMA Descriptors */
-
-#elif defined ( __GNUC__ ) /* GNU Compiler */
-ETH_DMADescTypeDef DMARxDscrTab[ETH_RX_DESC_CNT] __attribute__((section(".RxDecripSection"))); /* Ethernet Rx DMA Descriptors */
-ETH_DMADescTypeDef DMATxDscrTab[ETH_TX_DESC_CNT] __attribute__((section(".TxDecripSection")));   /* Ethernet Tx DMA Descriptors */
-
-#endif
-
-ETH_TxPacketConfig TxConfig;
-
-ETH_HandleTypeDef heth;
 
 UART_HandleTypeDef huart3;
+DMA_HandleTypeDef hdma_usart3_rx;
+DMA_HandleTypeDef hdma_usart3_tx;
 
-/* Definitions for defaultTask */
-osThreadId_t defaultTaskHandle;
-const osThreadAttr_t defaultTask_attributes = {
-  .name = "defaultTask",
+/* Definitions for CM4StatusLED */
+osThreadId_t CM4StatusLEDHandle;
+const osThreadAttr_t CM4StatusLED_attributes = {
+  .name = "CM4StatusLED",
   .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityNormal,
+  .priority = (osPriority_t) osPriorityBelowNormal,
+};
+/* Definitions for CM4UserMessages */
+osThreadId_t CM4UserMessagesHandle;
+const osThreadAttr_t CM4UserMessages_attributes = {
+  .name = "CM4UserMessages",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityHigh,
 };
 /* USER CODE BEGIN PV */
 
@@ -82,7 +75,10 @@ const osThreadAttr_t defaultTask_attributes = {
 
 /* Private function prototypes -----------------------------------------------*/
 static void MX_GPIO_Init(void);
-void StartDefaultTask(void *argument);
+static void MX_DMA_Init(void);
+static void MX_USART3_UART_Init(void);
+void CM4StatusLEDTask(void *argument);
+void CM4UserMessagesTask(void *argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -133,6 +129,8 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
+  MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -141,7 +139,32 @@ int main(void)
   osKernelInitialize();
 
   /* USER CODE BEGIN RTOS_MUTEX */
-  /* add mutexes, ... */
+
+  /*
+    The CM4 is the lead processor.
+    It initializes all mutexes, semaphores, etc. and other structs
+  */
+
+  /*
+    WIP => FIXME
+    usart3 initialization function not fully implemented
+  */
+  // Initialize usart3 availability semaphore
+  usart3_available_sem_initialize(); 
+
+  // Initialize all core communication channels
+  core_comms_init_all_channels();
+
+  // Initailize user messages buffer queue
+  user_messages_initialize();
+
+  /*
+    WIP => FIXME
+    Need to figure out someway to also receive and send the CM7 initialization message.
+    Maybe send a wakeup signal and wait for the core to send a message, and then proceed from there?
+  */
+  user_messages_enqueue((uint8_t*)"CM4 (Core 0) Initialization Complete!\n\0");
+
   /* USER CODE END RTOS_MUTEX */
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
@@ -157,8 +180,11 @@ int main(void)
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
-  /* creation of defaultTask */
-  defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
+  /* creation of CM4StatusLED */
+  CM4StatusLEDHandle = osThreadNew(CM4StatusLEDTask, NULL, &CM4StatusLED_attributes);
+
+  /* creation of CM4UserMessages */
+  CM4UserMessagesHandle = osThreadNew(CM4UserMessagesTask, NULL, &CM4UserMessages_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -184,60 +210,11 @@ int main(void)
 }
 
 /**
-  * @brief ETH Initialization Function
-  * @param None
-  * @retval None
-  */
-void MX_ETH_Init(void)
-{
-
-  /* USER CODE BEGIN ETH_Init 0 */
-
-  /* USER CODE END ETH_Init 0 */
-
-   static uint8_t MACAddr[6];
-
-  /* USER CODE BEGIN ETH_Init 1 */
-
-  /* USER CODE END ETH_Init 1 */
-  heth.Instance = ETH;
-  MACAddr[0] = 0x00;
-  MACAddr[1] = 0x80;
-  MACAddr[2] = 0xE1;
-  MACAddr[3] = 0x00;
-  MACAddr[4] = 0x00;
-  MACAddr[5] = 0x00;
-  heth.Init.MACAddr = &MACAddr[0];
-  heth.Init.MediaInterface = HAL_ETH_RMII_MODE;
-  heth.Init.TxDesc = DMATxDscrTab;
-  heth.Init.RxDesc = DMARxDscrTab;
-  heth.Init.RxBuffLen = 1524;
-
-  /* USER CODE BEGIN MACADDRESS */
-
-  /* USER CODE END MACADDRESS */
-
-  if (HAL_ETH_Init(&heth) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  memset(&TxConfig, 0 , sizeof(ETH_TxPacketConfig));
-  TxConfig.Attributes = ETH_TX_PACKETS_FEATURES_CSUM | ETH_TX_PACKETS_FEATURES_CRCPAD;
-  TxConfig.ChecksumCtrl = ETH_CHECKSUM_IPHDR_PAYLOAD_INSERT_PHDR_CALC;
-  TxConfig.CRCPadCtrl = ETH_CRC_PAD_INSERT;
-  /* USER CODE BEGIN ETH_Init 2 */
-
-  /* USER CODE END ETH_Init 2 */
-
-}
-
-/**
   * @brief USART3 Initialization Function
   * @param None
   * @retval None
   */
-void MX_USART3_UART_Init(void)
+static void MX_USART3_UART_Init(void)
 {
 
   /* USER CODE BEGIN USART3_Init 0 */
@@ -262,11 +239,11 @@ void MX_USART3_UART_Init(void)
   {
     Error_Handler();
   }
-  if (HAL_UARTEx_SetTxFifoThreshold(&huart3, UART_TXFIFO_THRESHOLD_1_8) != HAL_OK)
+  if (HAL_UARTEx_SetTxFifoThreshold(&huart3, UART_TXFIFO_THRESHOLD_1_2) != HAL_OK)
   {
     Error_Handler();
   }
-  if (HAL_UARTEx_SetRxFifoThreshold(&huart3, UART_RXFIFO_THRESHOLD_1_8) != HAL_OK)
+  if (HAL_UARTEx_SetRxFifoThreshold(&huart3, UART_RXFIFO_THRESHOLD_1_2) != HAL_OK)
   {
     Error_Handler();
   }
@@ -277,6 +254,25 @@ void MX_USART3_UART_Init(void)
   /* USER CODE BEGIN USART3_Init 2 */
 
   /* USER CODE END USART3_Init 2 */
+
+}
+
+/**
+  * Enable DMA controller clock
+  */
+static void MX_DMA_Init(void)
+{
+
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA1_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  /* DMA1_Stream0_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream0_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream0_IRQn);
+  /* DMA1_Stream1_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream1_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream1_IRQn);
 
 }
 
@@ -293,6 +289,7 @@ static void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOB_CLK_ENABLE();
+  __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
@@ -310,27 +307,138 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
+/* 
+  Utility Function
+  Send a message over UART
+*/
+void CM4_USART3_DMA_Send(uint8_t *message, _ssize_t message_length)
+{
+  if (message_length == -1)
+  {
+    message_length = strlen((const char *)message);
+  }
+  else if (message_length < 0)
+  {
+    Error_Handler();
+  }
+
+  /*
+    DMA is used for UART transfer
+  */
+  HAL_UART_Transmit_DMA(&huart3, message, message_length);
+}
+
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef* husart) {
+  /*
+    HAL_UART_TxCpltCallback is a built-in callback that runs once a UART transaction is complete
+    Implement a callback to update UART availability
+  */
+  int status = usart3_available_sem_post();
+}
+
 /* USER CODE END 4 */
 
-/* USER CODE BEGIN Header_StartDefaultTask */
+/* USER CODE BEGIN Header_CM4StatusLEDTask */
 /**
-  * @brief  Function implementing the defaultTask thread.
-  * @param  argument: Not used
-  * @retval None
-  */
-/* USER CODE END Header_StartDefaultTask */
-void StartDefaultTask(void *argument)
+ * @brief  Function implementing the CM4StatusLEDTas thread.
+ * @param  argument: Not used
+ * @retval None
+ */
+/* USER CODE END Header_CM4StatusLEDTask */
+void CM4StatusLEDTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
   /* Infinite loop */
-  for(;;)
+  /* 
+    WIP
+    This is an arbitrary test task. This tests sending and receiving messages and concurrency issues with message channels.
+    Note: concurrency and ACK/Ready bits not functional yet
+  */
+  // Debug number
+  int num = 0;
+  for (;;)
   {
-    HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
-    osDelay(1000);
-    HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
-    osDelay(1000);
+    // Debug LED
+    HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
+
+    // Test sending and receiving messages
+    int status;
+    char to_cm7_buf[48] = {0}, from_cm7_buf[48] = {0}, printbuffer[100];
+
+    // Format a message
+    format_str(to_cm7_buf, 48, "To CM7: %d\0", num++);
+    
+    // As CM4, Send message to CM7
+    // while(!core_comms_channel_acknowledged(comm_CM4_to_CM7_messages_ptr));
+    status = core_comms_channel_send(comm_CM4_to_CM7_messages_ptr, (uint8_t *) to_cm7_buf, 48);
+
+    // As CM4, Receive data from CM7
+    // Note: the ready bits not fully functional yet
+    if(core_comms_channel_ready(comm_CM7_to_CM4_messages_ptr)) {      
+      status = core_comms_channel_receive(comm_CM7_to_CM4_messages_ptr, (uint8_t *) from_cm7_buf, 48);
+    }
+
+    // Record outgoing message
+    // format_str(printbuffer, 100, "Sent: %s\n\0", to_cm7_buf);
+    // status = user_messages_enqueue((uint8_t*)printbuffer);
+    
+    // Record incoming message
+    format_str(printbuffer, 100, "Rcvd: %s\n\0", from_cm7_buf);
+    
+    // Send the message to be printed via UART
+    status = user_messages_enqueue((uint8_t*)printbuffer);
+
+    /*
+      WIP => FIXME
+      Crude way to run every ~250 ms
+      To truly make this run each 250 ms, we'd want to use timer-based interrupts
+      As well, keep track of overrun times (i.e. if the task is interrupted early or starts late due to running over 250ms)
+    */
+    osDelay(250);
   }
   /* USER CODE END 5 */
+}
+
+/* USER CODE BEGIN Header_CM4UserMessagesTask */
+/**
+* @brief Function implementing the CM4UserMessages thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_CM4UserMessagesTask */
+void CM4UserMessagesTask(void *argument)
+{
+  /* USER CODE BEGIN CM4UserMessagesTask */
+  /* Infinite loop */
+  for(;;)
+  {
+    /*
+      WIP => FIXME
+      Review this function to make sure things are working properly.
+      The intention is NOT a polling approach.
+      Each loop iteration, we send one UART message to the user terminal.
+      If we dequeue a message, and nothing is ready, the task should BLOCK and wait.
+    */
+
+    /*
+      Messages cannot be queued with this message, as a subsequent DMA trnasfer will overwrite an in-progress transfer
+      Need to create a UART sending/receiving task
+      Need to use the UART availability functionality (not yet implemented) to block that task until UART available
+      Need to indicate UART is unavailable right before sending a message; callback will indicate when it's available again
+    */
+    user_message message;
+    
+    // Wait until a new message is available
+    int status = user_messages_wait_dequeue(&message);
+
+    // Wait until UART is available
+    status = usart3_available_sem_wait();
+
+    // Send message over UART
+    CM4_USART3_DMA_Send((uint8_t*)(message.buffer), -1);
+
+  }
+  /* USER CODE END CM4UserMessagesTask */
 }
 
 /**
@@ -365,6 +473,8 @@ void Error_Handler(void)
   __disable_irq();
   while (1)
   {
+    HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
+    osDelay(25);
   }
   /* USER CODE END Error_Handler_Debug */
 }
